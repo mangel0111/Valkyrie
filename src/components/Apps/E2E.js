@@ -1,20 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Dashboard from './e2e/components/Dashboard';
-
-var isAdm = false;
+import styles from './e2e/styles/styles.css';
 
 class E2E extends Component {
-    constructor(props, context) {
-        super(props, context);
-    }
+	constructor(props, context) {
+		super(props, context);
+	}
 
-    render() {
-        return (
-            <div className='bodyContainer'>
-                <Dashboard isAdm={true} />
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div className='bodyContainer'>
+				<Dashboard />
+			</div>
+		)
+	}
 }
 
 export default E2E;
