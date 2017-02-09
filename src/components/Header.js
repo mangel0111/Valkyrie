@@ -30,10 +30,11 @@ class Header extends React.Component {
                     <div className="manage">
                         <h3> <span>
                             <Avatar
-                                src="/images/Gothfather.jpe"
+                                //DEG: I have a problem with the picture. This URL return an 403 error.
+                                src={localStorage.getItem('picture')}
                                 size={45}
                                 style={style}
-                                />
+                            />
                         </span>
                             {this.props.Profile.Name}
                         </h3>
