@@ -18,7 +18,7 @@ class App extends React.Component {
 
   renderHome() {
     const profile = {
-      Name: 'Miguel Angel'
+      Name: localStorage.getItem("owner")
     };
 
     return (
@@ -38,11 +38,11 @@ class App extends React.Component {
   }
 
   render() {
-    // check if they are no logged in at all
-  //  if (!this.state.uid || (this.state.uid !== this.state.owner)) {
-     // this.context.router.transitionTo(`/login`);
-    //  return null;
-   // }
+    //check if they are no logged in at all
+    if (!this.state.uid) {
+      this.context.router.transitionTo(`/login`);
+      return null;
+    }
 
     return (
       <div className="homePage">
