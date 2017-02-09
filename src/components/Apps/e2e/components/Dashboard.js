@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import RegressionTest from './RegressionTest';
+import regressions from './regressionsTest.json';
 
 function handleActive(tab) {
 	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
@@ -8,6 +10,11 @@ function handleActive(tab) {
 
 
 class Dashboard extends Component {
+
+	getE2E(key) {
+		const _regression = regressions[key];
+		return <RegressionTest regression={_regression}/>
+	}
 
 	render() {
 
@@ -37,6 +44,7 @@ class Dashboard extends Component {
 			}
 		}
 
+
 		return (
 			<div style={styles.container}>
 				<div style={styles.e2eContainer}>
@@ -48,11 +56,16 @@ class Dashboard extends Component {
 							onSelect={this.handleSelect}
 							selectedIndex={2}>
 							<TabList>
-								<Tab>My E2E</Tab>
+								<Tab>My E2E
+								</Tab>
 								<Tab>ALL E2E</Tab>
+
 							</TabList>
 							<TabPanel>
 								<h2>My E2E</h2>
+								<div>
+									{Object.keys(regressions).map(this.getE2E)}
+								</div>
 							</TabPanel>
 							<TabPanel>
 								<h2>All the E2E</h2>
