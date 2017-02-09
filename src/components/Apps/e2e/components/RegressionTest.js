@@ -16,6 +16,7 @@ class RegressionTest extends React.Component {
 				'margin-left': '10px'
 			}
 		}
+		debugger;
 		return (
 			<div style={styles.container}>
 				<h3><strong>Name:</strong>{this.props.regression.appDirectVersion}</h3>

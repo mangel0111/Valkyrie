@@ -2,7 +2,10 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import RegressionTest from './RegressionTest';
-import regressions from './regressionsTest.json';
+//import regressionsData from './regressionsTest.json';
+import axios from 'axios';
+const FETCH_URL_DEFAULT = 'https://e2e.appdirect.tools/api/runs?limit=10&skip=10';
+const FETCH_URL_BASE = 'https://e2e.appdirect.tools/api/runs?';
 
 function handleActive(tab) {
 	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
@@ -10,14 +13,35 @@ function handleActive(tab) {
 
 
 class Dashboard extends Component {
+	constructor() {
+		super();
+		this.state = {
+			regressions: []//regressionsData
+		};
+		this.getE2E = this.getE2E.bind(this);
+		this.getRegressions = this.getRegressions.bind(this);
+		this.getRegressions(2, 2);
+	}
 
 	getE2E(key) {
-		const _regression = regressions[key];
-		return <RegressionTest regression={_regression}/>
+		debugger;
+		const _regression = this.state.regressions[key];
+		return <RegressionTest regression={_regression}/>;
+	}
+
+	getRegressions(limit, skip) {
+		var selfThis = this;
+		const URL_TO_FETCH = (!limit && !skip) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&skip=${skip}`;
+		axios.get(URL_TO_FETCH)
+			.then(function(response) {
+				selfThis.setState({
+					regressions: response.data
+				});
+			})
+			.catch(error => console.log(error));
 	}
 
 	render() {
-
 		let styles = {
 			'container': {
 				'background': "#f5f5f",
@@ -42,9 +66,7 @@ class Dashboard extends Component {
 				marginBottom: 12,
 				fontWeight: 400,
 			}
-		}
-
-
+		};
 		return (
 			<div style={styles.container}>
 				<div style={styles.e2eContainer}>
@@ -56,7 +78,7 @@ class Dashboard extends Component {
 							onSelect={this.handleSelect}
 							selectedIndex={2}>
 							<TabList>
-								<Tab>My E2E
+								<Tab className="ReactTabs__Tab--selected">My E2E
 								</Tab>
 								<Tab>ALL E2E</Tab>
 
@@ -64,7 +86,7 @@ class Dashboard extends Component {
 							<TabPanel>
 								<h2>My E2E</h2>
 								<div>
-									{Object.keys(regressions).map(this.getE2E)}
+									{Object.keys(this.state.regressions).map(this.getE2E)}
 								</div>
 							</TabPanel>
 							<TabPanel>

@@ -26,6 +26,7 @@
     "webpack-dev-server": "^1.14.1"
   },
   "dependencies": {
+    "axios": "^0.15.3",
     "draft-js": "^0.9.1",
     "history": "4.2.0",
     "konva": "^1.0.3",
