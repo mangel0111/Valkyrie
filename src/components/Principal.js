@@ -2,6 +2,7 @@ import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
 import Dashboard from './Dashboard';
 import E2E from './Apps/E2E';
+import Jenkins from './Apps/Jenkins';
 
 import Apps from '../app-samples';
 
@@ -36,6 +37,8 @@ class Principal extends React.Component {
         switch (view) {
             case "E2E":
                 return <E2E />;
+            case "Jenkins":
+                return <Jenkins />;
             default:
                 return (
                     <Dashboard

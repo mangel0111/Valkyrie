@@ -41,5 +41,12 @@ module.exports = {
         descripcion: "Who will be fired?",
         className: "red",
         icon: "/images/secrectSanta.svg"
+    },
+    app7: {
+        name: "Jenkins",
+        code: "Jenkins",
+        descripcion: "Check your building",
+        className: "blue",
+        icon: "/images/jenkins_logo.svg"
     }
 }
