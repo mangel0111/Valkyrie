@@ -6,7 +6,6 @@ function handleActive(tab) {
 	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
 }
 
-
 class Dashboard extends Component {
 
 	render() {
@@ -37,6 +36,21 @@ class Dashboard extends Component {
 			}
 		}
 
+		var axios = require('axios');
+		var jenkinsNames = [];
+
+		axios.get('http://jenkins.appdirect.com:8080/api/json?pretty=true')
+		.then(function (response) {
+			 response.data.jobs.forEach(function(element) {
+   			 jenkinsNames.push(element.name);
+			});
+			document.getElementById("allJobs").innerHTML = jenkinsNames;
+		})
+		.catch(function (error) {
+			console.log(error);
+		});
+
+
 		return (
 			<div style={styles.container}>
 				<div style={styles.jenkinContainer}>
@@ -44,20 +58,8 @@ class Dashboard extends Component {
 						<h2>Check your Jenkin!</h2>
 					</div>
 					<div>
-						<Tabs
-							onSelect={this.handleSelect}
-							selectedIndex={2}>
-							<TabList>
-								<Tab>My Jenkin</Tab>
-								<Tab>ALL Jenkin</Tab>
-							</TabList>
-							<TabPanel>
-								<h2>My Jenkin</h2>
-							</TabPanel>
-							<TabPanel>
-								<h2>All the Jenking</h2>
-							</TabPanel>
-						</Tabs>
+						<h2>All Jobs</h2>
+						<p id="allJobs"></p>
 					</div>
 				</div>
 			</div>
