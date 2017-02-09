@@ -5,7 +5,7 @@ class Footer extends React.Component {
     render() {
         return (
             <div className="footer">
-               Mercurial Red Social - 2016
+               Valkyries - 2017
             </div>
         )
     }

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Glyphicon } from 'react-bootstrap';
 import Dashboard from './Dashboard';
-import Tetris from './Apps/Tetris';
-import SecrectSanta from './Apps/SecrectSanta'
+import E2E from './Apps/E2E';
 
 import Apps from '../app-samples';
 
@@ -35,10 +34,8 @@ class Principal extends React.Component {
     switchView() {
         const view = this.props.view;
         switch (view) {
-            case "Tetris":
-                return <Tetris />;
-            case "SecrectSanta":
-                return <SecrectSanta />
+            case "E2E":
+                return <E2E />;
             default:
                 return (
                     <Dashboard

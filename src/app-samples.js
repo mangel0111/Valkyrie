@@ -1,9 +1,10 @@
 module.exports = {
-    app1: {
-        name: "Tetris",
-        code: "Tetris",
-        descripcion: "Tetris to loss time in the office",
-        className: "green",
+    
+	app1: {
+        name: "E2E",
+        code: "E2E",
+        descripcion: "Regeression Test Automated",
+        className: "blue",
         icon: "/images/tetris.png"
     },
     app2: {
@@ -17,7 +18,7 @@ module.exports = {
         name: "MeetingRooms",
         code: "MeetingRooms",
         descripcion: "Check & reserve the meeting room!",
-        className: "blue",
+        className: "green",
         icon: "/images/meetingroom.png"
     },
     app4: {
