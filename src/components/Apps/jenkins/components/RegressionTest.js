@@ -90,11 +90,11 @@ class RegressionTest extends React.Component {
 				<h3 style={styles.jenkinsTitle}>{this.props.regression.name}</h3>
 				<div style={styles.details}>
 					<h4 style={styles.dataContainer}>
-						<span style={styles.title}>Go to:</span>
+						<span style={styles.title}>Go to</span>
 						<a style={styles.dataColumn} href={this.props.regression.url} target="_blank">Results!</a>{}
 					</h4>
 					<h4 style={styles.dataContainer}>
-						<span style={styles.title}>Status:</span>
+						<span style={styles.title}>Status</span>
 						<span style={styles.dataColumn}>{this.getIconE2E()}</span>
 					</h4>
 				</div>
