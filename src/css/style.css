@@ -52,6 +52,19 @@ h2, h1, h3, div {
 
 .logo {
     padding: 5px;
+    margin: 10px;
+}
+
+.linklogo {
+    position:relative;
+    top:15px;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 10px;
+}
+
+.linklogo:hover {
+    text-decoration: none;
 }
 
 .manage {
@@ -119,7 +132,7 @@ h2, h1, h3, div {
     min-height: 200px;
 }
 
-.dashboardApp {
+.dashboardApp  {
     background: #fff;
     width: 80%;
     height: 60%;
@@ -363,3 +376,4 @@ input[type=submit].google:after {
     position: relative;
     top: 20px;
 }
+
