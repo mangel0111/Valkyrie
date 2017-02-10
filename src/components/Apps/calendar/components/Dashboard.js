@@ -16,42 +16,34 @@ class Dashboard extends React.Component {
   constructor() {
     super();
     this.state = {
-      calendars : [],
       events : []
     };
   }
 
   componentWillMount() {
-    let instace = this;
-    instace.state.calendars = [];
-    Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken'))
-		.then(function (response) {
+    let instance = this;
+    Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
+      let data = [];
       response.data.items.forEach((item) => {
-        instace.state.calendars.push({
-          value: item.id,
-          label: item.summary
+        Axios.get('https://www.googleapis.com/calendar/v3/calendars/'  + item.id + '/events?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
+          response.data.items.forEach((event) => {
+            data.push({
+              start: event.start.date || event.start.dateTime,
+              end: event.end.date || event.end.dateTime,
+              title: event.summary,
+            });
+          });
         });
       });
-		});
-  }
-
-  onChange(val) {
-    let instace = this;
-    instace.state.events = [];
-    Axios.get('https://www.googleapis.com/calendar/v3/calendars/'  + val.value + '/events?access_token=' + localStorage.getItem('accessToken'))
-		.then(function (response) {
-      instace.state.events = response.data.items;
-		});
+      instance.setState({
+        events : data
+      });
+    });
   }
 
   render() {
     return (
       <div>
-        <br />
-        <Select
-          options={this.state.calendars}
-          onChange={this.onChange.bind(this)}
-        />
         <br />
         <BigCalendar
           events={this.state.events}
