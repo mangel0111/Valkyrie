@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import Dashboard from './e2e/components/Dashboard';
-import styles from './e2e/styles/styles.css';
 
 class E2E extends Component {
 	constructor(props, context) {

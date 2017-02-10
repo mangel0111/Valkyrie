@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import RegressionTest from './RegressionTest';
-//import regressionsData from './regressionsTest.json';
 import axios from 'axios';
 const FETCH_URL_DEFAULT = 'https://e2e.appdirect.tools/api/runs?limit=10&skip=10';
 const FETCH_URL_BASE = 'https://e2e.appdirect.tools/api/runs?';
@@ -16,18 +15,28 @@ class Dashboard extends Component {
 	constructor() {
 		super();
 		this.state = {
-			regressions: []//regressionsData
+			regressions: [],
+			myRegressions: []
 		};
 		this.getE2E = this.getE2E.bind(this);
+		this.getMyE2E = this.getMyE2E.bind(this);
 		this.getRegressions = this.getRegressions.bind(this);
-		this.getRegressions(2, 2);
+		this.getMyRegressions = this.getMyRegression.bind(this);
+
+		this.getRegressions(100, 0);
+		this.getMyRegressions(100, 41);
 	}
 
 	getE2E(key) {
-		debugger;
 		const _regression = this.state.regressions[key];
 		return <RegressionTest regression={_regression}/>;
 	}
+
+	getMyE2E(key) {
+		const _regression = this.state.myRegressions[key];
+		return <RegressionTest regression={_regression}/>;
+	}
+
 
 	getRegressions(limit, skip) {
 		var selfThis = this;
@@ -41,13 +50,26 @@ class Dashboard extends Component {
 			.catch(error => console.log(error));
 	}
 
+	getMyRegression(limit, id) {
+		var selfThis = this;
+		const URL_TO_FETCH = (!limit && !id) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&createdById=${id}`;
+		axios.get(URL_TO_FETCH)
+			.then(function(response) {
+				selfThis.setState({
+					myRegressions: response.data
+				});
+			})
+			.catch(error => console.log(error));
+	}
+
 	render() {
 		let styles = {
 			'container': {
 				'background': "#f5f5f",
 				'width': '99%',
 				'min-height': '700px',
-				'padding': '10px'
+				'padding': '10px',
+
 			},
 			e2eContainerHeader: {
 				'text-align': 'center'
@@ -65,6 +87,9 @@ class Dashboard extends Component {
 				paddingTop: 16,
 				marginBottom: 12,
 				fontWeight: 400,
+			},
+			tabPanel: {
+				padding: 20
 			}
 		};
 		return (
@@ -76,21 +101,23 @@ class Dashboard extends Component {
 					<div>
 						<Tabs
 							onSelect={this.handleSelect}
-							selectedIndex={2}>
+							selectedIndex={0}>
 							<TabList>
-								<Tab className="ReactTabs__Tab--selected">My E2E
+								<Tab className="ReactTabs__Tab--selected">All E2E
 								</Tab>
-								<Tab>ALL E2E</Tab>
-
+								<Tab>My E2E</Tab>
 							</TabList>
-							<TabPanel>
-								<h2>My E2E</h2>
+							<TabPanel style={styles.tabPanel}>
+								<h2>All the E2E</h2>
 								<div>
 									{Object.keys(this.state.regressions).map(this.getE2E)}
 								</div>
 							</TabPanel>
-							<TabPanel>
-								<h2>All the E2E</h2>
+							<TabPanel style={styles.tabPanel}>
+								<h2>My E2E</h2>
+								<div>
+									{Object.keys(this.state.myRegressions).map(this.getMyE2E)}
+								</div>
 							</TabPanel>
 						</Tabs>
 					</div>
