@@ -17,10 +17,7 @@ const responseGoogle = (response) => {
         });  
         
     }
-    // tokenId
-    // uid = profileObj.googleId
-    // owner
-    // this.setState({ todos: todos });
+    
     console.log(response);
 }
 

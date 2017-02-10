@@ -11,10 +11,10 @@ module.exports = {
         name: "Calendar",
         code: "Calendar",
         descripcion: "Always check your dates!",
-        className: "teal",
+        className: "red",
         icon: "/images/calendar.png"
     },
-    app3: {
+    /*app3: {
         name: "MeetingRooms",
         code: "MeetingRooms",
         descripcion: "Check & reserve the meeting room!",
@@ -41,12 +41,19 @@ module.exports = {
         descripcion: "Who will be fired?",
         className: "red",
         icon: "/images/secrectSanta.svg"
-    },
+    },*/
     app7: {
         name: "Jenkins",
         code: "Jenkins",
         descripcion: "Check your building",
         className: "blue",
         icon: "/images/jenkins_logo.svg"
+    },
+    app8: {
+        name: "Orchard",
+        code: "Orchard",
+        descripcion: "Check your building",
+        className: "blueGray",
+        icon: "/images/Orchard_logo.svg"
     }
 }
