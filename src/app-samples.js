@@ -48,5 +48,13 @@ module.exports = {
         descripcion: "Check your building",
         className: "blue",
         icon: "/images/jenkins_logo.svg"
+    },
+    app8: {
+        name: "Catchphrases!",
+        code: "CatchphrasesApp",
+        descripcion: "Enjoy playing popular phrases",
+        className: "phrases-app",
+        icon: "/images/play-butto-app.png"
     }
+    
 }
