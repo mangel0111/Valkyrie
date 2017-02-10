@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import axios from 'axios';
+import RegressionTest from './RegressionTest';
+
+const URL_TO_FETCH = 'http://jenkins.appdirect.com:8080/api/json?pretty=true';
 
 function handleActive(tab) {
 	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
@@ -8,8 +12,33 @@ function handleActive(tab) {
 
 class Dashboard extends Component {
 
-	render() {
+	constructor() {
+		super();
+		this.getRegressions = this.getRegressions.bind(this);
+		this.getE2E = this.getE2E.bind(this);
+		this.state = {
+			regressions: []
+		};
+		this.getRegressions();
+	}
 
+	getRegressions() {
+		var selfThis = this;
+		axios.get(URL_TO_FETCH)
+			.then(function(response) {
+				selfThis.setState({
+					regressions: response.data.jobs.slice(0, 25)
+				});
+			})
+			.catch(error => console.log(error));
+	}
+
+	getE2E(key) {
+		const _regression = this.state.regressions[key];
+		return <RegressionTest regression={_regression}/>;
+	}
+
+	render() {
 		let styles = {
 			'container': {
 				'background': "#f5f5f",
@@ -33,23 +62,20 @@ class Dashboard extends Component {
 				paddingTop: 16,
 				marginBottom: 12,
 				fontWeight: 400,
+			},
+			home: {
+				'margin-left': 'auto',
+				color: 'white',
+				background: 'blue',
+				padding: '5px',
+				'text-decoration': 'none',
+				'border-radius': '3px'
+			},
+			linkhome: {
+				'text-align': 'right',
+				'color': 'white'
 			}
 		}
-
-		var axios = require('axios');
-		var jenkinsNames = [];
-
-		axios.get('http://jenkins.appdirect.com:8080/api/json?pretty=true')
-		.then(function (response) {
-			 response.data.jobs.forEach(function(element) {
-   			 jenkinsNames.push(element.name);
-			});
-			document.getElementById("allJobs").innerHTML = jenkinsNames;
-		})
-		.catch(function (error) {
-			console.log(error);
-		});
-
 
 		return (
 			<div style={styles.container}>
@@ -57,9 +83,10 @@ class Dashboard extends Component {
 					<div style={styles.jenkinContainerHeader}>
 						<h2>Check your Jenkin!</h2>
 					</div>
+					<div style={styles.linkhome}><a style={styles.home} href="http://jenkins.appdirect.com:8080/" target="_blank">Go to Jenkins</a></div>
 					<div>
 						<h2>All Jobs</h2>
-						<p id="allJobs"></p>
+						{Object.keys(this.state.regressions).map(this.getE2E)}
 					</div>
 				</div>
 			</div>

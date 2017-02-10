@@ -36,7 +36,7 @@ class Dashboard extends Component {
 				selfThis.setState({
 					regressions: response.data
 				});
-                console.log('DATA:', response);
+				console.log('DATA:', response);
 			})
 			.catch(error => console.log(error));
 	}
@@ -69,6 +69,18 @@ class Dashboard extends Component {
 			},
 			tabPanel: {
 				padding: 20
+			},
+			home: {
+				'margin-left': 'auto',
+				color: 'white',
+				background: 'blue',
+				padding: '5px',
+				'text-decoration': 'none',
+				'border-radius': '3px'
+			},
+			linkhome: {
+				'text-align': 'right',
+				'color': 'white'
 			}
 		};
 		return (
@@ -77,6 +89,7 @@ class Dashboard extends Component {
 					<div style={styles.OrchardContainerHeader}>
 						<h2>Check your Orchard!</h2>
 					</div>
+					<div style={styles.linkhome}><a style={styles.home} href="https://orchard.appdirect.tools/" target="_blank">Go to Orchard</a></div>
 					<div>
 						<Tabs
 							onSelect={this.handleSelect}
