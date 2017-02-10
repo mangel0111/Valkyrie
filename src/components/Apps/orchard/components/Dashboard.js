@@ -86,7 +86,7 @@ class Dashboard extends Component {
 				'margin-left': 'auto',
 				color: 'white',
 				background: 'blue',
-				padding: '5px',
+				padding: '10px 25px',
 				'text-decoration': 'none',
 				'border-radius': '3px'
 			},

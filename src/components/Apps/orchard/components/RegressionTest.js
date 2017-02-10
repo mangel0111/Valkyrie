@@ -9,13 +9,15 @@ class RegressionTest extends React.Component {
     render() {
         let styles = {
             container: {
-                'margin': '20px',
-                'padding': '5px',
-                'border-left': '5px solid blue'
+                padding: '15px',
+                border: '1px solid rgba(0, 0, 125, 0.5)',
+                borderTop: '15px solid rgba(0, 0, 125, 0.3)',
+                borderRadius: '5px',
+                marginBottom: '10px'
             },
             details: {
-                'margin-left': '10px',
-                'margin-bottom': '20px',
+                marginLeft: '10px',
+                marginBottom: '20px',
             },
             stLive: {
                 
