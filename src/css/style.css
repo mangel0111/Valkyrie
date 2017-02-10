@@ -61,6 +61,7 @@ h2, h1, h3, div {
     text-decoration: none;
     font-size: 25px;
     padding: 10px;
+    color: grey;
 }
 
 .linklogo:hover {
@@ -281,6 +282,22 @@ h2, h1, h3, div {
     background: linear-gradient(141deg, #455A64 0%, #455A64 51%, #455A64 75%);
 }
 
+.phrases-app {
+  background-color: #CCC;
+}
+
+.phrases-app:hover {
+  background-color: #DDD;
+}
+
+.phrases-app {
+  background-color: #CCC;
+}
+
+.phrases-app:hover {
+  background-color: #DDD;
+}
+
 .login {
     height: 40%;
     width: 60%;
@@ -357,4 +374,24 @@ input[type=submit].google:after {
 
 .logout-modal {
     padding: 10px;
+}
+
+.stLive {
+    background-color: #64a62e;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    text-indent: 25px;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.stOther {
+    background-color: #eeae3f;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    text-indent: 25px;
+    text-transform: capitalize;
+    margin-top: 10px;
 }
