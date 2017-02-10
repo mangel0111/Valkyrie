@@ -41,6 +41,7 @@
     "react-addons-css-transition-group": "15.3.2",
     "react-big-calendar": "^0.12.3",
     "react-bootstrap": "^0.30.6",
+    "react-click-outside": "github:tj/react-click-outside",
     "react-dom": "15.4.1",
     "react-google-login": "^2.8.0",
     "react-konva": "^1.0.5",

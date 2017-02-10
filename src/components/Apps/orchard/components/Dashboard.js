@@ -15,10 +15,13 @@ class Dashboard extends Component {
 	constructor() {
 		super();
 		this.state = {
-			regressions: []
+			regressions: [],
+			myOrchards: [],
+			name: 'Miguel Angel Penaloza'
 		};
 		this.getOrchard = this.getOrchard.bind(this);
 		this.getRegressions = this.getRegressions.bind(this);
+		this.getMyOrchard = this.getMyOrchard.bind(this);
 
 		this.getRegressions(100, 0);
 	}
@@ -28,17 +31,26 @@ class Dashboard extends Component {
 		return <RegressionTest regression={_regression}/>;
 	}
 
+	getMyOrchard(key) {
+		const _regression = this.state.myOrchards[key];
+		return <RegressionTest regression={_regression}/>;
+	}
+
 	getRegressions(limit, skip) {
 		var selfThis = this;
 		const URL_TO_FETCH = (!limit && !skip) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&skip=${skip}`;
 		axios.get(URL_TO_FETCH)
 			.then(function(response) {
-				selfThis.setState({
-					regressions: response.data
-				});
-				console.log('DATA:', response);
-			})
-			.catch(error => console.log(error));
+					selfThis.setState({
+						regressions: response.data,
+						myOrchards: response.data.filter(function(value) {
+							if (value.createdBy.name ? (value.createdBy.name === selfThis.state.name) : false) {
+								return value
+							}
+						})
+					});
+				}
+			).catch(error => console.log(error));
 	}
 
 	render() {
@@ -99,6 +111,11 @@ class Dashboard extends Component {
 								</Tab>
 							</TabList>
 							<TabPanel style={styles.tabPanel}>
+								<h2>My Orchard</h2>
+								<div>
+									{Object.keys(this.state.myOrchards).map(this.getMyOrchard)}
+								</div>
+								<br />
 								<h2>All the Orchard</h2>
 								<div>
 									{Object.keys(this.state.regressions).map(this.getOrchard)}
