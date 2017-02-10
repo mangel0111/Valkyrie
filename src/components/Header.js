@@ -1,7 +1,10 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
+import ReactDOM from 'react-dom';
+import ClickOutside from 'react-click-outside';
+import $ from 'jquery';
 
-const style = {margin: 5};
+const style = { margin: 5 };
 
 class Header extends React.Component {
 	constructor() {
@@ -9,7 +12,10 @@ class Header extends React.Component {
 		this.renderAuthHeader = this.renderAuthHeader.bind(this);
 		this.renderNoAuthHeader = this.renderNoAuthHeader.bind(this);
 		this.renderLogo = this.renderLogo.bind(this);
+		this.renderLogoutModal = this.renderLogoutModal.bind(this);
+		this.logout = this.logout.bind(this);
 	}
+
 
 	renderLogo() {
 		return (
@@ -19,55 +25,89 @@ class Header extends React.Component {
 		);
 	};
 
-	renderAuthHeader() {
-		return (
-			<header className="header">
-				<div className="headerContainer">
-					{this.renderLogo()}
-					<div className="searchBox">
-
-					</div>
-					<div className="manage">
-						<h3> <span>
-                            <Avatar
-								//DEG: I have a problem with the picture. This URL return an 403 error.
-								src={localStorage.getItem('picture')}
-								size={45}
-								style={style}
-							/>
-                        </span>
-							{this.props.Profile.Name}
-						</h3>
-					</div>
-				</div>
-			</header>
-		);
+	logout() {
+		localStorage.clear();
+		window.location.replace("/login");
 	}
 
-	renderNoAuthHeader() {
-		return (
-			<nav className="header">
-				<div className="headerContainer">
-					{this.renderLogo()}
-					<div className="searchBox">
-						<h2></h2>
-					</div>
-					<div className="manage">
-						<h2>Login</h2>
-					</div>
-				</div>
-			</nav>
-		);
-	}
-
-	render() {
-		var IsAuth = this.props.isAuth || false;
-		if (IsAuth) {
-			return (this.renderAuthHeader());
-		} else {
-			return this.renderNoAuthHeader();
+	renderLogoutModal() {
+		let styles = {
+			'imgAvatar': {
+				'width': 64,
+				'minHeight': 64,
+				'borderRadius': 64,
+				'float': 'left',
+				'marginRight': 15
+			},
+			'email': {
+				'fontSize': 14,
+				'color': '#585858'
+			}
 		}
+		$('#modal').show();
+		return (
+			ReactDOM.render(
+				<ClickOutside onClickOutside={() =>  $('#modal').hide()}>
+					<div className='logout-modal'>
+						<img src={localStorage.getItem('picture')} style={styles.imgAvatar} />
+						<strong>{this.props.Profile.Name}</strong><br />
+						<label style={styles.email}>{localStorage.getItem('email')}</label> <br /><br />
+						<input type='button' onClick={() => this.logout()} value='Logout' />
+					</div>
+				</ClickOutside >,
+						document.getElementById('modal'))
+		);
 	}
+
+renderAuthHeader() {
+	return (
+		<header className="header">
+			<div className="headerContainer">
+				{this.renderLogo()}
+				<div className="searchBox">
+
+				</div>
+				<div className="manage" onClick={() => this.renderLogoutModal()}>
+					<h3> <span>
+						<Avatar
+							src={localStorage.getItem('picture')}
+							size={45}
+							style={style}
+						/>
+					</span>
+						{this.props.Profile.Name}
+					</h3>
+				</div>
+			</div>
+			<div id='modal' className='modal'></div>
+		</header>
+	);
+}
+
+renderNoAuthHeader() {
+	return (
+		<nav className="header">
+			<div className="headerContainer">
+				{this.renderLogo()}
+				<div className="searchBox">
+					<h2></h2>
+				</div>
+				<div className="manage">
+					<h2>Login</h2>
+				</div>
+			</div>
+		</nav>
+	);
+}
+
+render() {
+	var IsAuth = this.props.isAuth || false;
+	if (IsAuth) {
+		return (this.renderAuthHeader());
+	} else {
+		return this.renderNoAuthHeader();
+	}
+}
 }
 
 Header.propTypes = {
