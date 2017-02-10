@@ -12,10 +12,7 @@ To Deploy in Dev:
     npm start
 
 #### To avoid CORS problems, you can:
-- Disable the cors in the explorer.
+
 - Use the google chrome pluggin and disable the `CORS` validation
 
 Note: If you are using Catchphrases app you have to disable CORS plugin.
-
-
-
