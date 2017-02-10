@@ -46,14 +46,17 @@ class RegressionTest extends React.Component {
 
 	render() {
 		let styles = {
+			e2eTitle: {
+				padding: '15px'
+			},
 			container: {
 				padding: '15px',
+				border: '1px solid rgba(0, 0, 125, 0.5)',
 				borderTop: '15px solid rgba(0, 0, 125, 0.3)',
 				borderRadius: '5px',
-				backgroundColor: 'rgba(160, 195, 255, 0.22)'
+				marginBottom: '10px'
 			},
 			details: {
-
 				color: 'black'
 			},
 			title: {
@@ -61,7 +64,6 @@ class RegressionTest extends React.Component {
 				color: 'black',
 				width: '70px',
 				display: 'inline-block',
-				backgroundColor: 'rgba(155,155,155,0.5)',
 				padding: '5px 15px',
 				lineHeight: '20px'
 			},
@@ -70,7 +72,6 @@ class RegressionTest extends React.Component {
 				left: '100px',
 				padding: '5px 15px',
 				lineHeight: '20px',
-				backgroundColor: 'rgba(255,255,255,1)',
 				width: '550px',
 
 				whiteSpace: 'nowrap',
@@ -84,7 +85,7 @@ class RegressionTest extends React.Component {
 		let link = "https://e2e.appdirect.tools/run/" + this.props.regression.id;
 		return (
 			<div style={styles.container}>
-				<h3>{this.props.regression.appDirectVersion}</h3>
+				<h3 style={styles.e2eTitle}>{this.props.regression.appDirectVersion}</h3>
 				<div style={styles.details}>
 					<h4 style={styles.dataContainer}>
 						<span style={styles.title}>Suite</span>
