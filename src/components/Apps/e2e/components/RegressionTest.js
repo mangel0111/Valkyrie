@@ -63,25 +63,31 @@ class RegressionTest extends React.Component {
 				'margin-right': '5px'
 			}
 		}
+		console.log(this.props.regression);
+		let link = "https://e2e.appdirect.tools/run/" + this.props.regression.id;
 		return (
 			<div style={styles.container}>
 				<h3><strong>Name:</strong>{this.props.regression.appDirectVersion}</h3>
 				<div style={styles.details}>
 					<h4>
-						<stron style={styles.title}>Suite:</stron>
+						<span style={styles.title}>Suite:</span>
 						{this.props.regression.suite}</h4>
 					<h4>
-						<stron style={styles.title}>Duration:</stron>
+						<span style={styles.title}>Duration:</span>
 						{this.props.regression.duration}</h4>
 					<h4>
-						<stron style={styles.title}>Date:</stron>
+						<span style={styles.title}>Date:</span>
 						{this.props.regression.created_at}</h4>
 					<h4>
-						<stron style={styles.title}>Name:</stron>
+						<span style={styles.title}>Name:</span>
 						{this.props.regression.createdBy ? this.props.regression.createdBy.profile.name : 'Master'}</h4>
 					<h4>
-						<stron style={styles.title}>Status:</stron>
+						<span style={styles.title}>Status:</span>
 						{this.getIconE2E()}</h4>
+					<h4>
+						<span style={styles.title}>Link:</span>
+						<a href={link} target="_blank">{this.props.regression.id}</a>
+					</h4>
 				</div>
 			</div>
 		);
