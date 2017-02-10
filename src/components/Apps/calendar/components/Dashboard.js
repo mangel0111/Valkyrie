@@ -21,24 +21,26 @@ class Dashboard extends React.Component {
   }
 
   componentWillMount() {
-    let instance = this;
     Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
       let data = [];
       response.data.items.forEach((item) => {
-        Axios.get('https://www.googleapis.com/calendar/v3/calendars/'  + item.id + '/events?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
-          response.data.items.forEach((event) => {
+        Axios.get('https://www.googleapis.com/calendar/v3/calendars/'  + item.id + '/events?access_token=' + localStorage.getItem('accessToken')).then(function (subresponse) {
+          subresponse.data.items.forEach((event) => {
             data.push({
               start: event.start.date || event.start.dateTime,
               end: event.end.date || event.end.dateTime,
               title: event.summary,
             });
           });
-        });
+          if(response.data.items[response.data.items.length - 1].id === item.id) {
+            this.setState({
+              events : data
+            });
+          }
+        }.bind(this));
       });
-      instance.setState({
-        events : data
-      });
-    });
+
+    }.bind(this));
   }
 
   render() {
