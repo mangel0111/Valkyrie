@@ -18,22 +18,10 @@ class RegressionTest extends React.Component {
                 'margin-bottom': '20px',
             },
             stLive: {
-                'background': '#64a62e',
-                'width': 16,
-                'height': 16,
-                'border-radius': 16,
-                'text-indent': 25,
-                'text-transform': 'capitalize',
-                'margin-top': 10
+                
             },
             stOther: {
-                'background': 'yellow',
-                'width': 16,
-                'height': 16,
-                'border-radius': 16,
-                'text-indent': 25,
-                'text-transform': 'capitalize',
-                'margin-top': 10
+                
             }
         }
         return (
@@ -42,7 +30,7 @@ class RegressionTest extends React.Component {
                     <label>
                         <strong>{this.props.regression.name}</strong> - {this.props.regression.stack.name} - {this.props.regression.createdBy ? this.props.regression.createdBy.profile.name : 'Master'}
                     </label>
-                    <div style={(this.props.regression.state == 'LIVE') ? styles.stLive : styles.stOther}>
+                    <div className={(this.props.regression.state == 'LIVE') ? 'stLive' : 'stOther'}>
                         {this.props.regression.state}
                     </div>
                 </div>

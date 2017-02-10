@@ -1,0 +1,19 @@
+{
+  "profile": {
+    "name": "Miguel Angel Penaloza",
+    "role": "user"
+  },
+  "token": {
+    "id": 41,
+    "role": "user"
+  },
+  "id": 41,
+  "name": "Miguel Angel Penaloza",
+  "email": "miguel.penaloza@appdirect.com",
+  "role": "user",
+  "provider": "openid",
+  "openid": "https://marketplace.appdirect.com/openid/id/07c283b8-8b09-4f12-917c-13202a46f10a",
+  "created_at": "2016-10-27T12:54:09.000Z",
+  "updated_at": "2016-10-27T12:54:09.000Z",
+  "deleted_at": null
+}

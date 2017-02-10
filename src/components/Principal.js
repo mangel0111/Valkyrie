@@ -4,6 +4,7 @@ import Dashboard from './Dashboard';
 import E2E from './Apps/E2E';
 import Jenkins from './Apps/Jenkins';
 import Orchard from './Apps/Orchard';
+import CatchphrasesApp from './Apps/CatchphrasesApp';
 
 import Apps from '../app-samples';
 
@@ -42,6 +43,8 @@ class Principal extends React.Component {
                 return <Jenkins />;
             case "Orchard":
                 return <Orchard />;
+			case "CatchphrasesApp":
+				return <CatchphrasesApp />;
             default:
                 return (
                     <Dashboard

@@ -52,6 +52,20 @@ h2, h1, h3, div {
 
 .logo {
     padding: 5px;
+    margin: 10px;
+}
+
+.linklogo {
+    position:relative;
+    top:15px;
+    text-decoration: none;
+    font-size: 25px;
+    padding: 10px;
+    color: grey;
+}
+
+.linklogo:hover {
+    text-decoration: none;
 }
 
 .manage {
@@ -119,7 +133,7 @@ h2, h1, h3, div {
     min-height: 200px;
 }
 
-.dashboardApp {
+.dashboardApp  {
     background: #fff;
     width: 80%;
     height: 60%;
@@ -268,6 +282,22 @@ h2, h1, h3, div {
     background: linear-gradient(141deg, #455A64 0%, #455A64 51%, #455A64 75%);
 }
 
+.phrases-app {
+  background-color: #CCC;
+}
+
+.phrases-app:hover {
+  background-color: #DDD;
+}
+
+.phrases-app {
+  background-color: #CCC;
+}
+
+.phrases-app:hover {
+  background-color: #DDD;
+}
+
 .login {
     height: 40%;
     width: 60%;
@@ -363,3 +393,25 @@ input[type=submit].google:after {
     position: relative;
     top: 20px;
 }
+
+
+.stLive {
+    background-color: #64a62e;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    text-indent: 25px;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
+.stOther {
+    background-color: yellow;
+    width: 16px;
+    height: 16px;
+    border-radius: 16px;
+    text-indent: 25px;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+
