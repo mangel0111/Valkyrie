@@ -22,7 +22,6 @@ class RegressionTest extends React.Component {
 				'color': 'red'
 			}
 		}
-		debugger;
 
 		switch (this.props.regression.color) {
 			case 'aborted':
