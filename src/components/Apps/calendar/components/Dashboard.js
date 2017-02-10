@@ -48,6 +48,7 @@ class Dashboard extends React.Component {
         <BigCalendar
           events={this.state.events}
           style={{minHeight: 550}}
+          onSelectEvent={event => alert(event.title)}
         />
       </div>
     );
