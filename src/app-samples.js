@@ -1,5 +1,4 @@
 module.exports = {
-    
 	app1: {
         name: "E2E",
         code: "E2E",
@@ -11,42 +10,28 @@ module.exports = {
         name: "Calendar",
         code: "Calendar",
         descripcion: "Always check your dates!",
-        className: "teal",
+        className: "red",
         icon: "/images/calendar.png"
     },
     app3: {
-        name: "MeetingRooms",
-        code: "MeetingRooms",
-        descripcion: "Check & reserve the meeting room!",
-        className: "green",
-        icon: "/images/meetingroom.png"
-    },
-    app4: {
-        name: "The Wall",
-        code: "TheWall",
-        descripcion: "Post something fun!",
-        className: "blueGray",
-        icon: "/images/wall.png"
-    },
-    app5: {
-        name: "RH",
-        code: "RH",
-        descripcion: "Who will be fired?",
-        className: "deepOrange",
-        icon: "/images/rh.png"
-    },
-    app6: {
-        name: "Secret Santa",
-        code: "SecrectSanta",
-        descripcion: "Who will be fired?",
-        className: "red",
-        icon: "/images/secrectSanta.svg"
-    },
-    app7: {
         name: "Jenkins",
         code: "Jenkins",
         descripcion: "Check your building",
         className: "blue",
         icon: "/images/jenkins_logo.svg"
-    }
+    },
+    app4: {
+        name: "Orchard",
+        code: "Orchard",
+        descripcion: "Check your building",
+        className: "blueGray",
+        icon: "/images/Orchard.png"
+    },
+	app5: {
+	name: "Catchphrases!",
+		code: "CatchphrasesApp",
+		descripcion: "Enjoy playing popular phrases",
+		className: "phrases-app",
+		icon: "/images/play-butto-app.png"
+	}
 }
