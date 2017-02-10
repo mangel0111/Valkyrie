@@ -14,7 +14,6 @@ function handleActive(tab) {
 	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
 }
 
-
 class Dashboard extends Component {
 	constructor() {
 		super();
@@ -38,13 +37,13 @@ class Dashboard extends Component {
 
 	getMyProfile() {
 		var selfThis = this;
-		axios.get(FETCH_URL_PROFILE)
-			.then(function(response) {
-				selfThis.setState({
-					profile: response.data
-				});
-			})
-			.catch(error => console.log(error));
+		/*	axios.get(FETCH_URL_PROFILE)
+		 .then(function(response) {
+		 selfThis.setState({
+		 profile: response.data
+		 });
+		 })
+		 .catch(error => console.log(error));*/
 	}
 
 	getE2E(key) {
@@ -72,7 +71,9 @@ class Dashboard extends Component {
 	getRegressions(limit, skip) {
 		var selfThis = this;
 
+
 		const URL_TO_FETCH = (!limit && !skip) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&skip=${skip}`;
+
 		axios.get(URL_TO_FETCH)
 			.then(function(response) {
 				selfThis.setState({
@@ -86,6 +87,7 @@ class Dashboard extends Component {
 		var selfThis = this;
 		var id = this.state.profile.token.id;
 		const URL_TO_FETCH = (!limit && !id) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&createdById=${id}`;
+
 		axios.get(URL_TO_FETCH)
 			.then(function(response) {
 				selfThis.setState({
