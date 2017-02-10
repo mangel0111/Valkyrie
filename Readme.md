@@ -15,5 +15,7 @@ To Deploy in Dev:
 - Disable the cors in the explorer.
 - Use the google chrome pluggin and disable the `CORS` validation
 
+Note: If you are using Catchphrases app you have to disable CORS plugin.
+
 
 
