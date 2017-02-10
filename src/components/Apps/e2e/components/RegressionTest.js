@@ -47,40 +47,38 @@ class RegressionTest extends React.Component {
 	render() {
 		let styles = {
 			container: {
-				margin: '20px 0px',
 				padding: '15px',
 				borderTop: '15px solid rgba(0, 0, 125, 0.3)',
 				borderRadius: '5px',
 				backgroundColor: 'rgba(160, 195, 255, 0.22)'
 			},
 			details: {
-				
+
 				color: 'black'
 			},
-			title: {	
+			title: {
 				fontSize: '18px',
 				color: 'black',
 				width: '70px',
-			    display: 'inline-block',
-			    backgroundColor: 'rgba(155,155,155,0.5)',
-			    padding: '5px 15px',
-			    lineHeight: '20px'
+				display: 'inline-block',
+				backgroundColor: 'rgba(155,155,155,0.5)',
+				padding: '5px 15px',
+				lineHeight: '20px'
 			},
 			dataColumn: {
 				position: 'absolute',
 				left: '100px',
 				padding: '5px 15px',
 				lineHeight: '20px',
-			    backgroundColor: 'rgba(255,255,255,1)',
-			    width: '550px',
-			    
-			    whiteSpace: 'nowrap',
+				backgroundColor: 'rgba(255,255,255,1)',
+				width: '550px',
+
+				whiteSpace: 'nowrap',
 				overflow: 'hidden',
 				textOverflow: 'ellipsis',
 			},
 			dataContainer: {
-				position: 'relative',
-				marginBottom: '1px'
+				position: 'relative'
 			}
 		}
 		let link = "https://e2e.appdirect.tools/run/" + this.props.regression.id;
