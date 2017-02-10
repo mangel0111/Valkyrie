@@ -41,5 +41,12 @@ module.exports = {
         descripcion: "Who will be fired?",
         className: "red",
         icon: "/images/secrectSanta.svg"
+    },
+    app7: {
+        name: "Catchphrases!",
+        code: "CatchphrasesApp",
+        descripcion: "Enjoy playing popular phrases",
+        className: "phrases-app",
+        icon: "/images/play-butto-app.png"
     }
 }

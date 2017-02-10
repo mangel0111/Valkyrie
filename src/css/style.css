@@ -259,6 +259,14 @@ h2, h1, h3 {
   background: linear-gradient(141deg, #455A64 0%, #455A64 51%, #455A64 75%);
 }
 
+.phrases-app {
+  background-color: #CCC;
+}
+
+.phrases-app:hover {
+  background-color: #DDD;
+}
+
 .login {
   height: 40%;
   width: 60%;
