@@ -8,51 +8,53 @@ import 'react-select/dist/react-select.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 BigCalendar.setLocalizer(
-  BigCalendar.momentLocalizer(Moment)
+	BigCalendar.momentLocalizer(Moment)
 );
 
 class Dashboard extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      events : []
-    };
-  }
+	constructor() {
+		super();
+		this.state = {
+			events: []
+		};
+	}
 
-  componentWillMount() {
-    let instance = this;
-    Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
-      let data = [];
-      response.data.items.forEach((item) => {
-        Axios.get('https://www.googleapis.com/calendar/v3/calendars/'  + item.id + '/events?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
-          response.data.items.forEach((event) => {
-            data.push({
-              start: event.start.date || event.start.dateTime,
-              end: event.end.date || event.end.dateTime,
-              title: event.summary,
-            });
-          });
-        });
-      });
-      instance.setState({
-        events : data
-      });
-    });
-  }
+	componentWillMount() {
+		Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function(response) {
+			let data = [];
+			response.data.items.forEach((item) => {
+				Axios.get('https://www.googleapis.com/calendar/v3/calendars/' + item.id + '/events?showDeleted=false&access_token=' + localStorage.getItem('accessToken')).then(function(subresponse) {
+					subresponse.data.items.forEach((event) => {
+						if (event.status !== "cancelled") {
+							data.push({
+								start: event.start.date || event.start.dateTime,
+								end: event.end.date || event.end.dateTime,
+								title: event.summary,
+							});
+						}
+					});
+					this.setState({
+						events: data
+					});
+				}.bind(this));
+			});
 
-  render() {
-    return (
-      <div>
-        <br />
-        <BigCalendar
-          events={this.state.events}
-          style={{minHeight: 550}}
-          onSelectEvent={event => alert(event.title)}
-        />
-      </div>
-    );
-  }
+		}.bind(this));
+	}
+
+	render() {
+		return (
+			<div>
+				<br />
+				<BigCalendar
+					events={this.state.events}
+					style={{minHeight: 550}}
+					onSelectEvent={event => alert(event.title)}
+				/>
+			</div>
+		);
+	}
 
 }
 
