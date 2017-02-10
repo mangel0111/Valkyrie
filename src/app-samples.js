@@ -25,7 +25,7 @@ module.exports = {
         code: "Orchard",
         descripcion: "Check your building",
         className: "blueGray",
-        icon: "/images/Orchard_logo.svg"
+        icon: "/images/Orchard.png"
     },
 	app5: {
 	name: "Catchphrases!",
