@@ -13,7 +13,7 @@ class Dashboard extends React.Component {
             <Application key={key}
                 App={app}
             />
-        )
+        );
     }
 
     render() {

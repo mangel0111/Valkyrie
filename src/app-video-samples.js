@@ -123,5 +123,17 @@ module.exports = [
         'start': 28,
         'end': 31,
         'imageSrc': 'https://i.ytimg.com/vi/SOQ6fqbdUPo/hqdefault.jpg?custom=true&w=336&h=188&stc=true&jpg444=true&jpgq=90&sp=68&sigh=ulBj5Fmvw2eDrQA9a-fOgYtbk1A'
-    },
+    },{
+        'id':'button17', 
+        'name':'Simpsons - Cortinas Purpuras',
+        'video': 'h_muK0Fqwcw',
+        'imageSrc': 'https://i.ytimg.com/vi/h_muK0Fqwcw/hqdefault.jpg?custom=true&w=336&h=188&stc=true&jpg444=true&jpgq=90&sp=68&sigh=h7KKBTeL7L4V1YRKFl_1QTLm5hY'
+    },{
+        'id':'button18', 
+        'name':'Simpsons - Que es esto papi',
+        'video': 'kRt1e14HiXs',
+        'start': 53,
+        'end': 57,
+        'imageSrc': 'https://i.ytimg.com/vi/4ZCHH3swvxs/hqdefault.jpg?custom=true&w=336&h=188&stc=true&jpg444=true&jpgq=90&sp=67&sigh=MkZA5-eNY2H42VYm5xorLT2RbnM'
+    }
 ]

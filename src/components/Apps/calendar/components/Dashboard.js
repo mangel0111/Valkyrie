@@ -3,8 +3,6 @@ import ReactDom from 'react-dom'
 import Moment from 'moment'
 import BigCalendar from 'react-big-calendar'
 import Axios from 'axios';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 BigCalendar.setLocalizer(
