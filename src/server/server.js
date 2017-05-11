@@ -19,7 +19,7 @@ MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 
 	})
 })
-//
+
 function initDatabase() {
 
 	db.collection('users',function(err, collection){
@@ -94,8 +94,7 @@ function initDatabase() {
 }
 
 app.get('/users', (req, res) => {
-
-	let usersResult = db.collection('users').find().toArray(function(err,data) {
+	db.collection('users').find().toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
@@ -104,35 +103,31 @@ app.get('/users', (req, res) => {
 			return res.json(data);
 		}
 	})
-
-
 })
 
 app.get('/skills', (req, res) => {
+	//MongoDB query format:
+	//{ <field1>: { <operator1>: <value1> }, ... }
 
 	let params = Object.keys(req.query);
-	let result = [];
+	var a = [];
+	params.forEach(function(value) {
+	    a.push(JSON.stringify({ $eq: value }));
+	});
+	var filter = a.join(', ');
+	console.log(filter);
+	let query = { 'skills.name': filter };
+	console.log(query);
 
-	for (var i = 0; i < params.length; i++) {
-		let x = i+1;
-		result.push(
-		{
-			id: x,
-			avatar: 'localhost:4000/images/avatar1.jpg',
-			firstName: 'User'+x,
-			lastName: 'LastName'+x,
-			emailAddress: 'leonardo'+ x +'@appdirect.com',
-			slackUser: 'leonardo'+ x +'@appdirect.com',
-			region: 'Buenos Aires',
-			skills: [ 
-			{ name: params[i], rating: '2'},
-			{ name: 'Javascript', rating: '2'},
-			{ name: 'SQL', rating: '4'},
-			]
+	db.collection('users').find(query).toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
 		}
-		);
-	}
-	res.json(result);
+	})
 })
 
 
