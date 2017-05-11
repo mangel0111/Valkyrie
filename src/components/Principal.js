@@ -8,6 +8,7 @@ import CatchphrasesApp from './Apps/CatchphrasesApp';
 import Calendar from './Apps/Calendar';
 import Skills from './Apps/Skills';
 import Offices from './Apps/Offices';
+import WhatWeCanEat from './Apps/WhatWeCanEat';
 
 import Apps from '../app-samples';
 
@@ -54,6 +55,8 @@ class Principal extends React.Component {
 				return <Skills />;
 			case "Offices":
 				return <Offices />;
+            case "WhatWeCanEat":
+                return <WhatWeCanEat />;
             default:
                 return (
                     <Dashboard
