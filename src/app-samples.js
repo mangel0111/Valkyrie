@@ -33,5 +33,19 @@ module.exports = {
 		descripcion: "Enjoy playing popular phrases",
 		className: "phrases-app",
 		icon: "/images/play-butto-app.png"
+	},
+	app6: {
+		name: "Offices!",
+		code: "Offices",
+		descripcion: "Check the office",
+		className: "blueGray",
+		icon: "/images/worldMap.png"
+	},
+	app7: {
+		name: "Skills!",
+		code: "Skills",
+		descripcion: "Find your love",
+		className: "red",
+		icon: "/images/skills.png"
 	}
 }
