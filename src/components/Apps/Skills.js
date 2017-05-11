@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import Skills from './skills/components/Skills';
 
-class Skills extends Component {
+class Skill extends Component {
 	constructor(props, context) {
 		super(props, context);
 	}
@@ -8,10 +9,10 @@ class Skills extends Component {
 	render() {
 		return (
 			<div className='bodyContainer'>
-				Skills!
+				<Skills />
 			</div>
 		)
 	}
 }
 
-export default Skills;
+export default Skill;

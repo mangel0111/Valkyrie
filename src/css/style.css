@@ -56,8 +56,8 @@ h2, h1, h3, div {
 }
 
 .linklogo {
-    position:relative;
-    top:15px;
+    position: relative;
+    top: 15px;
     text-decoration: none;
     font-size: 25px;
     padding: 10px;
@@ -283,19 +283,19 @@ h2, h1, h3, div {
 }
 
 .phrases-app {
-  background-color: #CCC;
+    background-color: #CCC;
 }
 
 .phrases-app:hover {
-  background-color: #DDD;
+    background-color: #DDD;
 }
 
 .phrases-app {
-  background-color: #CCC;
+    background-color: #CCC;
 }
 
 .phrases-app:hover {
-  background-color: #DDD;
+    background-color: #DDD;
 }
 
 .login {
@@ -337,7 +337,6 @@ input[type=submit].google {
     cursor: pointer;
 }
 
-
 button.google,
 input[type=submit].google {
     background-color: #d14836;
@@ -368,8 +367,8 @@ input[type=submit].google:after {
     margin-right: 10px;
 }
 
-.modal:empty{
-    display:none
+.modal:empty {
+    display: none
 }
 
 .logout-modal {
@@ -394,4 +393,144 @@ input[type=submit].google:after {
     text-indent: 25px;
     text-transform: capitalize;
     margin-top: 10px;
+}
+
+.distribution-map {
+    position: relative;
+    width: 100%;
+    padding: 20px;
+@include box-sizing(border-box);
+    margin: 0 auto;
+}
+
+.distribution-map > img {
+    width: 100%;
+    position: relative;
+    margin: 10px;
+    padding: 0;
+}
+
+.distribution-map .map-point {
+    cursor: pointer;
+    outline: none;
+    z-index: 0;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    -moz-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    -o-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out, z-index 0.25s ease-in-out;
+    -webkit-transition-delay: 0.25s, 0.25s, 0.25s, 0.25s;
+    -webkit-transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    transition: opacity 0.25s ease-in-out 0.25s, width 0.25s ease-in-out 0.25s, height 0.25s ease-in-out 0.25s, z-index 0.25s ease-in-out 0.25s;
+    background: rgba(26, 26, 26, 0.85);
+    border: 5px solid #7fcff7;
+}
+
+.distribution-map .map-point .content {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    overflow: overlay;
+}
+
+.centered-y {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.centered-y h2 {
+    font-size: 24pt;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-family: "Roboto Condensed", Helvetica, sans-serif;
+    font-weight: 300;
+}
+
+.centered-y p {
+    font-size: 12pt;
+    margin-bottom: 12pt;
+}
+
+.centered-y {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.distribution-map .map-point .content {
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+    overflow: overlay;
+}
+
+.distribution-map .map-point:active, .distribution-map .map-point:focus {
+    margin: 0;
+    padding: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    width: 300px;
+    height: 220px;
+    color: #e5e5e5;
+    z-index: 1;
+    -webkit-transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out, width 0.25s ease-in-out, height 0.25s ease-in-out;
+}
+
+.distribution-map .map-point:active .content, .distribution-map .map-point:focus .content {
+    filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+    opacity: 1;
+    -moz-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -o-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -webkit-transition: opacity 0.25s ease-in-out, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    -webkit-transition-delay: 0.25s, 0s, 0s;
+    -webkit-transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    transition: opacity 0.25s ease-in-out 0.25s, height 0.25s ease-in-out, overflow 0.25s ease-in-out;
+    overflow: hidden;
+}
+
+.distribution-map .map-point:active .content a:hover, .distribution-map .map-point:active .content a:active, .distribution-map .map-point:focus .content a:hover, .distribution-map .map-point:focus .content a:active {
+    color: #afe1fa;
+}
+
+.contentEvent {
+    background: rgba(26, 26, 26, 0.85);
+    background-image: initial;
+    background-position-x: initial;
+    background-position-y: initial;
+    background-size: initial;
+    background-repeat-x: initial;
+    background-repeat-y: initial;
+    background-attachment: initial;
+    background-origin: initial;
+    background-clip: initial;
+    background-color: rgba(26, 26, 26, 0.85);
+    border: 5px solid #7fcff7;
+    position: relative;
+    top: -100px;
+    left: 40px;
+    padding: 20px;
 }

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import Dashboard from './offices/components/Dashboard';
 
-class WorldMap extends Component {
+class Offices extends Component {
 	constructor(props, context) {
 		super(props, context);
 	}
@@ -8,10 +9,10 @@ class WorldMap extends Component {
 	render() {
 		return (
 			<div className='bodyContainer'>
-				World Map
+				<Dashboard />
 			</div>
 		)
 	}
 }
 
-export default WorldMap;
+export default Offices;
