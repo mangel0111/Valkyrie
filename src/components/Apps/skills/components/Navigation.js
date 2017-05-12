@@ -2,136 +2,136 @@ import React from 'react';
 import Axios from 'axios';
 
 const style = {
-	'ul': {
-		'backgroundColor': '#aaaeba',
-		'height': '5.8em'
-	},
-	'form': {
-		'width': '450px',
-		'height': '2.2em',
-		'background': "#444",
-		'background': "rgba(0,0,0,.2)",
-		'border-radius': "10px",
-		'display': 'block',
-		'textAlign': 'center',
-		'margin-top': '0.6em',
-		'marginLeft': '0.3em',
-		'padding': '1em 1em',
-		'textDecoration': 'none',
-		'boxShadow': "0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2)"
-	},
+  'ul': {
+    'backgroundColor': '#aaaeba',
+    'height': '5.8em',
+    'marginTop' : '1%'
+  },
+  'form': {
+    'width': '450px',
+    'height': '2.2em',
+    'background': "#444",
+    'background': "rgba(0,0,0,.2)",
+    'border-radius': "10px",
+    'display': 'block',
+    'textAlign': 'center',
+    'margin-top': '0.6em',
+    'marginLeft': '0.3em',
+    'padding': '1em 1em',
+    'textDecoration': 'none',
+    'boxShadow': "0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2)"
+  },
 
-	'input': {
-		'width': "330px",
-		'height': "1em",
-		'padding': "10px 5px",
-		'float': "left",
-		'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-		'border': 0,
-		'background': '#eee',
-		'bordeRadius': '3px 0 0 3px'
-	},
+  'input': {
+    'width': "330px",
+    'height': "1em",
+    'padding': "10px 5px",
+    'float': "left",
+    'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'border': 0,
+    'background': '#eee',
+    'bordeRadius': '3px 0 0 3px'
+  },
 
-	'button': {
-		'overflow': 'visible',
-		'float': 'right',
-		'border': 0,
-		'padding': 0,
-		'cursor': 'pointer',
-		'height': '2.3em',
-		'width': '110px',
-		'font': "bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-		'color': '#fff',
-		'textTransform': 'uppercase',
-		'background': '#d83c3c',
-		'borderRadius': '0 3px 3px 0',
-		'textShadow': '0 -1px 0 rgba(0, 0 ,0, .3)',
-	},
+  'button': {
+    'overflow': 'visible',
+    'float': 'right',
+    'border': 0,
+    'padding': 0,
+    'cursor': 'pointer',
+    'height': '2.3em',
+    'width': '110px',
+    'font': "bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'color': '#fff',
+    'textTransform': 'uppercase',
+    'background': '#d83c3c',
+    'borderRadius': '0 3px 3px 0',
+    'textShadow': '0 -1px 0 rgba(0, 0 ,0, .3)',
+  },
 
-	'viewProfileIcon': {
+  'viewProfileIcon': {
 
-		'height': '42px',
-		'width': '42px',
-		'marginLeft': '50%',
-		'marginTop': '9px'
-	},
+    'height': '42px',
+    'width': '42px',
+    'marginLeft': '50%',
+    'marginTop': '9px'
+  },
 
-	'viewProfile': {
-		'float': 'left',
-		'display': 'flex',
-		'flexDirection': 'column',
-		'marginLeft': '200px',
-		'marginTop': '10px',
-		'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-		'color': "white"
-	},
+  'viewProfile': {
+    'float': 'left',
+    'display': 'flex',
+    'flexDirection': 'column',
+    'marginLeft': '200px',
+    'marginTop': '10px',
+    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'color': "white"
+  },
 
-	'li': {
-		'float': 'left',
-		'marginTop': '3px'
+  'li': {
+    'float': 'left',
+    'marginTop': '3px'
 
-	},
+  },
 
-	'profile': {
-		'display': 'block',
-		'textAlign': 'center',
-		'width': '70px',
-		'marginTop': 0
-	},
+  'profile': {
+    'display': 'block',
+    'textAlign': 'center',
+    'width': '70px',
+    'marginTop': 0
+  },
 
-	'profileLink': {
-		'paddingLeft': '6px',
-		'color': 'white'
-	},
+  'profileLink': {
+    'paddingLeft': '6px',
+    'color': 'white'
+  },
 
-	'people': {
-		'display': 'block',
-		'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-		'color': "white",
-		'textAlign': 'center',
-		'marginLeft': '50px'
-	},
+  'people': {
+    'display': 'block',
+    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'color': "white",
+    'textAlign': 'center',
+    'marginLeft': '50px'
+  },
 
-	'viewPeopleIcon': {
-		'height': '48px',
-		'width': '48px',
-		'marginLeft': '50%',
-		'marginTop': '9px',
-		cursor: 'pointer'
+  'viewPeopleIcon': {
+    'height': '48px',
+    'width': '48px',
+    'marginLeft': '50%',
+    'marginTop': '9px',
+    cursor: 'pointer'
 
-	},
+  },
 
-	'table': {
-		'marginTop': '10%',
-		'width': '100%',
-		'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-	},
+  'table': {
+    'marginTop': '10%',
+    'width': '100%',
+    'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+  },
 
-	'profileImgResults': {
-		'height': '160px',
-		'width': '180px'
-	},
+  'profileImgResults': {
+    'height': '160px',
+    'width': '180px'
+  },
 
-	'rows': {
-		'boxShadow': "0 2px 1px rgba(0,0,0,.4) inset, 0 1px 2px rgba(255,255,255,.2)",
-		'borderRadius': "10px"
-	},
+  'rows': {
+    'boxShadow': "0 0px 10px rgba(0,0,0,.4) inset",
+    'borderRadius': "10px"
+  },
 
-	'detailsCell': {
-		'display': 'flex',
-		'flexDirection': 'column'
-	},
+  'detailsCell': {
+    'display': 'flex',
+    'flexDirection': 'column'
+  },
 
-	'photoCell': {
-		'paddingLeft': '0.8%',
-		'paddingTop': '0.8%'
-	},
+  'photoCell': {
+    'paddingLeft': '0.8%',
+    'paddingTop': '0.8%'
+  },
 
-	'locationIcon': {
-		'height': '25px',
-		'width': '25px'
-	}
-
+  'locationIcon': {
+    'height': '25px',
+    'width': '25px'
+  }
 }
 
 class Navigation extends React.Component {
@@ -246,4 +246,3 @@ class Navigation extends React.Component {
 }
 
 export default Navigation;
-
