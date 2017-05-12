@@ -61,7 +61,7 @@ const style = {
     'float': 'left',
     'display': 'flex',
     'flexDirection': 'column',
-    'marginLeft': '200px',
+    'marginLeft': '270px',
     'marginTop': '10px',
     'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'color': "white"
