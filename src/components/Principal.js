@@ -6,6 +6,7 @@ import Jenkins from './Apps/Jenkins';
 import Orchard from './Apps/Orchard';
 import CatchphrasesApp from './Apps/CatchphrasesApp';
 import Calendar from './Apps/Calendar';
+import Profile from './Apps/Profile';
 import Skills from './Apps/Skills';
 import Offices from './Apps/Offices';
 import WhatWeCanEat from './Apps/WhatWeCanEat';
@@ -51,7 +52,9 @@ class Principal extends React.Component {
                 return <Calendar />;
 			case "CatchphrasesApp":
 				return <CatchphrasesApp />;
-			case "Skills":
+			 case "Profile":
+                return <Profile />;
+            case "Skills":
 				return <Skills />;
 			case "Offices":
 				return <Offices />;

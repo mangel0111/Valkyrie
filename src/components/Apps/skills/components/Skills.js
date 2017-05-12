@@ -1,6 +1,6 @@
 import React from 'react';
-import Avatar from 'material-ui/Avatar';
 import HeaderProfile from './HeaderProfile';
+import Axios from 'axios';
 import Navigation from './Navigation';
 import Rating from 'react-rating';
 
@@ -30,7 +30,6 @@ class Skills extends React.Component {
 			nextSkill: ''
 		};
 	}
-
 
 	changeInput(rate, skill) {
 		let skills = this.state.skills;
