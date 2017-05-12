@@ -82,7 +82,8 @@ const style = {
 
   'profileLink': {
     'paddingLeft': '6px',
-    'color': 'white'
+    'color': 'white',
+    'textDecoration' : 'none'
   },
 
   'people': {
@@ -120,12 +121,17 @@ const style = {
 
   'detailsCell': {
     'display': 'flex',
-    'flexDirection': 'column'
+    'flexDirection': 'column',
+    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+   
+    'paddingLeft' : '1%',
+    'paddingTop' : '3%'
   },
 
   'photoCell': {
     'paddingLeft': '0.8%',
-    'paddingTop': '0.8%'
+    'paddingTop': '0.8%',
+    'width' : '15%'
   },
 
   'locationIcon': {
