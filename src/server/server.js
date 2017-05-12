@@ -6,7 +6,11 @@ let db;
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
+/*url of database: */
+var url = 'mongodb://localhost:27017/';
+/* --- */
+
+MongoClient.connect('mongodb://localhost:27017', (err, database) => {
 	if (err) {
 		return console.log(err);
 	}
@@ -537,6 +541,7 @@ app.post('/user/get', (req, res) => {
    	console.log('Status Code: ', res.statusCode);
    	console.log(req.body);
    	var user_email = req.body.emailAddress;
+
    	db.collection('users').find({ emailAddress: user_email }).toArray(function(err, data) {
 	if (err) {
 		console.log("Err...");
