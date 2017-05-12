@@ -281,11 +281,23 @@ function initFoodsCollection(){
         }, {
             id: 3,
             name: 'Japanese',
-            votes: 0
+            votes: 2
         }, {
             id: 4,
             name: 'Empanadas',
-            votes: 0
+            votes: 15
+        }, {
+            id: 5,
+            name: 'Arepa',
+            votes: 2
+        }, {
+            id: 6,
+            name: 'Fish & chips',
+            votes: 4
+        }, {
+            id: 7,
+            name: 'Camarones a la milanesa',
+            votes: 10
         }
 	]
 	, function(err, result) {
