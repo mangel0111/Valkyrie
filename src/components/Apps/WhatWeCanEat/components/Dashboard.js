@@ -17,7 +17,7 @@ class Dashboard extends Component {
 
 	getFoods() {
 		var selfThis = this;
-
+		debugger;
 		axios.get('http://localhost:4000/foods')
 			.then(function(response) {
 				selfThis.setState({foods: response.data});
@@ -56,14 +56,14 @@ class Dashboard extends Component {
 
 		if (this.state.submitted) {
 			return (
-				<li>
+				<li >
 					<div className="results">
 						<span className="respond">{food.name}</span>
 						<span>({food.votes})</span>
 						<span className="percentage">{porct}</span>
 					</div>
 					<div className="out-bar">
-						<div className="inner-bar" style={style.innerBar}/>
+						<div className="inner-bar slideAnimation" style={style.innerBar}/>
 					</div>
 				</li>);
 		}
@@ -76,7 +76,7 @@ class Dashboard extends Component {
 
 		if (!this.state.submitted) {
 			foods.map((f) => {
-				if(this.state.food) {
+				if (this.state.food) {
 					if (f.id === this.state.food.id) {
 						f.votes = f.votes + 1;
 					}
@@ -97,11 +97,11 @@ class Dashboard extends Component {
 			<div className='poll-block'>
 				<h2><img src="/images/foodspon.png"></img>What do you wanna eat?</h2>
 				{this.state.foods.length > 0 ? (
-						<div className="bodyContainerWhite fadeOut">
+						<div className="bodyContainerWhite">
 							<ul className="poll-vote-list">
 								{this.state.foods.map((food) => this.showFood(food))}
 							</ul>
-							< ul className="poll-results-list fadeOut">
+							< ul className="poll-results-list">
 								{this.state.foods.map((food) => this.showResults(food))}
 							</ul>
 							<div className="vote-button">

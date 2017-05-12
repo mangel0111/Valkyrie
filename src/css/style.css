@@ -548,6 +548,16 @@ input[type=submit].google:after {
     padding: 20px;
 }
 
+.contentEvent .lastHoliday {
+    margin-top: 15px;
+    padding: 5px 2px;
+    border: 5px solid #7fcff7;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: rgb(26, 26, 26);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 26px;
+}
 .rating {
     width: 200px;
     position: relative;
@@ -722,8 +732,14 @@ ul.poll-results-list {
     left: 0;
 }
 
-.results {
+.results, .locationIcon {
     display: flex;
+}
+
+.locationIcon p{
+    position: relative;
+    top: 4px;
+    font-weight: 300;
 }
 
 .addSkill {
@@ -754,26 +770,4 @@ ul.poll-results-list {
 
 .bodyContainerWhite {
    margin: 20px;
-}
-
-.fadeOut  {
-    -webkit-animation-name : fadeOut  ;
-    animation-name : fadeOut  ;
-}
-
-@-webkit-keyframes  fadeOut  {
-    0% {
-        opacity : 1   ;
-    }
-    100% {
-        opacity : 0   ;
-    }
-}
-@keyframes  fadeOut  {
-    0% {
-        opacity : 1   ;
-    }
-    100% {
-        opacity : 0   ;
-    }
 }
