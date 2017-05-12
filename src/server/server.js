@@ -40,9 +40,9 @@ function initUsersCollection(){
 		slackUser: 'leonardo@appdirect.com',
 		region: 'Buenos Aires',
 		skills: [ 
-		{ name: 'Java', rating: '2'},
-		{ name: 'Javascript', rating: '2'},
-		{ name: 'SQL', rating: '4'},
+		{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
+		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '2'},
+		{ id: '3', code: 'SQL', name: 'SQL', rating: '4'}
 		]
 	},
 	{	
@@ -54,9 +54,10 @@ function initUsersCollection(){
 		slackUser: 'florencia@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ name: 'Java', rating: '3'},
-		{ name: 'Javascript', rating: '1'},
-		{ name: 'SQL', rating: '5'},
+		{ id: '1', code: 'JAVA', name: 'Java', rating: '3'},
+		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '1'},
+		{ id: '3', code: 'SQL', name: 'SQL', rating: '5'},
+		{ id: '7', code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: '5'}
 		]
 	},
 	{	
@@ -68,9 +69,9 @@ function initUsersCollection(){
 		slackUser: 'miguel@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ name: 'Java', rating: '3'},
-		{ name: 'Javascript', rating: '5'},
-		{ name: 'SQL', rating: '2'},
+		{ id: '1', code: 'JAVA', name: 'Java', rating: '3'},
+		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '5'},
+		{ id: '3', code: 'SQL', name: 'SQL', rating: '2'}
 		]
 	},
 	{	
@@ -82,9 +83,9 @@ function initUsersCollection(){
 		slackUser: 'damian@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ name: 'Java', rating: '2'},
-		{ name: 'Javascript', rating: '5'},
-		{ name: 'SQL', rating: '2'},
+		{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
+		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '5'},
+		{ id: '3', code: 'SQL', name: 'SQL', rating: '2'},
 		]
 	}
 	]
@@ -131,6 +132,11 @@ function initSkillsCollection(){
 		id: '6',
 		code: 'MONGODB',
 		name: 'MongoDB'
+	},
+	{	
+		id: '7',
+		code: 'CHIMPOKOMON',
+		name: 'Chimpokomon'
 	}
 	]
 	, function(err, result) {
@@ -288,11 +294,10 @@ app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
 	var a = [];
 	params.forEach(function(value) {
-		a.push(JSON.stringify({ $eq: value }));
+		a.push({ $eq: value });
 	});
-	var filter = a.join(', ');
-	filter = new JSONArray(filter);
-
+	filter = JSON.parse(a);
+	console.log(filter);
 	let query = { $and: { 'skills.name': filter } };
 	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
