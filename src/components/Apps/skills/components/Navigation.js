@@ -165,6 +165,10 @@ class Navigation extends React.Component {
 				<td style={style.detailsCell}>
 					<a href="profile">{`${user.firstName}  ${user.lastName}`}</a>
 					<span> Jefe de fiestas y convidios </span>
+					<span>Team:</span>
+					<ul>
+						{user.team.map((t) => (<li key={t.id}>{t.name}</li>))}
+					</ul>
 					<div className="locationIcon">
 						<img style={style.locationIcon}
 							 src="/images/position.svg"/>
