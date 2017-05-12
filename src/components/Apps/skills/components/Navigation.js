@@ -122,8 +122,7 @@ const style = {
   'detailsCell': {
     'display': 'flex',
     'flexDirection': 'column',
-    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-   
+    'font': "14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'paddingLeft' : '1%',
     'paddingTop' : '3%'
   },
@@ -131,6 +130,7 @@ const style = {
   'photoCell': {
     'paddingLeft': '0.8%',
     'paddingTop': '0.8%',
+    'paddingBottom' : '0.8%',
     'width' : '15%'
   },
 
