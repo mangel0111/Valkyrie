@@ -42,13 +42,20 @@ module.exports = {
 		icon: "/images/worldMap.png"
 	},
 	app7: {
+		name: "Profile!",
+		code: "Profile",
+		descripcion: "Check your profile",
+		className: "blue",
+		icon: "/images/profile.png"
+	},
+	app8: {
 		name: "Skills!",
 		code: "Skills",
 		descripcion: "Find your love",
 		className: "red",
 		icon: "/images/skills.png"
 	},
-	app8: {
+	app9: {
 		name: "what we can eat?",
 		code: "WhatWeCanEat",
 		descripcion: "What We Can Eat? Choose your favorite meal",
