@@ -110,6 +110,9 @@ li {
     width: 35px;
     background-size: 35px 35px;
     background-image: url("./images/mercurial.png");
+    position: relative;
+    top:8px;
+    left: -5px;
 }
 
 /*Principal Panel*/
