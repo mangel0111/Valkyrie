@@ -11,7 +11,6 @@ class HeaderProfile extends React.Component {
 	}
 	render() {
 		const {userProfile} = this.props;
-		console.log(userProfile);
 		let style = {
 			'content': {
 				'paddingTop': 15,
