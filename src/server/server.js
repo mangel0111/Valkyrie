@@ -84,7 +84,7 @@ function initUsersCollection(){
 		lastName: 'ln1',
 		emailAddress: 'miguel@appdirect.com',
 		slackUser: 'miguel@appdirect.com',
-		region: 'San Francisco',
+		region: 'Pune',
 		team: [
 		{
 			id: 3,
@@ -104,7 +104,7 @@ function initUsersCollection(){
 		lastName: 'ln1',
 		emailAddress: 'damian@appdirect.com',
 		slackUser: 'damian@appdirect.com',
-		region: 'San Francisco',
+		region: 'Montreal',
 		team: [
 		{
 			id: 1,
@@ -115,6 +115,28 @@ function initUsersCollection(){
 		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
 		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
 		{ id: 3, code: 'SQL', name: 'SQL', rating: 2},
+		]
+	},
+	{	
+		id: 5,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Parripollo',
+		lastName: 'ln1',
+		emailAddress: 'parripollo@appdirect.com',
+		slackUser: 'parripollo@appdirect.com',
+		region: 'Munich',
+		team: [
+		{
+			id: 4,
+			name: 'PSMI'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 4},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 3},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 3},
+		{ id: 5, code: 'REACTJS', name: 'React', rating: 2},
+		{ id: 6, code: 'MONGODB', name: 'MongoDB', rating: 1},
 		]
 	}
 	]
