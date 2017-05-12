@@ -140,9 +140,34 @@ class Navigation extends React.Component {
 		super();
 		this.state = {
 			events: [],
-			users: []
+			users: [],
+			skills: '',
+			skillsFiltered: []
 		};
 		this.getAllUsers = this.getAllUsers.bind(this);
+	}
+
+	getUserFiltering() {
+		var selfThis = this;
+		const filter = this.state.skills.split(',');
+		let filtered = '';
+
+		filter.forEach((f, i) => {
+			if(i!== 0) {
+				filtered = `${f}&${filtered}`;
+			} else {
+				filtered = `${f}`;
+			}
+
+		});
+
+		Axios.get(`http://localhost:4000/users/find?${filtered}`)
+			.then(function(response) {
+				selfThis.setState({
+					users: response.data
+				});
+			})
+			.catch(error => console.log(error));
 	}
 
 	getAllUsers() {
@@ -179,17 +204,23 @@ class Navigation extends React.Component {
 			</tr>);
 	}
 
+
+
+	handleChange(e) {
+		const skills = e.target.value;
+		this.setState({skills});
+	}
+
 	render() {
 
 		return (
 			<div>
-
 				<ul style={style.ul}>
 					<li style={style.li}>
-						<form style={style.form}>
-							<input style={style.input} type="text" placeholder="Search here..." required/>
-							<button style={style.button} type="submit">Search</button>
-						</form>
+						<div style={style.form}>
+							<input value={this.state.skills} style={style.input} onChange={(e) => this.handleChange(e)} type="text" placeholder="Search here..." required/>
+							<button style={style.button} onClick={() => this.getUserFiltering()}>Search</button>
+						</div>
 					</li>
 					<li style={style.viewProfile}>
 						<a style={style.profile} href="Profile"><img style={style.viewProfileIcon}
