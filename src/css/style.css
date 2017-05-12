@@ -605,6 +605,10 @@ input[type=submit].google:after {
     display: flex;
 }
 
+.ratingContainer h3 {
+    width: 60px;
+}
+
 .poll-block {
     width: 50%;
     margin: 0 auto;
