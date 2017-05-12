@@ -606,8 +606,14 @@ input[type=submit].google:after {
     margin-bottom: 10px;
 }
 
-.ratingContainer h3 {
-    width: 60px;
+.ratingContainer h3 a {
+    margin: 0 5px;
+    margin: 0 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: gray;
+    position: relative;
+    top: -1px;
 }
 
 .poll-block {
@@ -707,4 +713,18 @@ ul.poll-results-list {
 
 .results {
     display: flex;
+}
+
+.addSkill {
+    display: flex;
+}
+
+.addSkill input {
+    height: 20px;
+    width: 200px;
+    margin-right: 5px;
+}
+
+.addSkill a {
+    margin-top: 0;
 }
