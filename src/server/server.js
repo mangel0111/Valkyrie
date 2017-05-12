@@ -404,15 +404,51 @@ app.get('/skills', (req, res) => {
 	})
 })
 
-app.get('/users/find', (req, res) => {
-	let params = Object.keys(req.query);
-	var filter = [];
-	params.forEach(function(value) {
-		let regex = new RegExp('^'+ value + '$', "i")
-		filter.push( {'skills.name': regex } );
-	});
-	let query = { $and: filter };
-	db.collection('users').find( query ).toArray(function(err,data) {
+app.get('/users/v2/find', (req, res) => {
+	let skillParams = req.query.skill;
+	let nameParams = req.query.name;
+
+	var skillsFilter = [];
+	var namesFilter = [];
+
+	let skillsQuery;
+	let namesQuery;
+	let query;
+
+	if(skillParams instanceof Array) {
+		skillParams.forEach(function(value) {
+			let regex = new RegExp('^'+ value + '$', "i");
+			skillsFilter.push( {'skills.name': regex } );
+		});
+		skillsQuery = { $and: skillsFilter }; 
+	} else if(skillParams){
+		let regex = new RegExp('^'+ skillParams + '$', "i");
+		skillsQuery = {'skills.name': regex }; 
+	}
+	if(nameParams instanceof Array) {
+		nameParams.forEach(function(value) {
+			let regex = new RegExp('^'+ value + '$', "i");
+			namesFilter.push( {'firstName': regex } );
+			namesFilter.push( {'lastName': regex } );
+		});
+		namesQuery = { $or: namesFilter };
+	} else if(nameParams){
+		let regex = new RegExp('^'+ nameParams + '$', "i");
+		namesFilter.push( {'firstName': regex } );
+		namesFilter.push( {'lastName': regex } );
+		namesQuery = { $or: namesFilter };
+	}
+
+	if(namesQuery && skillsQuery) {
+		query = { $and: [ skillsQuery, namesQuery ]};
+	} else if(namesQuery) {
+		query = namesQuery ;
+	} else if(skillsQuery) {
+		query = skillsQuery ;
+	} else {
+		return res.json();
+	} 
+	db.collection('users').find(query).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
@@ -436,27 +472,6 @@ app.get('/user/:id', (req, res) => {
 		}
 	})
 })  	
-
-app.get('/users/find', (req, res) => {
-	let params = Object.keys(req.query);
-	var a = [];
-	params.forEach(function(value) {
-	    a.push(JSON.stringify({ $eq: value }));
-	});
-	var filter = a.join(', ');
-	filter = new JSONArray(filter);
-
-	let query = { $and: { 'skills.name': filter } };
-	db.collection('users').find( query ).toArray(function(err,data) {
-		if (err) {
-			console.log(err);
-			return res(err);
-		} else {
-			console.log(data);
-			return res.json(data);
-		}
-	})
-})
 
 app.get('/offices', (req, res) => {
 	db.collection('offices').find().toArray(function(err,data) {
