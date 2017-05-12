@@ -603,6 +603,7 @@ input[type=submit].google:after {
 
 .ratingContainer {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .ratingContainer h3 {

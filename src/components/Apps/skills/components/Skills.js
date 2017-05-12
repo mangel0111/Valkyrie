@@ -1,8 +1,8 @@
 import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import HeaderProfile from './HeaderProfile';
-import Rating from './Rating';
 import Navigation from './Navigation';
+import Rating from 'react-rating';
 
 class Skills extends React.Component {
 
@@ -13,35 +13,45 @@ class Skills extends React.Component {
 			skills: [{
 				id: 1,
 				name: "React",
-				value: 3,
+				rating: 3,
 				code: 'react'
 			}, {
 				id: 2,
 				name: "Java",
-				value: 2,
+				rating: 2,
 				code: 'java'
 			}, {
 				id: 5,
 				name: "SQL",
-				value: 2,
+				rating: 2,
 				code: 'sql'
 			}]
 		};
 	}
 
 
-	changeInput(value, skill) {
+	changeInput(rate, skill) {
 		let skills = this.state.skills;
 		skills.forEach((h) => {
 			if (h.id === skill.id) {
-				h.value = value
+				h.rating = rate
 			}
 		});
 		this.setState({skills});
 	}
 
 	showSkill(skill) {
-		return (<Rating key={skill.code} skill={skill} onChangeInput={(value, skill) => this.changeInput(value, skill)}/>);
+		return (
+			<div className="ratingContainer" key={skill.code}>
+				<h3>{skill.name}</h3>
+				<Rating
+					empty="fa fa-star-o fa-2x"
+					full="fa fa-star fa-2x"
+					fractions={2}
+					initialRate={skill.rating}
+					onChange={(rate) => {debugger;this.changeInput(rate, skill);}}
+				/>
+			</div>);
 	}
 
 	render() {
