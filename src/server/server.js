@@ -131,4 +131,21 @@ app.get('/skills', (req, res) => {
 })
 
 
+app.get('/user', (req, res) => {
+	return {
+			code: '1',
+			avatar: 'localhost:4000/images/avatar1.jpg',
+			firstName: 'Damián',
+			lastName: 'Gianni',
+			emailAddress: 'damian.gianni@appdirect.com',
+			slackUser: 'damian.gianni@appdirect.com',
+			region: 'Buenos Aires',
+			skills: [ 
+				{ name: 'Javascript', rating: '4'},
+				{ name: 'PHP', rating: '4'},
+				{ name: 'SQL', rating: '2'},
+			]
+		}
+})
+
 
