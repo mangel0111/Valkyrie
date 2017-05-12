@@ -185,7 +185,7 @@ class Navigation extends React.Component {
 		return (
 			<tr style={style.rows}>
 				<td style={style.photoCell}>
-					<img style={style.profileImgResults} src="/images/profilegoogle.jpg" width="180" height="200"/>
+					<img style={style.profileImgResults} src={user.avatar} width="180" height="200"/>
 				</td>
 				<td style={style.detailsCell}>
 					<a href="profile">{`${user.firstName}  ${user.lastName}`}</a>

@@ -36,7 +36,7 @@ function initUsersCollection() {
 	db.collection('users').insert( [
 	{
 		id: 1,
-		avatar: 'localhost:4000/images/avatar1.jpg',
+		avatar: '/images/leobuezo.jpg',
 		firstName: 'Leonardo',
 		lastName: 'ln1',
 		emailAddress: 'leonardo@appdirect.com',
@@ -56,7 +56,7 @@ function initUsersCollection() {
 	},
 	{	
 		id: 2,
-		avatar: 'localhost:4000/images/avatar2.jpg',
+		avatar: '/images/florencia.jpg',
 		firstName: 'Florencia',
 		lastName: 'ln1',
 		emailAddress: 'florencia@appdirect.com',
@@ -81,7 +81,7 @@ function initUsersCollection() {
 	},
 	{	
 		id: 3,
-		avatar: 'localhost:4000/images/avatar2.jpg',
+		avatar: '/images/profilegoogle.jpg',
 		firstName: 'Miguel',
 		lastName: 'ln1',
 		emailAddress: 'miguel@appdirect.com',
@@ -101,7 +101,7 @@ function initUsersCollection() {
 	},
 	{	
 		id: 4,
-		avatar: 'localhost:4000/images/avatar2.jpg',
+		avatar: '/images/damian.jpg',
 		firstName: 'Damian',
 		lastName: 'ln1',
 		emailAddress: 'damian@appdirect.com',
@@ -121,7 +121,7 @@ function initUsersCollection() {
 	},
 	{	
 		id: 5,
-		avatar: 'localhost:4000/images/avatar2.jpg',
+		avatar: '/images/anto.jpg',
 		firstName: 'Parripollo',
 		lastName: 'ln1',
 		emailAddress: 'parripollo@appdirect.com',
