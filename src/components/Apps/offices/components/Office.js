@@ -13,7 +13,7 @@ class Office extends Component {
 	createEvent(event) {
 		return (
 			<li key={event.id}>
-				<h3>{event.name} (<span>{event.date}</span></h3>
+				<h3>{event.name} (<span>{event.date})</span></h3>
 			</li>);
 	}
 
