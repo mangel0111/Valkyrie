@@ -4,7 +4,7 @@ const app = express()
 const MongoClient = require('mongodb').MongoClient
 let db;
 
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlenidd({extended: true}))
 
 MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 	if (err) { 
@@ -25,10 +25,13 @@ function initDatabase() {
 	db.collection('users',function(err, collection){
 		collection.remove({},function(err, removed){});
 	});
+	db.collection('skills',function(err, collection){
+		collection.remove({},function(err, removed){});
+	});
 
 	db.collection('users').insert( [
 	{
-		code: '1',
+		id: '1',
 		avatar: 'localhost:4000/images/avatar1.jpg',
 		firstName: 'Leonardo',
 		lastName: 'ln1',
@@ -42,7 +45,7 @@ function initDatabase() {
 		]
 	},
 	{	
-		code: '2',
+		id: '2',
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Florencia',
 		lastName: 'ln1',
@@ -56,7 +59,7 @@ function initDatabase() {
 		]
 	},
 	{	
-		code: '3',
+		id: '3',
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Miguel',
 		lastName: 'ln1',
@@ -70,7 +73,7 @@ function initDatabase() {
 		]
 	},
 	{	
-		code: '4',
+		id: '4',
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Damian',
 		lastName: 'ln1',
@@ -82,6 +85,41 @@ function initDatabase() {
 		{ name: 'Javascript', rating: '5'},
 		{ name: 'SQL', rating: '2'},
 		]
+	}
+	]
+	, function(err, result) {
+		if(err != null) {
+			console.log(err);
+		} else {
+			console.log("Inserted a user into the users collection.");
+		}
+	});
+
+
+	db.collection('skills').insert( [
+	{
+		name: '1',
+		rating: 'Java'
+	},
+	{	
+		id: '2',
+		avatar: 'Javascript'
+	},
+	{	
+		id: '3',
+		avatar: 'SQL',
+	},
+	{	
+		id: '4',
+		avatar: 'QA-Automation',
+	},
+	{	
+		id: '5',
+		avatar: 'React',
+	},
+	{	
+		id: '6',
+		avatar: 'MongoDB',
 	}
 	]
 	, function(err, result) {
@@ -106,6 +144,18 @@ app.get('/users', (req, res) => {
 })
 
 app.get('/skills', (req, res) => {
+	db.collection('skills').find().toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
+
+app.get('/skills', (req, res) => {
 	//MongoDB query format:
 	//{ <field1>: { <operator1>: <value1> }, ... }
 
@@ -116,10 +166,14 @@ app.get('/skills', (req, res) => {
 	});
 	var filter = a.join(', ');
 	console.log(filter);
-	let query = { 'skills.name': filter };
-	console.log(query);
+	filter = new JSONArray(filter);
+	console.log(filter);
 
-	db.collection('users').find(query).toArray(function(err,data) {
+	let query = {$and: { 'skills.name': filter };
+	console.log(query);
+    db.student_marks.find({$and:[{"lname":"Ford"},{"marks.english": {$gt:35}}]})
+
+	db.collection('users').find( filter ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
