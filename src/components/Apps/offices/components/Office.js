@@ -36,7 +36,7 @@ class Office extends Component {
 						<ul>
 							{office.events.map((event) => this.createEvent(event))}
 						</ul>
-						<div className='lastHoliday'>{this.getRemainingDays(office.events[0])} Days left fot the next event</div>
+						<div className='lastHoliday'>{this.getRemainingDays(office.events[0])} Days left for the next event</div>
 					</div>
 				</div>);
 		}
