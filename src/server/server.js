@@ -255,6 +255,27 @@ function initOfficesCollection(){
 			name: "Curling Day",
 			date: "23-02-2018"
 		}]
+	},{
+		id: "MU",
+		position: {
+			"top": "36%",
+			"left": "50%"
+		},
+		name: "Munich",
+		description: "das kartoffel",
+		events: [{
+			id: 4,
+			name: "German Day",
+			date: "01-07-2017"
+		},{
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		}]
 	}
 	]
 	, function(err, result) {
