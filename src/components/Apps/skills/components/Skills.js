@@ -2,6 +2,7 @@ import React from 'react';
 import Avatar from 'material-ui/Avatar';
 import HeaderProfile from './HeaderProfile';
 import Rating from './Rating';
+import Navigation from './Navigation';
 
 class Skills extends React.Component {
 
@@ -36,6 +37,7 @@ class Skills extends React.Component {
 			<div>
 				<HeaderProfile/>
 				{this.state.habilities.map((hability) => this.showHabilities(hability))}
+				<Navigation/>
 			</div>
 		);
 	}
