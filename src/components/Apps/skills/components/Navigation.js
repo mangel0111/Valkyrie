@@ -99,7 +99,7 @@ const style = {
     'width': '48px',
     'marginLeft': '50%',
     'marginTop': '9px',
-    cursor: 'pointer'
+    
 
   },
 
@@ -124,7 +124,8 @@ const style = {
     'flexDirection': 'column',
     'font': "14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'paddingLeft' : '1%',
-    'paddingTop' : '3%'
+    'paddingTop' : '3%',
+    'lineHeight' : '20px'
   },
 
   'photoCell': {
