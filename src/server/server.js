@@ -32,72 +32,122 @@ function initUsersCollection() {
 		});
 	});
 
-	db.collection('users').insert([
-			{
-				id: 1,
-				avatar: 'localhost:4000/images/avatar1.jpg',
-				firstName: 'Leonardo',
-				lastName: 'ln1',
-				emailAddress: 'leonardo@appdirect.com',
-				slackUser: 'leonardo@appdirect.com',
-				region: 'Buenos Aires',
-				skills: [
-					{id: 1, code: 'JAVA', name: 'Java', rating: 2},
-					{id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 2},
-					{id: 3, code: 'SQL', name: 'SQL', rating: 4}
-				]
-			},
-			{
-				id: 2,
-				avatar: 'localhost:4000/images/avatar2.jpg',
-				firstName: 'Florencia',
-				lastName: 'ln1',
-				emailAddress: 'florencia@appdirect.com',
-				slackUser: 'florencia@appdirect.com',
-				region: 'San Francisco',
-				skills: [
-					{id: 1, code: 'JAVA', name: 'Java', rating: 3},
-					{id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1},
-					{id: 3, code: 'SQL', name: 'SQL', rating: 5},
-					{id: 7, code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: 5}
-				]
-			},
-			{
-				id: 3,
-				avatar: 'localhost:4000/images/avatar2.jpg',
-				firstName: 'Miguel',
-				lastName: 'ln1',
-				emailAddress: 'miguel@appdirect.com',
-				slackUser: 'miguel@appdirect.com',
-				region: 'San Francisco',
-				skills: [
-					{id: 1, code: 'JAVA', name: 'Java', rating: 3},
-					{id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
-					{id: 3, code: 'SQL', name: 'SQL', rating: 2}
-				]
-			},
-			{
-				id: 4,
-				avatar: 'localhost:4000/images/avatar2.jpg',
-				firstName: 'Damian',
-				lastName: 'ln1',
-				emailAddress: 'damian@appdirect.com',
-				slackUser: 'damian@appdirect.com',
-				region: 'San Francisco',
-				skills: [
-					{id: 1, code: 'JAVA', name: 'Java', rating: 2},
-					{id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
-					{id: 3, code: 'SQL', name: 'SQL', rating: 2},
-				]
-			}
+	db.collection('users').insert( [
+	{
+		id: 1,
+		avatar: 'localhost:4000/images/avatar1.jpg',
+		firstName: 'Leonardo',
+		lastName: 'ln1',
+		emailAddress: 'leonardo@appdirect.com',
+		slackUser: 'leonardo@appdirect.com',
+		region: 'Buenos Aires',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}		
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 2},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 4}
 		]
-		, function(err, result) {
-			if (err != null) {
-				console.log(err);
-			} else {
-				console.log("Inserted users collection.");
-			}
-		});
+	},
+	{	
+		id: 2,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Florencia',
+		lastName: 'ln1',
+		emailAddress: 'florencia@appdirect.com',
+		slackUser: 'florencia@appdirect.com',
+		region: 'San Francisco',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		},
+		{
+			id: 2,
+			name: 'QA-AUTOMATION'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 5},
+		{ id: 7, code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: 5}
+		]
+	},
+	{	
+		id: 3,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Miguel',
+		lastName: 'ln1',
+		emailAddress: 'miguel@appdirect.com',
+		slackUser: 'miguel@appdirect.com',
+		region: 'Pune',
+		team: [
+		{
+			id: 3,
+			name: 'PSO'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2}
+		]
+	},
+	{	
+		id: 4,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Damian',
+		lastName: 'ln1',
+		emailAddress: 'damian@appdirect.com',
+		slackUser: 'damian@appdirect.com',
+		region: 'Montreal',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2},
+		]
+	},
+	{	
+		id: 5,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Parripollo',
+		lastName: 'ln1',
+		emailAddress: 'parripollo@appdirect.com',
+		slackUser: 'parripollo@appdirect.com',
+		region: 'Munich',
+		team: [
+		{
+			id: 4,
+			name: 'PSMI'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 4},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 3},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 3},
+		{ id: 5, code: 'REACTJS', name: 'React', rating: 2},
+		{ id: 6, code: 'MONGODB', name: 'MongoDB', rating: 1},
+		]
+	}
+	]
+	, function(err, result) {
+		if(err != null) {
+			console.log(err);
+		} else {
+			console.log("Inserted users collection.");
+		}
+	});
 }
 
 function initSkillsCollection() {
@@ -444,8 +494,8 @@ app.get('/users/find', (req, res) => {
 
 // Leo - Devuelve un documento del id solicitado.
 app.get('/user/:id', (req, res) => {
-	let mi_id = req.params.id;
-	db.collection('users').findOne({id: mi_id}, function(err, data) {
+	let mi_id = parseInt(req.params.id);
+	db.collection('users').findOne({id: mi_id}, function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
