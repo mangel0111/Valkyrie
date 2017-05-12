@@ -478,6 +478,61 @@ app.get('/skills', (req, res) => {
 	})
 })
 
+app.get('/users/v2/find', (req, res) => {
+	let skillParams = req.query.skill;
+	let nameParams = req.query.name;
+
+	var skillsFilter = [];
+	var namesFilter = [];
+
+	let skillsQuery;
+	let namesQuery;
+	let query;
+
+	if(skillParams instanceof Array) {
+		skillParams.forEach(function(value) {
+			let regex = new RegExp('^'+ value + '$', "i");
+			skillsFilter.push( {'skills.name': regex } );
+		});
+		skillsQuery = { $and: skillsFilter }; 
+	} else if(skillParams){
+		let regex = new RegExp('^'+ skillParams + '$', "i");
+		skillsQuery = {'skills.name': regex }; 
+	}
+	if(nameParams instanceof Array) {
+		nameParams.forEach(function(value) {
+			let regex = new RegExp('^'+ value + '$', "i");
+			namesFilter.push( {'firstName': regex } );
+			namesFilter.push( {'lastName': regex } );
+		});
+		namesQuery = { $or: namesFilter };
+	} else if(nameParams){
+		let regex = new RegExp('^'+ nameParams + '$', "i");
+		namesFilter.push( {'firstName': regex } );
+		namesFilter.push( {'lastName': regex } );
+		namesQuery = { $or: namesFilter };
+	}
+
+	if(namesQuery && skillsQuery) {
+		query = { $and: [ skillsQuery, namesQuery ]};
+	} else if(namesQuery) {
+		query = namesQuery ;
+	} else if(skillsQuery) {
+		query = skillsQuery ;
+	} else {
+		return res.json();
+	} 
+	db.collection('users').find(query).toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
+
 app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
 	var filter = [];
@@ -509,7 +564,7 @@ app.get('/user/:id', (req, res) => {
 			return res.json(data);
 		}
 	})
-})    
+})  	
 
 app.get('/offices', (req, res) => {
 	db.collection('offices').find().toArray(function(err, data) {
@@ -573,6 +628,4 @@ app.post('/user/get', (req, res) => {
 		return res.status(200);
 		}
 	})
-
-
 })
