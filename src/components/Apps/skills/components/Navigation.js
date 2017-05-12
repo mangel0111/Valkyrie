@@ -4,7 +4,8 @@ import Axios from 'axios';
 const style = {
   'ul': {
     'backgroundColor': '#aaaeba',
-    'height': '5.8em'
+    'height': '5.8em',
+    'marginTop' : '1%'
   },
   'form': {
     'width': '450px',
@@ -113,7 +114,7 @@ const style = {
   },
 
   'rows': {
-    'boxShadow': "0 2px 1px rgba(0,0,0,.4) inset, 0 1px 2px rgba(255,255,255,.2)",
+    'boxShadow': "0 0px 10px rgba(0,0,0,.4) inset",
     'borderRadius': "10px"
   },
 
