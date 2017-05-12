@@ -46,7 +46,7 @@ module.exports = {
 		code: "Profile",
 		descripcion: "Check your profile",
 		className: "blue",
-		icon: "/images/skills.png"
+		icon: "/images/profile.png"
 	},
 	app8: {
 		name: "Skills!",
