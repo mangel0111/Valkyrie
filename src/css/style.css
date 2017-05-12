@@ -640,6 +640,13 @@ input[type=submit].google:after {
     font-weight: bold;
     line-height: 22px;
     margin: 4px 0 15px 0;
+    display: flex;
+}
+
+.poll-block h2 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .poll-block ul {
@@ -743,4 +750,30 @@ ul.poll-results-list {
     margin-bottom: 20px;
     width: 200px;
     height: 200px;
+}
+
+.bodyContainerWhite {
+   margin: 20px;
+}
+
+.fadeOut  {
+    -webkit-animation-name : fadeOut  ;
+    animation-name : fadeOut  ;
+}
+
+@-webkit-keyframes  fadeOut  {
+    0% {
+        opacity : 1   ;
+    }
+    100% {
+        opacity : 0   ;
+    }
+}
+@keyframes  fadeOut  {
+    0% {
+        opacity : 1   ;
+    }
+    100% {
+        opacity : 0   ;
+    }
 }
