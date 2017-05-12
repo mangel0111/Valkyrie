@@ -61,7 +61,7 @@ const style = {
     'float': 'left',
     'display': 'flex',
     'flexDirection': 'column',
-    'marginLeft': '200px',
+    'marginLeft': '270px',
     'marginTop': '10px',
     'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'color': "white"
@@ -82,7 +82,8 @@ const style = {
 
   'profileLink': {
     'paddingLeft': '6px',
-    'color': 'white'
+    'color': 'white',
+    'textDecoration' : 'none'
   },
 
   'people': {
@@ -98,7 +99,7 @@ const style = {
     'width': '48px',
     'marginLeft': '50%',
     'marginTop': '9px',
-    cursor: 'pointer'
+    
 
   },
 
@@ -120,12 +121,18 @@ const style = {
 
   'detailsCell': {
     'display': 'flex',
-    'flexDirection': 'column'
+    'flexDirection': 'column',
+    'font': "14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'paddingLeft' : '1%',
+    'paddingTop' : '3%',
+    'lineHeight' : '20px'
   },
 
   'photoCell': {
     'paddingLeft': '0.8%',
-    'paddingTop': '0.8%'
+    'paddingTop': '0.8%',
+    'paddingBottom' : '0.8%',
+    'width' : '15%'
   },
 
   'locationIcon': {
