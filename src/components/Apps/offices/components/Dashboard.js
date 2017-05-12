@@ -7,7 +7,9 @@ class Dashboard extends Component {
 		super(props, context);
 		this.state = {
 			offices: []
-		};	
+		};
+
+		this.getOffices = this.getOffices.bind(this);
 		this.getOffices();
 	}
 

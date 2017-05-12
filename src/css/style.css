@@ -755,25 +755,3 @@ ul.poll-results-list {
 .bodyContainerWhite {
    margin: 20px;
 }
-
-.fadeOut  {
-    -webkit-animation-name : fadeOut  ;
-    animation-name : fadeOut  ;
-}
-
-@-webkit-keyframes  fadeOut  {
-    0% {
-        opacity : 1   ;
-    }
-    100% {
-        opacity : 0   ;
-    }
-}
-@keyframes  fadeOut  {
-    0% {
-        opacity : 1   ;
-    }
-    100% {
-        opacity : 0   ;
-    }
-}

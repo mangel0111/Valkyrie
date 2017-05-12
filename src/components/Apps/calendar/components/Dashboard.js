@@ -23,6 +23,7 @@ class Dashboard extends React.Component {
 			let data = [];
 			response.data.items.forEach((item) => {
 				Axios.get('https://www.googleapis.com/calendar/v3/calendars/' + item.id + '/events?showDeleted=false&access_token=' + localStorage.getItem('accessToken')).then(function(subresponse) {
+					debugger;
 					subresponse.data.items.forEach((event) => {
 						if (event.status !== "cancelled") {
 							data.push({
@@ -37,7 +38,6 @@ class Dashboard extends React.Component {
 					});
 				}.bind(this));
 			});
-
 		}.bind(this));
 	}
 
