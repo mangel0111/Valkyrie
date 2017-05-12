@@ -13,7 +13,8 @@ class Navigation extends React.Component {
 
       'ul': {
         'backgroundColor': '#aaaeba',
-        'height': '5.8em'
+        'height': '5.8em',
+        'marginTop': '1%'
         },
 			
 			'form': {
@@ -70,7 +71,7 @@ class Navigation extends React.Component {
           'float': 'left',
           'display': 'flex',
           'flexDirection': 'column',
-          'marginLeft': '200px',
+          'marginLeft': '270px',
           'marginTop' : '10px',
           'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
           'color' : "white"
@@ -122,7 +123,7 @@ class Navigation extends React.Component {
         },
 
         'rows' : {
-          'boxShadow': "0 2px 1px rgba(0,0,0,.4) inset, 0 1px 2px rgba(255,255,255,.2)",
+          'boxShadow': "0 0px 10px rgba(0,0,0,.4) inset",
           'borderRadius': "10px"
           },
 
@@ -133,12 +134,13 @@ class Navigation extends React.Component {
 
          'photoCell' : {
           'paddingLeft' : '0.8%',
-          'paddingTop' : '0.8%'
+          'paddingTop' : '0.9%',
+          'paddingBottom' : '0.8%'
           },
 
         'locationIcon' : {
-          'height' : '15%',
-          'width' : '15%'
+          'height' : '5%',
+          'width' : '5%'
         }
 
   }
@@ -173,6 +175,7 @@ class Navigation extends React.Component {
                
   					  	 <a href="profile">Cosme Fulanito</a> 
                  <span> Jefe de fiestas y convidios </span>
+                 <span> Team Awesome </span>
                  <img style={style.locationIcon} src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvR3JhcGhpY3MvU1ZHLzEuMS9EVEQvc3ZnMTEuZHRkJz48c3ZnIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDEyOCAxMjgiIGhlaWdodD0iMTI4cHgiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjEiIHZpZXdCb3g9IjAgMCAxMjggMTI4IiB3aWR0aD0iMTI4cHgiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiPjxnPjxnPjxwYXRoIGQ9Ik02NCwwQzM5LjY5OSwwLDIwLDE5LjY5OSwyMCw0NHM0NCw4NCw0NCw4NHM0NC01OS42OTksNDQtODRTODguMzAxLDAsNjQsMHogTTI4LDQ0ICAgIEMyOCwyNC4xNDgsNDQuMTQ4LDgsNjQsOHMzNiwxNi4xNDgsMzYsMzZjMCwxMy44MjgtMjAuMDA4LDQ3LjIxMS0zNiw3MC4yMzhDNDguMDA4LDkxLjIxMSwyOCw1Ny44MjgsMjgsNDR6IE02NCwyNCAgICBjLTExLjA0NywwLTIwLDguOTUzLTIwLDIwczguOTUzLDIwLDIwLDIwczIwLTguOTUzLDIwLTIwUzc1LjA0NywyNCw2NCwyNHogTTY0LDU2Yy02LjYxNywwLTEyLTUuMzgzLTEyLTEyczUuMzgzLTEyLDEyLTEyICAgIHMxMiw1LjM4MywxMiwxMlM3MC42MTcsNTYsNjQsNTZ6IiBmaWxsPSIjRTUzOTM1Ii8+PC9nPjwvZz48L3N2Zz4="/>
   					  
               </td>
