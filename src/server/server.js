@@ -546,17 +546,19 @@ app.post('/user/get', (req, res) => {
 		console.log("Data...");
 
 		db.collection('users').save({
-			id: '5',
-			avatar: 'localhost:4000/images/avatar12345.jpg',
-			firstName: 'Leonardo',
-			lastName: 'ln1',
-			emailAddress: 'leonardo@appdirect.com',
-			slackUser: 'leonardo@appdirect.com',
-			region: 'Buenos Aires',
+			id: req.body.id,
+			avatar: req.body.avatar,
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			emailAddress: req.body.emailAddress,
+			slackUser: req.body.slackUser,
+			region: req.body.region,
+					team: [{
+						id: req.body.team.id,
+						name: req.body.team.name
+					}],
 			skills: [ 
-			{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
-			{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '2'},
-			{ id: '3', code: 'SQL', name: 'SQL', rating: '4'}
+			{ id: req.body.skills.id, code: req.body.skills.code, name: req.body.skills.name, rating: req.body.skills.rating},
 			]}, function(err, data) { 
 		    // Log de consola
     		console.log("Insertado el registro en la colección.");
