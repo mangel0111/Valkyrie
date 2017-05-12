@@ -23,6 +23,7 @@ function initDatabase() {
 	initUsersCollection();
 	initSkillsCollection();
 	initOfficesCollection();
+	initFoodsCollection();
 }
 
 function initUsersCollection(){
@@ -32,59 +33,110 @@ function initUsersCollection(){
 
 	db.collection('users').insert( [
 	{
-		id: '1',
+		id: 1,
 		avatar: 'localhost:4000/images/avatar1.jpg',
 		firstName: 'Leonardo',
 		lastName: 'ln1',
 		emailAddress: 'leonardo@appdirect.com',
 		slackUser: 'leonardo@appdirect.com',
 		region: 'Buenos Aires',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}		
+		],
 		skills: [ 
-		{ name: 'Java', rating: '2'},
-		{ name: 'Javascript', rating: '2'},
-		{ name: 'SQL', rating: '4'},
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 2},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 4}
 		]
 	},
 	{	
-		id: '2',
+		id: 2,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Florencia',
 		lastName: 'ln1',
 		emailAddress: 'florencia@appdirect.com',
 		slackUser: 'florencia@appdirect.com',
 		region: 'San Francisco',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		},
+		{
+			id: 2,
+			name: 'QA-AUTOMATION'
+		}
+		],
 		skills: [ 
-		{ name: 'Java', rating: '3'},
-		{ name: 'Javascript', rating: '1'},
-		{ name: 'SQL', rating: '5'},
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 5},
+		{ id: 7, code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: 5}
 		]
 	},
 	{	
-		id: '3',
+		id: 3,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Miguel',
 		lastName: 'ln1',
 		emailAddress: 'miguel@appdirect.com',
 		slackUser: 'miguel@appdirect.com',
-		region: 'San Francisco',
+		region: 'Pune',
+		team: [
+		{
+			id: 3,
+			name: 'PSO'
+		}
+		],
 		skills: [ 
-		{ name: 'Java', rating: '3'},
-		{ name: 'Javascript', rating: '5'},
-		{ name: 'SQL', rating: '2'},
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2}
 		]
 	},
 	{	
-		id: '4',
+		id: 4,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Damian',
 		lastName: 'ln1',
 		emailAddress: 'damian@appdirect.com',
 		slackUser: 'damian@appdirect.com',
-		region: 'San Francisco',
+		region: 'Montreal',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}
+		],
 		skills: [ 
-		{ name: 'Java', rating: '2'},
-		{ name: 'Javascript', rating: '5'},
-		{ name: 'SQL', rating: '2'},
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2},
+		]
+	},
+	{	
+		id: 5,
+		avatar: 'localhost:4000/images/avatar2.jpg',
+		firstName: 'Parripollo',
+		lastName: 'ln1',
+		emailAddress: 'parripollo@appdirect.com',
+		slackUser: 'parripollo@appdirect.com',
+		region: 'Munich',
+		team: [
+		{
+			id: 4,
+			name: 'PSMI'
+		}
+		],
+		skills: [ 
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 4},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 3},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 3},
+		{ id: 5, code: 'REACTJS', name: 'React', rating: 2},
+		{ id: 6, code: 'MONGODB', name: 'MongoDB', rating: 1},
 		]
 	}
 	]
@@ -103,34 +155,39 @@ function initSkillsCollection(){
 	});
 	db.collection('skills').insert( [
 	{
-		id: '1',
+		id: 1,
 		code: 'JAVA',
 		name: 'Java'
 	},
 	{	
-		id: '2',
+		id: 2,
 		code: 'JAVASCRIPT',
 		name: 'Javascript'
 	},
 	{	
-		id: '3',
+		id: 3,
 		code: 'SQL',
 		name: 'SQL'
 	},
 	{	
-		id: '4',
+		id: 4,
 		code: 'QAAUTO',
 		name: 'QA-Automation'
 	},
 	{	
-		id: '5',
+		id: 5,
 		code: 'REACTJS',
 		name: 'React'
 	},
 	{	
-		id: '6',
+		id: 6,
 		code: 'MONGODB',
 		name: 'MongoDB'
+	},
+	{	
+		id: 7,
+		code: 'CHIMPOKOMON',
+		name: 'Chimpokomon'
 	}
 	]
 	, function(err, result) {
@@ -248,17 +305,80 @@ function initOfficesCollection(){
 			name: "Curling Day",
 			date: "23-02-2018"
 		}]
+	},{
+		id: "MU",
+		position: {
+			"top": "36%",
+			"left": "50%"
+		},
+		name: "Munich",
+		description: "das kartoffel",
+		events: [{
+			id: 4,
+			name: "German Day",
+			date: "01-07-2017"
+		},{
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		}]
 	}
 	]
 	, function(err, result) {
 		if(err != null) {
 			console.log(err);
 		} else {
-			console.log("Inserted a user into the users collection.");
+			console.log("Inserted offices collection.");
 		}
 	});
 }
-
+function initFoodsCollection(){
+	db.collection('foods',function(err, collection){
+		collection.remove({},function(err, removed){});
+	});
+	db.collection('foods').insert( [
+		{
+            id: 1,
+            name: 'Chinesse',
+            votes: 0
+        }, {
+            id: 2,
+            name: 'Mexican',
+            votes: 0
+        }, {
+            id: 3,
+            name: 'Japanese',
+            votes: 2
+        }, {
+            id: 4,
+            name: 'Empanadas',
+            votes: 15
+        }, {
+            id: 5,
+            name: 'Arepa',
+            votes: 2
+        }, {
+            id: 6,
+            name: 'Fish & chips',
+            votes: 4
+        }, {
+            id: 7,
+            name: 'Camarones a la milanesa',
+            votes: 10
+        }
+	]
+	, function(err, result) {
+		if(err != null) {
+			console.log(err);
+		} else {
+			console.log("Inserted foods collection.");
+		}
+	});
+}
 
 app.get('/users', (req, res) => {
 	db.collection('users').find().toArray(function(err,data) {
@@ -286,14 +406,12 @@ app.get('/skills', (req, res) => {
 
 app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
-	var a = [];
+	var filter = [];
 	params.forEach(function(value) {
-		a.push(JSON.stringify({ $eq: value }));
+		let regex = new RegExp('^'+ value + '$', "i")
+		filter.push( {'skills.name': regex } );
 	});
-	var filter = a.join(', ');
-	filter = new JSONArray(filter);
-
-	let query = { $and: { 'skills.name': filter } };
+	let query = { $and: filter };
 	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
@@ -305,10 +423,31 @@ app.get('/users/find', (req, res) => {
 	})
 })
 
-// Leo
+// Leo - Devuelve un documento del id solicitado.
 app.get('/user/:id', (req, res) => {
-	let mi_id = req.params.id;
-	db.collection('users').find({id: mi_id}).toArray(function(err,data) {
+	let mi_id = parseInt(req.params.id);
+	db.collection('users').findOne({id: mi_id}, function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})  	
+
+app.get('/users/find', (req, res) => {
+	let params = Object.keys(req.query);
+	var a = [];
+	params.forEach(function(value) {
+	    a.push(JSON.stringify({ $eq: value }));
+	});
+	var filter = a.join(', ');
+	filter = new JSONArray(filter);
+
+	let query = { $and: { 'skills.name': filter } };
+	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
@@ -331,3 +470,14 @@ app.get('/offices', (req, res) => {
 	})
 })
 
+app.get('/foods', (req, res) => {
+	db.collection('foods').find().toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})

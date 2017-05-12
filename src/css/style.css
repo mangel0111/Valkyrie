@@ -110,6 +110,9 @@ li {
     width: 35px;
     background-size: 35px 35px;
     background-image: url("./images/mercurial.png");
+    position: relative;
+    top: 8px;
+    left: -5px;
 }
 
 /*Principal Panel*/
@@ -603,6 +606,18 @@ input[type=submit].google:after {
 
 .ratingContainer {
     display: flex;
+    margin-bottom: 10px;
+}
+
+.ratingContainer h3 a {
+    margin: 0 5px;
+    margin: 0 10px;
+    font-size: 15px;
+    font-weight: 400;
+    color: gray;
+    position: relative;
+    top: -1px;
+    cursor: pointer;
 }
 
 .poll-block {
@@ -625,6 +640,13 @@ input[type=submit].google:after {
     font-weight: bold;
     line-height: 22px;
     margin: 4px 0 15px 0;
+    display: flex;
+}
+
+.poll-block h2 img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 
 .poll-block ul {
@@ -702,4 +724,56 @@ ul.poll-results-list {
 
 .results {
     display: flex;
+}
+
+.addSkill {
+    display: flex;
+}
+
+.addSkill input {
+    height: 20px;
+    width: 200px;
+    margin-right: 5px;
+}
+
+.addSkill a {
+    margin-top: 0;
+}
+
+.bodyContainer .images {
+    display: flex;
+}
+
+.bodyContainer .images img {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
+}
+
+.bodyContainerWhite {
+   margin: 20px;
+}
+
+.fadeOut  {
+    -webkit-animation-name : fadeOut  ;
+    animation-name : fadeOut  ;
+}
+
+@-webkit-keyframes  fadeOut  {
+    0% {
+        opacity : 1   ;
+    }
+    100% {
+        opacity : 0   ;
+    }
+}
+@keyframes  fadeOut  {
+    0% {
+        opacity : 1   ;
+    }
+    100% {
+        opacity : 0   ;
+    }
 }
