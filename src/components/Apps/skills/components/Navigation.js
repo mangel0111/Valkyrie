@@ -112,11 +112,8 @@ class Navigation extends React.Component {
 
         'table' : {
           'marginTop': '10%',
-          'padding': '1%',
-          'border': 'solid',
-          'borderColor': 'black',
+          'width':'100%',
           'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
-
         },
 
         'profileImgResults' : {
@@ -125,22 +122,19 @@ class Navigation extends React.Component {
         },
 
         'rows' : {
-
           'boxShadow': "0 2px 1px rgba(0,0,0,.4) inset, 0 1px 2px rgba(255,255,255,.2)",
           'borderRadius': "10px"
           },
 
        'detailsCell' : {
-          'paddingLeft' : '10%',
-          'paddingBottom': '20%',
+          'display': 'flex',
+          'flexDirection' : 'column'
          },
 
          'photoCell' : {
-          'paddingTop' : '2%',
-          'paddingLeft' : '1%',
-          'paddingBottom' : '2%'
-          
-         },
+          'paddingLeft' : '0.8%',
+          'paddingTop' : '0.8%'
+          },
 
         'locationIcon' : {
           'height' : '15%',
