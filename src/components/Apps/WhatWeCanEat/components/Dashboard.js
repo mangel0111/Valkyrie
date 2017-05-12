@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import axios from 'axios';
 
 class Dashboard extends Component {
 	constructor(props, context) {
@@ -7,24 +8,21 @@ class Dashboard extends Component {
 		this.state = {
 			submitted: false,
 			food: null,
-			foods: [{
-				id: 1,
-				name: "Chinesse",
-				votes: 0
-			}, {
-				id: 2,
-				name: "Mexican",
-				votes: 0
-			}, {
-				id: 3,
-				name: "Japanese",
-				votes: 0
-			}, {
-				id: 4,
-				name: "Empanadas",
-				votes: 0
-			}]
+			foods: []
 		};
+
+		this.getFoods = this.getFoods.bind(this);
+	}
+
+	getFoods() {
+		var selfThis = this;
+
+		axios.get('http://localhost:4000/foods')
+			.then(function(response) {
+				debugger;
+				selfThis.setState({});
+			})
+			.catch(error => console.log(error));
 	}
 
 	showFood(food) {
@@ -75,7 +73,7 @@ class Dashboard extends Component {
 	changeSubmittedState() {
 		const foods = this.state.foods;
 
-		if(!this.state.submitted){
+		if (!this.state.submitted) {
 			foods.map((f) => {
 				if (f.id === this.state.food.id) {
 					f.votes = f.votes + 1;
@@ -93,17 +91,26 @@ class Dashboard extends Component {
 		return (
 			<div className='poll-block'>
 				<h2>What do you wanna eat?</h2>
-				<ul className="poll-vote-list">
-					{this.state.foods.map((food) => this.showFood(food))}
-				</ul>
-				<ul className="poll-results-list">
-					{this.state.foods.map((food) => this.showResults(food))}
-				</ul>
-				<div className="vote-button">
-					<a className="results-trigger btn btn-custom" href="#" onClick={() => this.changeSubmittedState()}><span>{
-						this.state.submitted ? 'Vote Again' : 'Submit'
-					}</span></a>
-				</div>
+				{this.state.foods.length > 0 ? (
+						<div className="bodyContainer">
+							<ul className="poll-vote-list">
+								{this.state.foods.map((food) => this.showFood(food))}
+							</ul>
+							< ul className="poll-results-list">
+								{this.state.foods.map((food) => this.showResults(food))}
+							</ul>
+							<div className="vote-button">
+								<a className="results-trigger btn btn-custom" href="#" onClick={() => this.changeSubmittedState()}><span>{
+									this.state.submitted ? 'Vote Again' : 'Submit'
+								}</span></a>
+							</div>
+						</div>) : (
+						<div>
+							<p>There's not Elections setted for this week. Sorry</p>
+							<div className="bodyContainer images">
+								<img src="/images/sad-icon.png"></img>
+							</div>
+						</div>)}
 			</div>
 		);
 	}

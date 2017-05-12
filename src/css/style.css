@@ -111,7 +111,7 @@ li {
     background-size: 35px 35px;
     background-image: url("./images/mercurial.png");
     position: relative;
-    top:8px;
+    top: 8px;
     left: -5px;
 }
 
@@ -731,4 +731,16 @@ ul.poll-results-list {
 
 .addSkill a {
     margin-top: 0;
+}
+
+.bodyContainer .images {
+    display: flex;
+}
+
+.bodyContainer .images img {
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 200px;
+    height: 200px;
 }
