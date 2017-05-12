@@ -97,28 +97,34 @@ function initDatabase() {
 
 	db.collection('skills').insert( [
 	{
-		name: '1',
-		rating: 'Java'
+		id: '1',
+		code: 'JAVA',
+		name: 'Java'
 	},
 	{	
 		id: '2',
-		avatar: 'Javascript'
+		code: 'JAVASCRIPT',
+		name: 'Javascript'
 	},
 	{	
 		id: '3',
-		avatar: 'SQL',
+		code: 'SQL',
+		name: 'SQL'
 	},
 	{	
 		id: '4',
-		avatar: 'QA-Automation',
+		code: 'QAAUTO',
+		name: 'QA-Automation'
 	},
 	{	
 		id: '5',
-		avatar: 'React',
+		code: 'REACTJS',
+		name: 'React'
 	},
 	{	
 		id: '6',
-		avatar: 'MongoDB',
+		code: 'MONGODB',
+		name: 'MongoDB'
 	}
 	]
 	, function(err, result) {
