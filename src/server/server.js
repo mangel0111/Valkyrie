@@ -4,6 +4,7 @@ const app = express()
 const MongoClient = require('mongodb').MongoClient
 let db;
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 	if (err) {
@@ -504,28 +505,7 @@ app.get('/user/:id', (req, res) => {
 			return res.json(data);
 		}
 	})
-})
-
-app.get('/users/find', (req, res) => {
-	let params = Object.keys(req.query);
-	var a = [];
-	params.forEach(function(value) {
-		a.push(JSON.stringify({$eq: value}));
-	});
-	var filter = a.join(', ');
-	filter = new JSONArray(filter);
-
-	let query = {$and: {'skills.name': filter}};
-	db.collection('users').find(query).toArray(function(err, data) {
-		if (err) {
-			console.log(err);
-			return res(err);
-		} else {
-			console.log(data);
-			return res.json(data);
-		}
-	})
-})
+})    
 
 app.get('/offices', (req, res) => {
 	db.collection('offices').find().toArray(function(err, data) {
@@ -549,4 +529,43 @@ app.get('/foods', (req, res) => {
 			return res.json(data);
 		}
 	})
+})
+
+// Leo - con el Login se envía al backend un POST method para actualizar el documento del user logueado.
+app.post('/user/get', (req, res) => {
+   	console.log('POST');
+   	console.log('Status Code: ', res.statusCode);
+   	console.log(req.body);
+   	var user_email = req.body.emailAddress;
+   	db.collection('users').find({ emailAddress: user_email }).toArray(function(err, data) {
+	if (err) {
+		console.log("Err...");
+		console.log(err);
+		return res.status(500);
+	} else {
+		console.log("Data...");
+
+		db.collection('users').save({
+			id: '5',
+			avatar: 'localhost:4000/images/avatar12345.jpg',
+			firstName: 'Leonardo',
+			lastName: 'ln1',
+			emailAddress: 'leonardo@appdirect.com',
+			slackUser: 'leonardo@appdirect.com',
+			region: 'Buenos Aires',
+			skills: [ 
+			{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
+			{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '2'},
+			{ id: '3', code: 'SQL', name: 'SQL', rating: '4'}
+			]}, function(err, data) { 
+		    // Log de consola
+    		console.log("Insertado el registro en la colección.");
+    		//callback(docs);
+    	});
+
+		return res.status(200);
+		}
+	})
+
+
 })
