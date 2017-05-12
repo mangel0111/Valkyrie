@@ -184,5 +184,19 @@ app.get('/skills', (req, res) => {
 	})
 })
 
+// Leo
+app.get('/user/:id', (req, res) => {
+	let mi_id = req.params.id;
+	db.collection('users').find({id: mi_id}).toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
+
 
 
