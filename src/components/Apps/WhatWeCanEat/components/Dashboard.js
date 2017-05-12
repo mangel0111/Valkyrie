@@ -74,11 +74,15 @@ class Dashboard extends Component {
 
 	changeSubmittedState() {
 		const foods = this.state.foods;
-		foods.map((f) => {
-			if (f.id === this.state.food.id) {
-				f.votes = f.votes + 1;
-			}
-		});
+
+		if(!this.state.submitted){
+			foods.map((f) => {
+				if (f.id === this.state.food.id) {
+					f.votes = f.votes + 1;
+				}
+			});
+		}
+
 		this.setState({
 			submitted: !this.state.submitted,
 			food: null
