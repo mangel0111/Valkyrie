@@ -16,6 +16,13 @@ class Office extends Component {
 				<h3>{event.name} (<span>{event.date})</span></h3>
 			</li>);
 	}
+	
+	getRemainingDays(dateNextHoliday){
+		let dateHoliday = dateNextHoliday.date.split("-");
+		let dateEnd = new Date(dateHoliday[2], dateHoliday[1] - 1, dateHoliday[0]);
+		let dateStart = new Date();
+		return Math.ceil(((dateEnd-dateStart)/86400)/1000);
+	}
 
 	getEvents() {
 		const shouldShow = this.state.shouldShow;
@@ -29,6 +36,7 @@ class Office extends Component {
 						<ul>
 							{office.events.map((event) => this.createEvent(event))}
 						</ul>
+						<div className='lastHoliday'>{this.getRemainingDays(office.events[0])} Days left for the next event</div>
 					</div>
 				</div>);
 		}
