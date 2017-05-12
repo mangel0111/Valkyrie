@@ -23,6 +23,7 @@ function initDatabase() {
 	initUsersCollection();
 	initSkillsCollection();
 	initOfficesCollection();
+	initFoodsCollection();
 }
 
 function initUsersCollection(){
@@ -32,7 +33,7 @@ function initUsersCollection(){
 
 	db.collection('users').insert( [
 	{
-		id: '1',
+		id: 1,
 		avatar: 'localhost:4000/images/avatar1.jpg',
 		firstName: 'Leonardo',
 		lastName: 'ln1',
@@ -40,13 +41,13 @@ function initUsersCollection(){
 		slackUser: 'leonardo@appdirect.com',
 		region: 'Buenos Aires',
 		skills: [ 
-		{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
-		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '2'},
-		{ id: '3', code: 'SQL', name: 'SQL', rating: '4'}
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 2},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 4}
 		]
 	},
 	{	
-		id: '2',
+		id: 2,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Florencia',
 		lastName: 'ln1',
@@ -54,14 +55,14 @@ function initUsersCollection(){
 		slackUser: 'florencia@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ id: '1', code: 'JAVA', name: 'Java', rating: '3'},
-		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '1'},
-		{ id: '3', code: 'SQL', name: 'SQL', rating: '5'},
-		{ id: '7', code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: '5'}
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 5},
+		{ id: 7, code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: 5}
 		]
 	},
 	{	
-		id: '3',
+		id: 3,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Miguel',
 		lastName: 'ln1',
@@ -69,13 +70,13 @@ function initUsersCollection(){
 		slackUser: 'miguel@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ id: '1', code: 'JAVA', name: 'Java', rating: '3'},
-		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '5'},
-		{ id: '3', code: 'SQL', name: 'SQL', rating: '2'}
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2}
 		]
 	},
 	{	
-		id: '4',
+		id: 4,
 		avatar: 'localhost:4000/images/avatar2.jpg',
 		firstName: 'Damian',
 		lastName: 'ln1',
@@ -83,9 +84,9 @@ function initUsersCollection(){
 		slackUser: 'damian@appdirect.com',
 		region: 'San Francisco',
 		skills: [ 
-		{ id: '1', code: 'JAVA', name: 'Java', rating: '2'},
-		{ id: '2', code: 'JAVASCRIPT', name: 'Javascript', rating: '5'},
-		{ id: '3', code: 'SQL', name: 'SQL', rating: '2'},
+		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
+		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
+		{ id: 3, code: 'SQL', name: 'SQL', rating: 2},
 		]
 	}
 	]
@@ -104,37 +105,37 @@ function initSkillsCollection(){
 	});
 	db.collection('skills').insert( [
 	{
-		id: '1',
+		id: 1,
 		code: 'JAVA',
 		name: 'Java'
 	},
 	{	
-		id: '2',
+		id: 2,
 		code: 'JAVASCRIPT',
 		name: 'Javascript'
 	},
 	{	
-		id: '3',
+		id: 3,
 		code: 'SQL',
 		name: 'SQL'
 	},
 	{	
-		id: '4',
+		id: 4,
 		code: 'QAAUTO',
 		name: 'QA-Automation'
 	},
 	{	
-		id: '5',
+		id: 5,
 		code: 'REACTJS',
 		name: 'React'
 	},
 	{	
-		id: '6',
+		id: 6,
 		code: 'MONGODB',
 		name: 'MongoDB'
 	},
 	{	
-		id: '7',
+		id: 7,
 		code: 'CHIMPOKOMON',
 		name: 'Chimpokomon'
 	}
@@ -260,11 +261,41 @@ function initOfficesCollection(){
 		if(err != null) {
 			console.log(err);
 		} else {
-			console.log("Inserted a user into the users collection.");
+			console.log("Inserted offices collection.");
 		}
 	});
 }
-
+function initFoodsCollection(){
+	db.collection('foods',function(err, collection){
+		collection.remove({},function(err, removed){});
+	});
+	db.collection('foods').insert( [
+		{
+            id: 1,
+            name: 'Chinesse',
+            votes: 0
+        }, {
+            id: 2,
+            name: 'Mexican',
+            votes: 0
+        }, {
+            id: 3,
+            name: 'Japanese',
+            votes: 0
+        }, {
+            id: 4,
+            name: 'Empanadas',
+            votes: 0
+        }
+	]
+	, function(err, result) {
+		if(err != null) {
+			console.log(err);
+		} else {
+			console.log("Inserted foods collection.");
+		}
+	});
+}
 
 app.get('/users', (req, res) => {
 	db.collection('users').find().toArray(function(err,data) {
@@ -356,3 +387,14 @@ app.get('/offices', (req, res) => {
 	})
 })
 
+app.get('/foods', (req, res) => {
+	db.collection('foods').find().toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
