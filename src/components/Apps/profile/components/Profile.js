@@ -23,7 +23,7 @@ class Skills extends React.Component {
 		Axios.get('http://localhost:4000/user/' + idUser)
 			.then(function(response) {
 				selfThis.setState({
-					user: response.data[0]
+					user: response.data
 				});
 			})
 			.catch(error => console.log(error));
@@ -66,7 +66,7 @@ class Skills extends React.Component {
 	}
 
 	addSkill() {
-		let skills = this.state.skills;
+		let skills = this.state.user.skills;
 
 		skills.push({
 			name: this.state.nextSkill,
@@ -93,7 +93,7 @@ class Skills extends React.Component {
 	render() {
 		return (
 			<div>
-				<HeaderProfile/>
+				<HeaderProfile userProfile={this.state.user}/>
 				{this.state.user ? this.state.user.skills.map((skill) => this.showSkill(skill)) : null}
 				{this.state.addSkill ? (
 						<div className="addSkill">

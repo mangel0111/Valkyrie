@@ -403,7 +403,7 @@ app.get('/users/find', (req, res) => {
 
 // Leo - Devuelve un documento del id solicitado.
 app.get('/user/:id', (req, res) => {
-	let mi_id = req.params.id;
+	let mi_id = parseInt(req.params.id);
 	db.collection('users').findOne({id: mi_id}, function(err,data) {
 		if (err) {
 			console.log(err);

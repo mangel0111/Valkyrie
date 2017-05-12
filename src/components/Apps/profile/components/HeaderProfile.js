@@ -10,6 +10,7 @@ class HeaderProfile extends React.Component {
 		};
 	}
 	render() {
+		const {userProfile} = this.props;
 		let style = {
 			'content': {
 				'paddingTop': 15,
@@ -27,10 +28,10 @@ class HeaderProfile extends React.Component {
 				<span>
 					<img style={style.imgAvatar} src={localStorage.getItem('picture')}></img>
 				</span><br/>
-				<span>{localStorage.getItem('owner')}</span><br/>
-				<span>{localStorage.getItem('email')}</span><br/>
-				<span>Región</span><br/>
-				<span>Skills</span><br/>
+				<span><strong>Name:</strong> {userProfile ? userProfile.firstName + ' ' + userProfile.lastName:null}</span><br/>
+				<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress:null}</span><br/>
+				<span><strong>Slack User:</strong> {userProfile ? userProfile.slackUser:null}</span><br/>
+				<span><strong>Region:</strong> {userProfile ? userProfile.region:null}</span><br/>
 			</div>
 		);
 	}
