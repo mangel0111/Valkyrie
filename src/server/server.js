@@ -292,13 +292,12 @@ app.get('/skills', (req, res) => {
 
 app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
-	var a = [];
+	var filter = [];
 	params.forEach(function(value) {
-		a.push({ $eq: value });
+		let regex = new RegExp('^'+ value + '$', "i")
+		filter.push( {'skills.name': regex } );
 	});
-	filter = JSON.parse(a);
-	console.log(filter);
-	let query = { $and: { 'skills.name': filter } };
+	let query = { $and: filter };
 	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
