@@ -10,7 +10,7 @@ class Skills extends React.Component {
 		super();
 		this.state = {
 			events: [],
-			habilities: [
+			skills: [
 				{
 					id: 1,
 					name: "React",
@@ -55,7 +55,6 @@ class Skills extends React.Component {
 	}
 
 	render() {
-		this.getProfile(1);
 		return (
 			<div>
 				<HeaderProfile/>
