@@ -40,6 +40,12 @@ function initUsersCollection(){
 		emailAddress: 'leonardo@appdirect.com',
 		slackUser: 'leonardo@appdirect.com',
 		region: 'Buenos Aires',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}		
+		],
 		skills: [ 
 		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
 		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 2},
@@ -54,6 +60,16 @@ function initUsersCollection(){
 		emailAddress: 'florencia@appdirect.com',
 		slackUser: 'florencia@appdirect.com',
 		region: 'San Francisco',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		},
+		{
+			id: 2,
+			name: 'QA-AUTOMATION'
+		}
+		],
 		skills: [ 
 		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
 		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1},
@@ -69,6 +85,12 @@ function initUsersCollection(){
 		emailAddress: 'miguel@appdirect.com',
 		slackUser: 'miguel@appdirect.com',
 		region: 'San Francisco',
+		team: [
+		{
+			id: 3,
+			name: 'PSO'
+		}
+		],
 		skills: [ 
 		{ id: 1, code: 'JAVA', name: 'Java', rating: 3},
 		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
@@ -83,6 +105,12 @@ function initUsersCollection(){
 		emailAddress: 'damian@appdirect.com',
 		slackUser: 'damian@appdirect.com',
 		region: 'San Francisco',
+		team: [
+		{
+			id: 1,
+			name: 'MP-RESELLER'
+		}
+		],
 		skills: [ 
 		{ id: 1, code: 'JAVA', name: 'Java', rating: 2},
 		{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 5},
