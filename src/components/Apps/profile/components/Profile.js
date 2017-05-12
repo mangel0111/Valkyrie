@@ -13,7 +13,6 @@ class Skills extends React.Component {
 		};
 
 		this.getProfile = this.getProfile.bind(this);
-
 		this.getProfile(4);
 	}
 
