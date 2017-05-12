@@ -160,11 +160,15 @@ class Navigation extends React.Component {
 		return (
 			<tr style={style.rows}>
 				<td style={style.photoCell}>
-					<img style={style.profileImgResults} src={user.avatar} width="180" height="200"/>
+					<img style={style.profileImgResults} src="/images/profilegoogle.jpg" width="180" height="200"/>
 				</td>
 				<td style={style.detailsCell}>
 					<a href="profile">{`${user.firstName}  ${user.lastName}`}</a>
 					<span> Jefe de fiestas y convidios </span>
+					<span>Team:</span>
+					<ul>
+						{user.team.map((t) => (<li key={t.id}>{t.name}</li>))}
+					</ul>
 					<div className="locationIcon">
 						<img style={style.locationIcon}
 							 src="/images/position.svg"/>
@@ -188,9 +192,9 @@ class Navigation extends React.Component {
 						</form>
 					</li>
 					<li style={style.viewProfile}>
-						<a style={style.profile} href="profile"><img style={style.viewProfileIcon}
+						<a style={style.profile} href="Profile"><img style={style.viewProfileIcon}
 																	 src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGNpcmNsZSBjeD0iMTIiIGN5PSI4IiByPSI0Ii8+PHBhdGggZD0iTTEyLDE0Yy02LjEsMC04LDQtOCw0djJoMTZ2LTJDMjAsMTgsMTguMSwxNCwxMiwxNHoiLz48L3N2Zz4="/></a>
-						<a style={style.profileLink} href="profile">View My Profile</a>
+						<a style={style.profileLink} href="Profile">View My Profile</a>
 					</li>
 					<li style={style.li}>
 						<a onClick={()=> this.getAllUsers()}>
