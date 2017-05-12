@@ -175,10 +175,34 @@ app.get('/users/find', (req, res) => {
 	})
 })
 
-// Leo
+// Leo - Devuelve un documento del id solicitado.
 app.get('/user/:id', (req, res) => {
 	let mi_id = req.params.id;
-	db.collection('users').find({id: mi_id}).toArray(function(err,data) {
+	db.collection('users').findOne({id: mi_id}, function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
+
+
+    	
+
+app.get('/users/find', (req, res) => {
+	let params = Object.keys(req.query);
+	var a = [];
+	params.forEach(function(value) {
+	    a.push(JSON.stringify({ $eq: value }));
+	});
+	var filter = a.join(', ');
+	filter = new JSONArray(filter);
+
+	let query = { $and: { 'skills.name': filter } };
+	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
