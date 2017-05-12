@@ -3,8 +3,7 @@ const bodyParser= require('body-parser')
 const app = express()
 const MongoClient = require('mongodb').MongoClient
 let db;
-
-app.use(bodyParser.urlenidd({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 
 MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 	if (err) { 
@@ -155,25 +154,17 @@ app.get('/skills', (req, res) => {
 	})
 })
 
-app.get('/skills', (req, res) => {
-	//MongoDB query format:
-	//{ <field1>: { <operator1>: <value1> }, ... }
-
+app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
 	var a = [];
 	params.forEach(function(value) {
 	    a.push(JSON.stringify({ $eq: value }));
 	});
 	var filter = a.join(', ');
-	console.log(filter);
 	filter = new JSONArray(filter);
-	console.log(filter);
 
-	let query = {$and: { 'skills.name': filter };
-	console.log(query);
-    db.student_marks.find({$and:[{"lname":"Ford"},{"marks.english": {$gt:35}}]})
-
-	db.collection('users').find( filter ).toArray(function(err,data) {
+	let query = { $and: { 'skills.name': filter } };
+	db.collection('users').find( query ).toArray(function(err,data) {
 		if (err) {
 			console.log(err);
 			return res(err);
