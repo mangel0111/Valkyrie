@@ -548,6 +548,16 @@ input[type=submit].google:after {
     padding: 20px;
 }
 
+.contentEvent .lastHoliday {
+    margin-top: 15px;
+    padding: 5px 2px;
+    border: 5px solid #7fcff7;
+    background-color: rgba(255, 255, 255, 0.85);
+    color: rgb(26, 26, 26);
+    font-weight: bold;
+    border-radius: 5px;
+    font-size: 26px;
+}
 .rating {
     width: 200px;
     position: relative;
