@@ -1,7 +1,6 @@
 import React from 'react';
 import HeaderProfile from './HeaderProfile';
 import Axios from 'axios';
-import Navigation from './Navigation';
 import Rating from 'react-rating';
 
 class Skills extends React.Component {
@@ -10,40 +9,40 @@ class Skills extends React.Component {
 		super();
 		this.state = {
 			events: [],
+			user: null,
 			addSkill: false,
-			skills: [{
-				id: 1,
-				name: "React",
-				rating: 3,
-				code: 'react'
-			}, {
-				id: 2,
-				name: "Java",
-				rating: 2,
-				code: 'java'
-			}, {
-				id: 5,
-				name: "SQL",
-				rating: 2,
-				code: 'sql'
-			}],
 			nextSkill: ''
 		};
+
+		this.getProfile = this.getProfile.bind(this);
+		this.getProfile(4);
+	}
+
+	getProfile(idUser) {
+		var selfThis = this;
+		Axios.get('http://localhost:4000/user/' + idUser)
+			.then(function(response) {
+				selfThis.setState({
+					user: response.data[0]
+				});
+			})
+			.catch(error => console.log(error));
 	}
 
 	changeInput(rate, skill) {
-		let skills = this.state.skills;
-		skills.forEach((h) => {
-			if (h.id === skill.id) {
-				h.rating = rate
-			}
-		});
-		this.setState({skills});
+		if(this.state.user) {
+			let skills = this.state.user.skills;
+			skills.forEach((h) => {
+				if (h.id === skill.id) {
+					h.rating = rate
+				}
+			});
+			this.setState({skills});
+		}
 	}
 
 	removeSkill(skillId) {
-		let skills = this.state.skills;
-		let indexToRemove = null;
+		let skills = this.state.user.skills;
 		skills.forEach((h, index, object) => {
 			if (h.id === skillId) {
 				object.splice(index, 1);
@@ -75,10 +74,10 @@ class Skills extends React.Component {
 			code: this.state.nextSkill
 		});
 		this.setState({
-				skills,
-				addSkill: false,
-				nextSkill: null
-			});
+			skills,
+			addSkill: false,
+			nextSkill: null
+		});
 	}
 
 	handleChange(e) {
@@ -95,14 +94,16 @@ class Skills extends React.Component {
 		return (
 			<div>
 				<HeaderProfile/>
-				{this.state.skills.map((skill) => this.showSkill(skill))}
-				{
-					this.state.addSkill ? (<div className="addSkill">
-							<input type="text" value={this.state.nextSkill} onChange={(e) => this.handleChange(e)}/><a onClick={() => this.addSkill()} className="btn btn-custom">+</a>
-						</div>) : null
-				}
+				{this.state.user ? this.state.user.skills.map((skill) => this.showSkill(skill)) : null}
+				{this.state.addSkill ? (
+						<div className="addSkill">
+							<input
+								type="text"
+								value={this.state.nextSkill}
+								onChange={(e) => this.handleChange(e)}/>
+							<a onClick={() => this.addSkill()} className="btn btn-custom">+</a>
+						</div>) : null}
 				<button className="btn btn-custom" onClick={() => this.requestSkill()}>Add Skill</button>
-				<Navigation/>
 			</div>
 		);
 	}
