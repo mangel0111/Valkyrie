@@ -20,11 +20,13 @@ MongoClient.connect('mongodb://127.0.0.1:27017', (err, database) => {
 })
 
 function initDatabase() {
+	initUsersCollection();
+	initSkillsCollection();
+	initOfficesCollection();
+}
 
+function initUsersCollection(){
 	db.collection('users',function(err, collection){
-		collection.remove({},function(err, removed){});
-	});
-	db.collection('skills',function(err, collection){
 		collection.remove({},function(err, removed){});
 	});
 
@@ -90,11 +92,15 @@ function initDatabase() {
 		if(err != null) {
 			console.log(err);
 		} else {
-			console.log("Inserted a user into the users collection.");
+			console.log("Inserted users collection.");
 		}
 	});
+}
 
-
+function initSkillsCollection(){
+	db.collection('skills',function(err, collection){
+		collection.remove({},function(err, removed){});
+	});
 	db.collection('skills').insert( [
 	{
 		id: '1',
@@ -131,10 +137,128 @@ function initDatabase() {
 		if(err != null) {
 			console.log(err);
 		} else {
+			console.log("Inserted skills collection.");
+		}
+	});
+}
+
+function initOfficesCollection(){
+	db.collection('offices',function(err, collection){
+		collection.remove({},function(err, removed){});
+	});
+	db.collection('offices').insert( [
+	{
+		id: "BA",
+		position: {
+			"top": "80%",
+			"left": "32%"
+		},
+		name: "Buenos Aires",
+		description: "The best office ever",
+		events: [{
+			id: 0,
+			name: "Revolutionary Day",
+			date: "25-05-2017"
+		}, {
+			id: 3,
+			name: "Maradona Birthdays",
+			date: "30-10-2017"
+		}, {
+			id: 4,
+			name: "Mate's Day",
+			date: "30-01-2017"
+		}, {
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		}]
+	},
+	{
+		id: "SF",
+		position: {
+			"top": "42%",
+			"left": "17%"
+		},
+		name: "San Francisco",
+		description: "Is where the money comes!",
+		events: [{
+			id: 1,
+			name: "Black Friday",
+			date: "24-11-2017"
+		}, {
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		}]
+	},
+	{
+		id: "PN",
+		position: {
+			"top": "50%",
+			"left": "69%"
+		},
+		name: "Pune",
+		description: "The dancing office",
+		events: [
+		{
+			id: 3,
+			name: "Apu's Birthday",
+			date: "5-06-2017"
+		}, {
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		}
+		]
+	},
+	{
+		id: "MT",
+		position: {
+			"top": "37%",
+			"left": "28%"
+		},
+		name: "Montreal",
+		description: "The guys who loves curling",
+		events: [{
+			id: 4,
+			name: "Canadian Day",
+			date: "01-07-2017"
+		},{
+			id: 1,
+			name: "Christmas",
+			date: "25-12-2017"
+		}, {
+			id: 2,
+			name: "New Year",
+			date: "01-01-2018"
+		},{
+			id: 3,
+			name: "Curling Day",
+			date: "23-02-2018"
+		}]
+	}
+	]
+	, function(err, result) {
+		if(err != null) {
+			console.log(err);
+		} else {
 			console.log("Inserted a user into the users collection.");
 		}
 	});
 }
+
 
 app.get('/users', (req, res) => {
 	db.collection('users').find().toArray(function(err,data) {
@@ -164,7 +288,7 @@ app.get('/users/find', (req, res) => {
 	let params = Object.keys(req.query);
 	var a = [];
 	params.forEach(function(value) {
-	    a.push(JSON.stringify({ $eq: value }));
+		a.push(JSON.stringify({ $eq: value }));
 	});
 	var filter = a.join(', ');
 	filter = new JSONArray(filter);
@@ -195,5 +319,15 @@ app.get('/user/:id', (req, res) => {
 	})
 })
 
-
+app.get('/offices', (req, res) => {
+	db.collection('offices').find().toArray(function(err,data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
 
