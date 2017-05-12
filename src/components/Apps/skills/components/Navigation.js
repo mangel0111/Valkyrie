@@ -131,84 +131,82 @@ const style = {
     'height': '25px',
     'width': '25px'
   }
-
 }
 
 class Navigation extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      events: [],
-      users: []
-    };
-    this.getAllUsers = this.getAllUsers.bind(this);
-  }
+	constructor() {
+		super();
+		this.state = {
+			events: [],
+			users: []
+		};
+		this.getAllUsers = this.getAllUsers.bind(this);
+	}
 
-  getAllUsers() {
-    var selfThis = this;
-    Axios.get('http://localhost:4000/users')
-      .then(function(response) {
-        selfThis.setState({
-          users: response.data
-        });
-      })
-      .catch(error => console.log(error));
-  }
+	getAllUsers() {
+		var selfThis = this;
+		Axios.get('http://localhost:4000/users')
+			.then(function(response) {
+				selfThis.setState({
+					users: response.data
+				});
+			})
+			.catch(error => console.log(error));
+	}
 
-  showUsers(user) {
-    return (
-      <tr style={style.rows}>
-        <td style={style.photoCell}>
-          <img style={style.profileImgResults} src={user.avatar} width="180" height="200"/>
-        </td>
-        <td style={style.detailsCell}>
-          <a href="profile">{`${user.firstName}  ${user.lastName}`}</a>
-          <span> Jefe de fiestas y convidios </span>
-          <div className="locationIcon">
-            <img style={style.locationIcon}
-               src="/images/position.svg"/>
-            <p>{user.region}</p>
-          </div>
+	showUsers(user) {
+		return (
+			<tr style={style.rows}>
+				<td style={style.photoCell}>
+					<img style={style.profileImgResults} src={user.avatar} width="180" height="200"/>
+				</td>
+				<td style={style.detailsCell}>
+					<a href="profile">{`${user.firstName}  ${user.lastName}`}</a>
+					<span> Jefe de fiestas y convidios </span>
+					<div className="locationIcon">
+						<img style={style.locationIcon}
+							 src="/images/position.svg"/>
+						<p>{user.region}</p>
+					</div>
 
-        </td>
-      </tr>);
-  }
+				</td>
+			</tr>);
+	}
 
-  render() {
+	render() {
 
-    return (
-      <div>
+		return (
+			<div>
 
-        <ul style={style.ul}>
-          <li style={style.li}>
-            <form style={style.form}>
-              <input style={style.input} type="text" placeholder="Search here..." required/>
-              <button style={style.button} type="submit">Search</button>
-            </form>
-          </li>
-          <li style={style.viewProfile}>
-            <a style={style.profile} href="profile"><img style={style.viewProfileIcon}
-                                   src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGNpcmNsZSBjeD0iMTIiIGN5PSI4IiByPSI0Ii8+PHBhdGggZD0iTTEyLDE0Yy02LjEsMC04LDQtOCw0djJoMTZ2LTJDMjAsMTgsMTguMSwxNCwxMiwxNHoiLz48L3N2Zz4="/></a>
-            <a style={style.profileLink} href="profile">View My Profile</a>
-          </li>
-          <li style={style.li}>
-            <a onClick={()=> this.getAllUsers()}>
-              <img style={style.viewPeopleIcon}
-                        src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZD0iTTksOWMwLTEuNywxLjMtMywzLTNzMywxLjMsMywzYzAsMS43LTEuMywzLTMsM1M5LDEwLjcsOSw5eiBNMTIsMTRjLTQuNiwwLTYsMy4zLTYsMy4zVjE5aDEydi0xLjdDMTgsMTcuMywxNi42LDE0LDEyLDE0eiAgICIvPjwvZz48Zz48Zz48Y2lyY2xlIGN4PSIxOC41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTE4LjUsMTNjLTEuMiwwLTIuMSwwLjMtMi44LDAuOGMyLjMsMS4xLDMuMiwzLDMuMiwzLjJsMCwwLjFIMjN2LTEuM0MyMywxNS43LDIxLjksMTMsMTguNSwxM3oiLz48L2c+PC9nPjxnPjxnPjxjaXJjbGUgY3g9IjE4LjUiIGN5PSI4LjUiIHI9IjIuNSIvPjwvZz48Zz48cGF0aCBkPSJNMTguNSwxM2MtMS4yLDAtMi4xLDAuMy0yLjgsMC44YzIuMywxLjEsMy4yLDMsMy4yLDMuMmwwLDAuMUgyM3YtMS4zQzIzLDE1LjcsMjEuOSwxMywxOC41LDEzeiIvPjwvZz48L2c+PGc+PGc+PGNpcmNsZSBjeD0iNS41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTUuNSwxM2MxLjIsMCwyLjEsMC4zLDIuOCwwLjhjLTIuMywxLjEtMy4yLDMtMy4yLDMuMmwwLDAuMUgxdi0xLjNDMSwxNS43LDIuMSwxMyw1LjUsMTN6Ii8+PC9nPjwvZz48L3N2Zz4="/>
-            </a>
-            <a style={style.people} onClick={()=> this.getAllUsers()}>People</a></li>
-        </ul>
+				<ul style={style.ul}>
+					<li style={style.li}>
+						<form style={style.form}>
+							<input style={style.input} type="text" placeholder="Search here..." required/>
+							<button style={style.button} type="submit">Search</button>
+						</form>
+					</li>
+					<li style={style.viewProfile}>
+						<a style={style.profile} href="profile"><img style={style.viewProfileIcon}
+																	 src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGNpcmNsZSBjeD0iMTIiIGN5PSI4IiByPSI0Ii8+PHBhdGggZD0iTTEyLDE0Yy02LjEsMC04LDQtOCw0djJoMTZ2LTJDMjAsMTgsMTguMSwxNCwxMiwxNHoiLz48L3N2Zz4="/></a>
+						<a style={style.profileLink} href="profile">View My Profile</a>
+					</li>
+					<li style={style.li}>
+						<a onClick={()=> this.getAllUsers()}>
+							<img style={style.viewPeopleIcon}
+											  src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZD0iTTksOWMwLTEuNywxLjMtMywzLTNzMywxLjMsMywzYzAsMS43LTEuMywzLTMsM1M5LDEwLjcsOSw5eiBNMTIsMTRjLTQuNiwwLTYsMy4zLTYsMy4zVjE5aDEydi0xLjdDMTgsMTcuMywxNi42LDE0LDEyLDE0eiAgICIvPjwvZz48Zz48Zz48Y2lyY2xlIGN4PSIxOC41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTE4LjUsMTNjLTEuMiwwLTIuMSwwLjMtMi44LDAuOGMyLjMsMS4xLDMuMiwzLDMuMiwzLjJsMCwwLjFIMjN2LTEuM0MyMywxNS43LDIxLjksMTMsMTguNSwxM3oiLz48L2c+PC9nPjxnPjxnPjxjaXJjbGUgY3g9IjE4LjUiIGN5PSI4LjUiIHI9IjIuNSIvPjwvZz48Zz48cGF0aCBkPSJNMTguNSwxM2MtMS4yLDAtMi4xLDAuMy0yLjgsMC44YzIuMywxLjEsMy4yLDMsMy4yLDMuMmwwLDAuMUgyM3YtMS4zQzIzLDE1LjcsMjEuOSwxMywxOC41LDEzeiIvPjwvZz48L2c+PGc+PGc+PGNpcmNsZSBjeD0iNS41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTUuNSwxM2MxLjIsMCwyLjEsMC4zLDIuOCwwLjhjLTIuMywxLjEtMy4yLDMtMy4yLDMuMmwwLDAuMUgxdi0xLjNDMSwxNS43LDIuMSwxMyw1LjUsMTN6Ii8+PC9nPjwvZz48L3N2Zz4="/>
+						</a>
+						<a style={style.people} onClick={()=> this.getAllUsers()}>People</a></li>
+				</ul>
 
 
-        <table style={style.table}>
-          {this.state.users.map((user) => this.showUsers(user))}
-        </table>
-      </div>
-    );
-  }
+				<table style={style.table}>
+					{this.state.users.map((user) => this.showUsers(user))}
+				</table>
+			</div>
+		);
+	}
 
 }
 
 export default Navigation;
-
