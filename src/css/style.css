@@ -722,8 +722,14 @@ ul.poll-results-list {
     left: 0;
 }
 
-.results {
+.results, .locationIcon {
     display: flex;
+}
+
+.locationIcon p{
+    position: relative;
+    top: 4px;
+    font-weight: 300;
 }
 
 .addSkill {
