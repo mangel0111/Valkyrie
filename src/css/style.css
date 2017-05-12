@@ -614,6 +614,7 @@ input[type=submit].google:after {
     color: gray;
     position: relative;
     top: -1px;
+    cursor: pointer;
 }
 
 .poll-block {
