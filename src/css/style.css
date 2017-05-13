@@ -471,21 +471,11 @@ input[type=submit].google:after {
     transition: opacity 0.25s ease-in-out;
     width: 100%;
     height: 100%;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
     overflow: overlay;
-}
-
-.centered-y {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
+    }
 
 .centered-y h2 {
+    z-index: 9999;
     font-size: 24pt;
     margin-bottom: 20px;
     text-transform: uppercase;
@@ -494,22 +484,23 @@ input[type=submit].google:after {
 }
 
 .centered-y a {
+    z-index: 9999;
     font-family: "Roboto Condensed", Helvetica, sans-serif;
     margin: 5px;
 }
 
+.centered-y span {
+    margin: 10px;
+}
 
 .centered-y p {
+    z-index: 9999;
     font-size: 12pt;
     margin-bottom: 12pt;
 }
 
 .centered-y {
-    position: absolute;
     width: 100%;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
 }
 
 .distribution-map .map-point .content {
@@ -519,9 +510,6 @@ input[type=submit].google:after {
     transition: opacity 0.25s ease-in-out;
     width: 100%;
     height: 100%;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    transform: translateX(-50%);
     overflow: overlay;
 }
 
@@ -813,4 +801,17 @@ ul.poll-results-list {
 .peopleOffice img {
     width: 10px;
     height: 10px;
+}
+
+.timeZone {
+    margin-bottom: 5px; 
+}
+
+.timeZone span {
+    font-size: 10px;
+}
+
+.listItemOffice h3 {
+    font-size: 12px;
+    font-weight: 300;
 }

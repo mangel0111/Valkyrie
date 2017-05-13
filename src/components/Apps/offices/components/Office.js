@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment-timezone';
 
 class Office extends Component {
 	constructor(props, context) {
@@ -15,15 +16,14 @@ class Office extends Component {
 
 	createEvent(event) {
 		return (
-			<li key={`event${event.id}`}>
+			<li className="listItemOffice" key={`event${event.id}`}>
 				<h3>{event.name}(<span>{event.date})</span></h3>
 			</li>);
 	}
 
 	createUser(user) {
-		debugger;
 		return (
-			<li key={`user${user.id}`}>
+			<li className="listItemOffice" key={`user${user.id}`}>
 				<h3>{`${user.firstName} ${user.lastName}`}</h3>
 			</li>);
 	}
@@ -77,53 +77,54 @@ class Office extends Component {
 
 	showPeople() {
 		this.setState({ shouldShowPeople: !this.state.shouldShowPeople });
-	} 
-	
+	}
+
 	getCurrentTime(office) {
 		const currentdate = new Date();
-		let time = currentdate.getHours() + ":" + currentdate.getMinutes();
+		let timeZone = "America/Argentina/Buenos_Aires";
 
 		switch (office.id) {
 			case 'MT':
-				time = (currentdate.getHours() - 1) + ":" + currentdate.getMinutes();
+				timeZone = "America/Montreal";
 				break;
 			case 'PN':
-				time = (currentdate.getHours() + 9) + ":" + (currentdate.getMinutes() + 30);
+				timeZone = "Asia/Calcutta";
 				break;
 			case 'MU':
-				time = (currentdate.getHours() + 5) + ":" + (currentdate.getMinutes());
+				timeZone = "Europe/Berlin";
 				break;
 			case 'SF':
-				time = (currentdate.getHours() - 4) + ":" + currentdate.getMinutes();
+				timeZone = "America/Los_Angeles";
 				break;
 			default:
 				break;
 		}
+
+		let time = moment().tz(timeZone).format();
 
 		return (<span>{time}</span>);
 	}
 
 	render() {
 		const {office} = this.props;
-			return (
-				<button key={office.id} className="map-point"
-					onClick={() => this.selectOffice()}
-					style={office.position}>
-					<div className="content">
-						<div className="centered-y">
-							<h2>{office.name}</h2>
-							<span>{this.getCurrentTime(office)}</span>
-							<p>{office.description}</p>
-							<br />
-							<a onClick={() => this.showEvents()}>See events</a>
-							<br />
-							<a onClick={() => this.showPeople()}>See People</a>
-						</div>
+		return (
+			<button key={office.id} className="map-point"
+				style={office.position}>
+				<div className="content">
+					<div className="centered-y">
+						<h2>{office.name}</h2>
+						<div className="timeZone">{this.getCurrentTime(office)}</div>
+						<p>{office.description}</p>
+						<br />
+						<a onClick={() => this.showEvents()}>See events</a>
+						<br />
+						<a onClick={() => this.showPeople()}>See People</a>
 					</div>
-					{this.getEvents()}
-					{this.getPeople()}
-				</button>
-			);
+				</div>
+				{this.getEvents()}
+				{this.getPeople()}
+			</button>
+		);
 	}
 }
 
