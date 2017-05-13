@@ -30,6 +30,7 @@ class App extends React.Component {
         </MuiThemeProvider>
         <Principal
           view={this.props.params.appId}
+          email={this.props.params.userEmail}
           apps={this.state.apps}
         />
         <Footer />

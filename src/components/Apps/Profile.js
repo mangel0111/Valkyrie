@@ -3,9 +3,11 @@ import Profile from './profile/components/Profile';
 
 class MyProfile extends Component {
 	render() {
+		debugger;
+		const {userEmail} = this.props;
 		return (
 			<div className='bodyContainer'>
-				<Profile />
+				<Profile userEmail={userEmail} />
 			</div>
 		)
 	}

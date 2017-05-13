@@ -47,67 +47,67 @@ class Header extends React.Component {
 		$('#modal').show();
 		return (
 			ReactDOM.render(
-				<ClickOutside onClickOutside={() =>  $('#modal').hide()}>
+				<ClickOutside onClickOutside={() => $('#modal').hide()}>
 					<div className='logout-modal'>
-						<img src={localStorage.getItem('picture')} style={styles.imgAvatar} role="presentation" />
+						<img src={localStorage.getItem('picture')} style={styles.imgAvatar} role="presentation" onClick={() => document.location = '/app/Profile'} />
 						<strong>{this.props.Profile.Name}</strong><br />
 						<label style={styles.email}>{localStorage.getItem('email')}</label> <br /><br />
 						<input type='button' onClick={() => this.logout()} value='Logout' />
 					</div>
 				</ClickOutside >,
-						document.getElementById('modal'))
+				document.getElementById('modal'))
 		);
 	}
 
-renderAuthHeader() {
-	return (
-		<header className="header">
-			<div className="headerContainer">
-				{this.renderLogo()}
-				<div className="searchBox">
+	renderAuthHeader() {
+		return (
+			<header className="header">
+				<div className="headerContainer">
+					{this.renderLogo()}
+					<div className="searchBox">
 
+					</div>
+					<div className="manage" onClick={() => this.renderLogoutModal()}>
+						<h3> <span>
+							<Avatar
+								src={localStorage.getItem('picture')}
+								size={45}
+								style={style}
+								/>
+						</span>
+							{this.props.Profile.Name}
+						</h3>
+					</div>
 				</div>
-				<div className="manage" onClick={() => this.renderLogoutModal()}>
-					<h3> <span>
-						<Avatar
-							src={localStorage.getItem('picture')}
-							size={45}
-							style={style}
-						/>
-					</span>
-						{this.props.Profile.Name}
-					</h3>
-				</div>
-			</div>
-			<div id='modal' className='modal'></div>
-		</header>
-	);
-}
-
-renderNoAuthHeader() {
-	return (
-		<nav className="header">
-			<div className="headerContainer">
-				{this.renderLogo()}
-				<div className="searchBox">
-					<h2></h2>
-				</div>
-				<div className="manage">
-					<h2>Login</h2>
-				</div>
-			</div>
-		</nav>
-	);
-}
-
-render() {
-	var IsAuth = this.props.isAuth || false;
-	if (IsAuth) {
-		return (this.renderAuthHeader());
-	} else {
-		return this.renderNoAuthHeader();
+				<div id='modal' className='modal'></div>
+			</header>
+		);
 	}
-}
+
+	renderNoAuthHeader() {
+		return (
+			<nav className="header">
+				<div className="headerContainer">
+					{this.renderLogo()}
+					<div className="searchBox">
+						<h2></h2>
+					</div>
+					<div className="manage">
+						<h2>Login</h2>
+					</div>
+				</div>
+			</nav>
+		);
+	}
+
+	render() {
+		var IsAuth = this.props.isAuth || false;
+		if (IsAuth) {
+			return (this.renderAuthHeader());
+		} else {
+			return this.renderNoAuthHeader();
+		}
+	}
 }
 
 Header.propTypes = {

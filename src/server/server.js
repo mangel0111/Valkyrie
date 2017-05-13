@@ -42,9 +42,9 @@ function initUsersCollection() {
 			id: 1,
 			avatar: '/images/leobuezo.jpg',
 			firstName: 'Leonardo',
-			lastName: 'ln1',
-			emailAddress: 'leonardo@appdirect.com',
-			slackUser: 'leonardo@appdirect.com',
+			lastName: 'Buezo',
+			emailAddress: 'leonardo.buezo@appdirect.com',
+			slackUser: 'leonardo.buezo@appdirect.com',
 			region: 'Buenos Aires',
 			office: 'BA',
 			team: [
@@ -64,10 +64,10 @@ function initUsersCollection() {
 			avatar: '/images/florencia.jpg',
 			firstName: 'Florencia',
 			office: 'BA',
-			lastName: 'ln1',
-			emailAddress: 'florencia@appdirect.com',
-			slackUser: 'florencia@appdirect.com',
-			region: 'San Francisco',
+			lastName: 'Santos',
+			emailAddress: 'florencia.santos@appdirect.com',
+			slackUser: 'florencia.santos@appdirect.com',
+			region: 'Buenos Aires',
 			team: [
 				{
 					id: 1,
@@ -76,12 +76,21 @@ function initUsersCollection() {
 				{
 					id: 2,
 					name: 'QA-AUTOMATION'
+				},
+				{
+					id: 4,
+					name: 'PSFE'
+				},
+				{
+					id: 5,
+					name: 'MICROSOFT'
 				}
 			],
 			skills: [
 				{ id: 1, code: 'JAVA', name: 'Java', rating: 3 },
-				{ id: 2, code: 'JAVASCRIPT', name: 'Javascript', rating: 1 },
+				{ id: 2, code: 'AUTOMATION', name: 'Automation', rating: 1 },
 				{ id: 3, code: 'SQL', name: 'SQL', rating: 5 },
+				{ id: 3, code: 'RESELLER', name: 'Reseller', rating: 5 },
 				{ id: 7, code: 'CHIMPOKOMON', name: 'Chimpokomon', rating: 5 }
 			]
 		},
@@ -89,11 +98,11 @@ function initUsersCollection() {
 			id: 3,
 			avatar: '/images/profilegoogle.jpg',
 			firstName: 'Miguel',
-			lastName: 'ln1',
+			lastName: 'Angel',
 			office: 'BA',
-			emailAddress: 'miguel@appdirect.com',
-			slackUser: 'miguel@appdirect.com',
-			region: 'Pune',
+			emailAddress: 'miguel.penaloza@appdirect.com',
+			slackUser: 'miguel.penaloza@appdirect.com',
+			region: 'Buenos Aires',
 			team: [
 				{
 					id: 3,
@@ -110,7 +119,7 @@ function initUsersCollection() {
 			id: 4,
 			avatar: '/images/damian.jpg',
 			firstName: 'Damian',
-			lastName: 'ln1',
+			lastName: 'Musullini',
 			office: 'BA',
 			emailAddress: 'damian@appdirect.com',
 			slackUser: 'damian@appdirect.com',
@@ -643,6 +652,19 @@ app.get('/users/find', (req, res) => {
 app.get('/user/:id', (req, res) => {
 	let mi_id = parseInt(req.params.id);
 	db.collection('users').findOne({ id: mi_id }, function (err, data) {
+		if (err) {
+			console.log(err);
+			return res(err);
+		} else {
+			console.log(data);
+			return res.json(data);
+		}
+	})
+})
+
+app.get('/userByEmail/:email', (req, res) => {
+	let email = req.params.email;
+	db.collection('users').findOne({ emailAddress: email }, function (err, data) {
 		if (err) {
 			console.log(err);
 			return res(err);

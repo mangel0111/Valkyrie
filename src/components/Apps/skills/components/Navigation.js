@@ -194,7 +194,7 @@ class Navigation extends React.Component {
           <img role="presentation" style={style.profileImgResults} src={user.avatar} width="180" height="200" />
         </td>
         <td style={style.detailsCell}>
-          <a href="profile">{`${user.firstName}  ${user.lastName}`}</a>
+          <a href={`Profile/${user.emailAddress}`}>{`${user.firstName}  ${user.lastName}`}</a>
           <span> Jefe de fiestas y convidios </span>
           <span>Team:</span>
           <ul>

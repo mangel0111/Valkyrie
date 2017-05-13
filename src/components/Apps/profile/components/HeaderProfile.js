@@ -27,7 +27,7 @@ class HeaderProfile extends React.Component {
 				<span>
 					<img
 						role="presentation"
-						style={style.imgAvatar} src={localStorage.getItem('picture')}></img>
+						style={style.imgAvatar} src={userProfile ? userProfile.avatar : '/images/profileGoogle.png'}></img>
 				</span><br />
 				<span><strong>Name:</strong> {userProfile ? userProfile.firstName + ' ' + userProfile.lastName : null}</span><br />
 				<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress : null}</span><br />

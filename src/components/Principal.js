@@ -38,7 +38,7 @@ class Principal extends React.Component {
     }
 
     switchView() {
-        const view = this.props.view;
+        const {view, email} = this.props;
         switch (view) {
             case "E2E":
                 return <E2E />;
@@ -48,14 +48,14 @@ class Principal extends React.Component {
                 return <Orchard />;
             case "Calendar":
                 return <Calendar />;
-			case "CatchphrasesApp":
-				return <CatchphrasesApp />;
-			 case "Profile":
-                return <Profile />;
+            case "CatchphrasesApp":
+                return <CatchphrasesApp />;
+            case "Profile":
+                return <Profile userEmail={email} />;
             case "Skills":
-				return <Skills />;
-			case "Offices":
-				return <Offices />;
+                return <Skills />;
+            case "Offices":
+                return <Offices />;
             case "WhatWeCanEat":
                 return <WhatWeCanEat />;
             default:
