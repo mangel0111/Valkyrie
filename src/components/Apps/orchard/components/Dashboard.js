@@ -1,15 +1,9 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
 import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import RegressionTest from './RegressionTest';
 import axios from 'axios';
 const FETCH_URL_DEFAULT = 'https://orchard.appdirect.tools/api/environments?filterDeleted=true&filterOthers=false';
 const FETCH_URL_BASE = 'https://orchard.appdirect.tools/api/environments?filterDeleted=true&filterOthers=false';
-
-function handleActive(tab) {
-	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
-}
-
 
 class Dashboard extends Component {
 	constructor() {
@@ -47,6 +41,7 @@ class Dashboard extends Component {
 							if (value.createdBy.name ? (value.createdBy.name === selfThis.state.name) : false) {
 								return value
 							}
+							return false;
 						})
 					});
 				}

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Axios from 'axios';
 import Office from './Office';
 
@@ -6,17 +6,18 @@ class Dashboard extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			offices: []
+			offices: [],
+			users: []
 		};
 
 		this.getOffices = this.getOffices.bind(this);
 		this.getOffices();
 	}
 
-	getOffices() {	
+	getOffices() {
 		var selfThis = this;
 		Axios.get('http://localhost:4000/offices')
-			.then(function(response) {
+			.then(function (response) {
 				selfThis.setState({
 					offices: response.data
 				});
@@ -24,14 +25,23 @@ class Dashboard extends Component {
 			.catch(error => console.log(error));
 	}
 
+	getPeople() {
+		var selfThis = this;
+		Axios.get('http://localhost:4000/users')
+			.then(function (response) {
+				selfThis.setState({
+					users: response.data
+				});
+			})
+			.catch(error => console.log(error));
+	}
+
 	renderOffice(key) {
-		return (<Office office={key} key={key.id}/>);
+		return (<Office office={key} key={key.id} />);
 	}
 
 	render() {
-		const fontStackSafe = 'Helvetica, sans-serif';
 		const fontStackMain = `"Roboto", $font-stack-safe`;
-		const fontStackHighlight = `"Roboto Condensed", $font-stack-safe`;
 
 		const styles = {
 			'container': {
@@ -54,7 +64,7 @@ class Dashboard extends Component {
 				<h1>Appdirect Offices</h1>
 				<p className={styles.description}>Select the office to see relevatn information about they!</p>
 				<div className="distribution-map">
-					<img src="/images/WorldMapImage.png"/>
+					<img role="presentation" src="/images/WorldMapImage.png" />
 					{this.state.offices.map((office) => this.renderOffice(office))}
 				</div>
 			</div>
@@ -62,4 +72,4 @@ class Dashboard extends Component {
 	}
 }
 
-export default  Dashboard;
+export default Dashboard;

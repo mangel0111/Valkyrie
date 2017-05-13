@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDom from 'react-dom'
-import Moment from 'moment'
-import BigCalendar from 'react-big-calendar'
+import Moment from 'moment';
+import BigCalendar from 'react-big-calendar';
 import Axios from 'axios';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
@@ -19,10 +18,10 @@ class Dashboard extends React.Component {
 	}
 
 	componentWillMount() {
-		Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function(response) {
+		Axios.get('https://www.googleapis.com/calendar/v3/users/me/calendarList?access_token=' + localStorage.getItem('accessToken')).then(function (response) {
 			let data = [];
 			response.data.items.forEach((item) => {
-				Axios.get('https://www.googleapis.com/calendar/v3/calendars/' + item.id + '/events?showDeleted=false&access_token=' + localStorage.getItem('accessToken')).then(function(subresponse) {
+				Axios.get('https://www.googleapis.com/calendar/v3/calendars/' + item.id + '/events?showDeleted=false&access_token=' + localStorage.getItem('accessToken')).then(function (subresponse) {
 					debugger;
 					subresponse.data.items.forEach((event) => {
 						if (event.status !== "cancelled") {
@@ -47,9 +46,9 @@ class Dashboard extends React.Component {
 				<br />
 				<BigCalendar
 					events={this.state.events}
-					style={{minHeight: 550}}
+					style={{ minHeight: 550 }}
 					onSelectEvent={event => alert(event.title)}
-				/>
+					/>
 			</div>
 		);
 	}

@@ -11,8 +11,6 @@ import Skills from './Apps/Skills';
 import Offices from './Apps/Offices';
 import WhatWeCanEat from './Apps/WhatWeCanEat';
 
-import Apps from '../app-samples';
-
 class Principal extends React.Component {
     constructor() {
         super();

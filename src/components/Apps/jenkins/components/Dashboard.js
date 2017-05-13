@@ -1,14 +1,8 @@
 import React, {Component} from 'react';
-import {render} from 'react-dom';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
 import axios from 'axios';
 import RegressionTest from './RegressionTest';
 
 const URL_TO_FETCH = 'http://jenkins.appdirect.com:8080/api/json?pretty=true';
-
-function handleActive(tab) {
-	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
-}
 
 class Dashboard extends Component {
 

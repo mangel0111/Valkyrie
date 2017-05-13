@@ -1,18 +1,11 @@
-import React, {Component} from 'react';
-import {render} from 'react-dom';
-import {Tab, Tabs, TabList, TabPanel} from 'react-tabs';
+import React, { Component } from 'react';
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import RegressionTest from './RegressionTest';
 import axios from 'axios';
 import profile from './profile.json';
 
 const FETCH_URL_DEFAULT = 'https://e2e.appdirect.tools/api/runs?limit=10&skip=10';
 const FETCH_URL_BASE = 'https://e2e.appdirect.tools/api/runs?';
-const FETCH_URL_PROFILE = 'https://e2e.appdirect.tools/api/users/me';
-
-
-function handleActive(tab) {
-	alert(`A tab with this route property ${tab.props['data-route']} was activated.`);
-}
 
 class Dashboard extends Component {
 	constructor() {
@@ -32,28 +25,16 @@ class Dashboard extends Component {
 
 		this.getRegressions(10, 0);
 		this.getMyRegressions(10, 41);
-		this.getMyProfile();
-	}
-
-	getMyProfile() {
-		var selfThis = this;
-		/*	axios.get(FETCH_URL_PROFILE)
-		 .then(function(response) {
-		 selfThis.setState({
-		 profile: response.data
-		 });
-		 })
-		 .catch(error => console.log(error));*/
 	}
 
 	getE2E(key) {
 		const _regression = this.state.regressions[key];
-		return <RegressionTest regression={_regression}/>;
+		return <RegressionTest regression={_regression} />;
 	}
 
 	getMyE2E(key) {
 		const _regression = this.state.myRegressions[key];
-		return <RegressionTest regression={_regression}/>;
+		return <RegressionTest regression={_regression} />;
 	}
 
 	handleSelect(index, last) {
@@ -75,7 +56,7 @@ class Dashboard extends Component {
 		const URL_TO_FETCH = (!limit && !skip) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&skip=${skip}`;
 
 		axios.get(URL_TO_FETCH)
-			.then(function(response) {
+			.then(function (response) {
 				selfThis.setState({
 					regressions: response.data
 				});
@@ -89,7 +70,7 @@ class Dashboard extends Component {
 		const URL_TO_FETCH = (!limit && !id) ? FETCH_URL_DEFAULT : `${FETCH_URL_BASE}limit=${limit}&createdById=${id}`;
 
 		axios.get(URL_TO_FETCH)
-			.then(function(response) {
+			.then(function (response) {
 				selfThis.setState({
 					myRegressions: response.data
 				});

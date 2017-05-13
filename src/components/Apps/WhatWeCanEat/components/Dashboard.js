@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 class Dashboard extends Component {
@@ -17,10 +17,9 @@ class Dashboard extends Component {
 
 	getFoods() {
 		var selfThis = this;
-		debugger;
 		axios.get('http://localhost:4000/foods')
-			.then(function(response) {
-				selfThis.setState({foods: response.data});
+			.then(function (response) {
+				selfThis.setState({ foods: response.data });
 			})
 			.catch(error => console.log(error));
 	}
@@ -31,8 +30,8 @@ class Dashboard extends Component {
 			return (
 				<li key={food.id}>
 					<input id={name} type="radio" name="radio" onChange={() => {
-						this.setState({food: food});
-					}}/>
+						this.setState({ food: food });
+					} } />
 					<label htmlFor={name}>{food.name}</label>
 				</li>);
 		}
@@ -41,9 +40,7 @@ class Dashboard extends Component {
 
 	showResults(food) {
 		let total = 0;
-		this.state.foods.map((f) => {
-			total = total + f.votes
-		});
+		this.state.foods.forEach((f) => total += f.votes);
 
 		let porct = Math.round(((food.votes * 100) / total) * 100) / 100;
 		porct = `${porct}%`;
@@ -63,7 +60,7 @@ class Dashboard extends Component {
 						<span className="percentage">{porct}</span>
 					</div>
 					<div className="out-bar">
-						<div className="inner-bar slideAnimation" style={style.innerBar}/>
+						<div className="inner-bar slideAnimation" style={style.innerBar} />
 					</div>
 				</li>);
 		}
@@ -72,16 +69,11 @@ class Dashboard extends Component {
 
 	changeSubmittedState() {
 		const foods = this.state.foods;
-
-
 		if (!this.state.submitted) {
-			foods.map((f) => {
-				if (this.state.food) {
-					if (f.id === this.state.food.id) {
-						f.votes = f.votes + 1;
-					}
-				}
-			});
+			foods.forEach((f) =>
+				(this.state.food && f.id === this.state.food.id ?
+					f.votes++ : null)
+			);
 		} else {
 			this.getFoods();
 		}
@@ -95,25 +87,25 @@ class Dashboard extends Component {
 	render() {
 		return (
 			<div className='poll-block'>
-				<h2><img src="/images/foodspon.png"></img>What do you wanna eat?</h2>
+				<h2><img role="presentation" src="/images/foodspon.png" />What do you wanna eat?</h2>
 				{this.state.foods.length > 0 ? (
-						<div className="bodyContainerWhite">
-							<ul className="poll-vote-list">
-								{this.state.foods.map((food) => this.showFood(food))}
-							</ul>
-							< ul className="poll-results-list">
-								{this.state.foods.map((food) => this.showResults(food))}
-							</ul>
-							<div className="vote-button">
-								<a className="results-trigger btn btn-custom" href="#" onClick={() => this.changeSubmittedState()}><span>{
-									this.state.submitted ? 'Vote Again' : 'Submit'
-								}</span></a>
-							</div>
-						</div>) : (
+					<div className="bodyContainerWhite">
+						<ul className="poll-vote-list">
+							{this.state.foods.map((food) => this.showFood(food))}
+						</ul>
+						< ul className="poll-results-list">
+							{this.state.foods.map((food) => this.showResults(food))}
+						</ul>
+						<div className="vote-button">
+							<a className="results-trigger btn btn-custom" href="#" onClick={() => this.changeSubmittedState()}><span>{
+								this.state.submitted ? 'Vote Again' : 'Submit'
+							}</span></a>
+						</div>
+					</div>) : (
 						<div>
 							<p>There's not Elections setted for this week. Sorry</p>
 							<div className="bodyContainer images">
-								<img src="/images/sad-icon.png"></img>
+								<img src="/images/sad-icon.png" role="presentation" />
 							</div>
 						</div>)}
 			</div>

@@ -1,5 +1,4 @@
 import React from 'react';
-import Avatar from 'material-ui/Avatar';
 
 class HeaderProfile extends React.Component {
 
@@ -26,12 +25,14 @@ class HeaderProfile extends React.Component {
 		return (
 			<div style={style.content}>
 				<span>
-					<img style={style.imgAvatar} src={localStorage.getItem('picture')}></img>
-				</span><br/>
-				<span><strong>Name:</strong> {userProfile ? userProfile.firstName + ' ' + userProfile.lastName:null}</span><br/>
-				<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress:null}</span><br/>
-				<span><strong>Slack User:</strong> {userProfile ? userProfile.slackUser:null}</span><br/>
-				<span><strong>Region:</strong> {userProfile ? userProfile.region:null}</span><br/>
+					<img
+						role="presentation"
+						style={style.imgAvatar} src={localStorage.getItem('picture')}></img>
+				</span><br />
+				<span><strong>Name:</strong> {userProfile ? userProfile.firstName + ' ' + userProfile.lastName : null}</span><br />
+				<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress : null}</span><br />
+				<span><strong>Slack User:</strong> {userProfile ? userProfile.slackUser : null}</span><br />
+				<span><strong>Region:</strong> {userProfile ? userProfile.region : null}</span><br />
 			</div>
 		);
 	}

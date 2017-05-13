@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Dashboard from './WhatWeCanEat/components/Dashboard';
 
 class WhatWeCanEat extends Component {
-	constructor(props, context) {
-		super(props, context);
-	}
 
 	render() {
 		return (

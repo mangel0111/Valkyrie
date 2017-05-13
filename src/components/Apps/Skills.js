@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Skills from './skills/components/Skills';
 
 class Skill extends Component {
-	constructor(props, context) {
-		super(props, context);
-	}
 
 	render() {
 		return (

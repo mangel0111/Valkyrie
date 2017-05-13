@@ -49,7 +49,7 @@ class Header extends React.Component {
 			ReactDOM.render(
 				<ClickOutside onClickOutside={() =>  $('#modal').hide()}>
 					<div className='logout-modal'>
-						<img src={localStorage.getItem('picture')} style={styles.imgAvatar} />
+						<img src={localStorage.getItem('picture')} style={styles.imgAvatar} role="presentation" />
 						<strong>{this.props.Profile.Name}</strong><br />
 						<label style={styles.email}>{localStorage.getItem('email')}</label> <br /><br />
 						<input type='button' onClick={() => this.logout()} value='Logout' />

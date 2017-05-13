@@ -29,8 +29,9 @@ class ButtonBoard extends Component {
 	}
 
 	setVideo(props) {
-		this.state.videoProps = props.videoProps;
-		this.setState(this.state)
+		this.setState({
+			videoProps : props.videoProps
+		})
 	}
 
     render() {

@@ -1,10 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 class RegressionTest extends React.Component {
-
-    constructor() {
-        super();
-    }
 
     render() {
         let styles = {
@@ -32,7 +28,7 @@ class RegressionTest extends React.Component {
                     <label>
                         <strong>{this.props.regression.name}</strong> - {this.props.regression.stack.name} - {this.props.regression.createdBy ? this.props.regression.createdBy.profile.name : 'Master'}
                     </label>
-                    <div className={(this.props.regression.state == 'LIVE') ? 'stLive' : 'stOther'}>
+                    <div className={(this.props.regression.state === 'LIVE') ? 'stLive' : 'stOther'}>
                         {this.props.regression.state}
                     </div>
                 </div>

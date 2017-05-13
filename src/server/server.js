@@ -225,7 +225,7 @@ function initOfficesCollection() {
 					name: "Town Hall",
 					date: "18-05-2017"
 				}, {
-					id: 0,
+					id: 234,
 					name: "Revolutionary Day",
 					date: "25-05-2017"
 				}, {
@@ -241,7 +241,7 @@ function initOfficesCollection() {
 					name: "Maradona Birthdays",
 					date: "30-10-2017"
 				}, {
-					id: 4,
+					id: 334,
 					name: "Mate's Day",
 					date: "30-01-2018"
 				}, {
