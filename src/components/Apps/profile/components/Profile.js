@@ -38,7 +38,6 @@ class Skills extends React.Component {
 
 	changeInput(rate, skill) {
 		const {userEmail} = this.props;
-		debugger;
 		if (userEmail === undefined && this.state.user) {
 			let skills = this.state.user.skills;
 			skills.forEach((h) => {
