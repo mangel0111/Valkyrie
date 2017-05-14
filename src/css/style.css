@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
-*,
-.base {
+
+*,.base {
     margin: 0;
     padding: 0;
     font-family: 'Roboto', sans-serif;
@@ -814,4 +814,90 @@ ul.poll-results-list {
 .listItemOffice h3 {
     font-size: 12px;
     font-weight: 300;
+}
+
+.clock {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  color: #FFFFFF;
+  text-align: left;
+  padding: 15px;
+  min-width: 354px;
+}
+
+.time {
+  display: flex;
+  font-size: 50px;
+}
+
+.minutes {
+  padding-right: 5px;
+}
+
+.sectional {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.seconds {
+  font-size: 0.7em;
+  vertical-align: super;
+  float: right;
+}
+
+
+.date {
+  font-size: 14px;
+}
+
+.town {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.timezone {
+  font-weight: lighter;
+}
+
+.points {
+  position: relative;
+  -moz-animation: blink 1s ease infinite;
+  -webkit-animation: blink 1s ease infinite;
+}
+
+@-webkit-keyframes blink {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@-moz-keyframes blink {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1.0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1.0;
+  }
 }

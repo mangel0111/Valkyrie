@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import Office from './Office';
+import Clock from './Clock';
 
 class Dashboard extends Component {
     constructor(props, context) {
@@ -19,6 +20,9 @@ class Dashboard extends Component {
         var selfThis = this;
         Axios.get('http://localhost:4000/offices')
             .then(function (response) {
+                if (response.data.lenght === 0) {
+                    this.getOffices();
+                }
                 selfThis.setState({
                     offices: response.data
                 });
@@ -72,13 +76,28 @@ class Dashboard extends Component {
                 color: 'transparentize($color-foreground, 0.3)'
             }
         };
-
+        const config = {
+            timezone: 'America/Buenos_Aires',
+            locale: 'en',
+            styles: {
+                "positionClock": {
+                    background: '#04678E',
+                    position: 'fixed',
+                    left: '0',
+                    top: '40%',
+                    'minWidth': '168px',
+                    'maxWidth': '168px'
+                }
+            }
+        }
         return (
             <div style={styles.container} >
                 <h1> Appdirect Offices </h1>
                 <p className={styles.description} > Select the office to see relevatn information about they! </p>
                 <div className="distribution-map" >
-                    <img role="presentation" src="/images/WorldMapImage.png" /> {this.state.offices.map((office) => this.renderOffice(office))}
+                    <img role="presentation" src="/images/WorldMapImage.png" />
+                    {this.state.offices.map((office) => this.renderOffice(office))}
+                    <Clock config={config} name="Buenos Aires" />
                 </div>
             </div>
         )

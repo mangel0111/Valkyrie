@@ -316,6 +316,20 @@ function initOfficesCollection() {
 			},
 			name: "Buenos Aires",
 			description: "The best office ever",
+			config: {
+				timezone: 'America/Buenos_Aires',
+				locale: 'en',
+				styles: {
+					"positionClock": {
+						background: '#04678E',
+						position: 'fixed',
+						left: '0',
+						top: '40%',
+						'minWidth': '168px',
+						'maxWidth': '168px'
+					}
+				}
+			},
 			events: [{
 				id: 5,
 				name: "Town Hall",
@@ -362,6 +376,20 @@ function initOfficesCollection() {
 			},
 			name: "San Francisco",
 			description: "Is where the money comes!",
+			config: {
+				timezone: 'America/Los_Angeles',
+				locale: 'en',
+				styles: {
+					"positionClock": {
+						background: '#F44336',
+						position: 'fixed',
+						left: '0',
+						top: '50%',
+						'minWidth': '168px',
+						'maxWidth': '168px'
+					}
+				}
+			},
 			events: [
 				{
 					id: 3,
@@ -398,6 +426,20 @@ function initOfficesCollection() {
 			},
 			name: "Pune",
 			description: "The dancing office",
+			config: {
+				timezone: 'Asia/Calcutta',
+				locale: 'en',
+				styles: {
+					"positionClock": {
+						background: '#9C27B0',
+						position: 'fixed',
+						left: '0',
+						top: '60%',
+						'minWidth': '168px',
+						'maxWidth': '168px'
+					}
+				}
+			},
 			events: [
 				{
 					id: 3,
@@ -431,6 +473,20 @@ function initOfficesCollection() {
 			},
 			name: "Montreal",
 			description: "The guys who loves curling",
+			config: {
+				timezone: 'America/Montreal',
+				locale: 'en',
+				styles: {
+					"positionClock": {
+						background: '#2196F3',
+						position: 'fixed',
+						left: '0',
+						top: '70%',
+						'minWidth': '168px',
+						'maxWidth': '168px'
+					}
+				}
+			},
 			events: [
 				{
 					id: 30,
@@ -470,6 +526,20 @@ function initOfficesCollection() {
 			},
 			name: "Munich",
 			description: "das kartoffel",
+			config: {
+				timezone: 'Europe/Berlin',
+				locale: 'en',
+				styles: {
+					"positionClock": {
+						background: '#D50000',
+						position: 'fixed',
+						left: '0',
+						top: '80%',
+						'minWidth': '168px',
+						'maxWidth': '168px'
+					}
+				}
+			},
 			events: [{
 				id: 3,
 				name: "Town Hall",
