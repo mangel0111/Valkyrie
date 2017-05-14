@@ -10,6 +10,21 @@ class Clock extends Component {
         };
     }
 
+    componentDidMount() {
+        const tic = setInterval(() => {
+            this.setState({
+                currentDate: this.getMoment(this.props.config.timezone, this.props.config.locale)
+            });
+        }, 1000);
+
+        /* Save interval to state otherwise it will not survive render cycle */
+        this.setState({ tic });
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.state.tic);
+    }
+
     getMoment(timezone, locale) {
         moment.locale(locale);
         const now = moment().tz(timezone);

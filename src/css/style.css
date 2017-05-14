@@ -846,7 +846,6 @@ ul.poll-results-list {
   float: right;
 }
 
-
 .date {
   font-size: 14px;
 }
@@ -900,4 +899,12 @@ ul.poll-results-list {
   100% {
     opacity: 1.0;
   }
+}
+
+.clocksDashboard {
+    position: fixed;
+    left: 0;
+    top:20%;
+    display: flex;
+    flex-direction: column;
 }

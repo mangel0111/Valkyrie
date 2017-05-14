@@ -58,6 +58,10 @@ class Dashboard extends Component {
                 key={key.id} />);
     }
 
+    renderClock(office) {
+        return (<Clock config={office.config} name={office.name} />);
+    }
+
     render() {
         const fontStackMain = `"Roboto", $font-stack-safe`;
 
@@ -76,20 +80,7 @@ class Dashboard extends Component {
                 color: 'transparentize($color-foreground, 0.3)'
             }
         };
-        const config = {
-            timezone: 'America/Buenos_Aires',
-            locale: 'en',
-            styles: {
-                "positionClock": {
-                    background: '#04678E',
-                    position: 'fixed',
-                    left: '0',
-                    top: '40%',
-                    'minWidth': '168px',
-                    'maxWidth': '168px'
-                }
-            }
-        }
+        
         return (
             <div style={styles.container} >
                 <h1> Appdirect Offices </h1>
@@ -97,7 +88,7 @@ class Dashboard extends Component {
                 <div className="distribution-map" >
                     <img role="presentation" src="/images/WorldMapImage.png" />
                     {this.state.offices.map((office) => this.renderOffice(office))}
-                    <Clock config={config} name="Buenos Aires" />
+                    <div className="clocksDashboard">{this.state.offices.map((office) => this.renderClock(office))}</div>
                 </div>
             </div>
         )

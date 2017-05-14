@@ -322,9 +322,6 @@ function initOfficesCollection() {
 				styles: {
 					"positionClock": {
 						background: '#04678E',
-						position: 'fixed',
-						left: '0',
-						top: '40%',
 						'minWidth': '168px',
 						'maxWidth': '168px'
 					}
@@ -382,9 +379,6 @@ function initOfficesCollection() {
 				styles: {
 					"positionClock": {
 						background: '#F44336',
-						position: 'fixed',
-						left: '0',
-						top: '50%',
 						'minWidth': '168px',
 						'maxWidth': '168px'
 					}
@@ -432,9 +426,6 @@ function initOfficesCollection() {
 				styles: {
 					"positionClock": {
 						background: '#9C27B0',
-						position: 'fixed',
-						left: '0',
-						top: '60%',
 						'minWidth': '168px',
 						'maxWidth': '168px'
 					}
@@ -479,9 +470,6 @@ function initOfficesCollection() {
 				styles: {
 					"positionClock": {
 						background: '#2196F3',
-						position: 'fixed',
-						left: '0',
-						top: '70%',
 						'minWidth': '168px',
 						'maxWidth': '168px'
 					}
@@ -532,9 +520,6 @@ function initOfficesCollection() {
 				styles: {
 					"positionClock": {
 						background: '#D50000',
-						position: 'fixed',
-						left: '0',
-						top: '80%',
 						'minWidth': '168px',
 						'maxWidth': '168px'
 					}
@@ -751,6 +736,9 @@ app.get('/offices', (req, res) => {
 			console.log(err);
 			return res(err);
 		} else {
+			if (data.length === 0) {
+				initOfficesCollection();
+			}
 			console.log(data);
 			return res.json(data);
 		}
