@@ -11,10 +11,10 @@ const style = {
     'width': '450px',
     'height': '2.2em',
     'background': "rgba(0,0,0,.2)",
-    'border-radius': "10px",
+    'borderRadius': "10px",
     'display': 'block',
     'textAlign': 'center',
-    'margin-top': '0.6em',
+    'marginTop': '0.6em',
     'marginLeft': '0.3em',
     'padding': '1em 1em',
     'textDecoration': 'none',
@@ -103,7 +103,7 @@ const style = {
   },
 
   'table': {
-    'marginTop': '10%',
+    'marginTop': '0',
     'width': '100%',
     'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
   },
@@ -141,7 +141,7 @@ const style = {
   'bodyContainer': {
     'background': '#f5f5f5',
     'padding': '10px 10px',
-    'minHeight': '200px'
+    'minHeight': '110px'
   }
 }
 
@@ -194,7 +194,7 @@ class Navigation extends React.Component {
 
   showUsers(user) {
     return (
-      <tr style={style.rows}>
+      <tr key={user.id} style={style.rows}>
         <td style={style.photoCell}>
           <img role="presentation" style={style.profileImgResults} src={user.avatar} width="180" height="200" />
         </td>
@@ -250,7 +250,6 @@ class Navigation extends React.Component {
               <a style={style.people} onClick={() => this.getAllUsers()}>People</a></li>
           </ul>
         </div>
-
         <table style={style.table}>
           {this.state.users.map((user) => this.showUsers(user))}
         </table>
