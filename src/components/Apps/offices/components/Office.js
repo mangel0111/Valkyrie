@@ -113,7 +113,7 @@ class Office extends Component {
 				<div className="content">
 					<div className="centered-y">
 						<h2>{office.name}</h2>
-						<div className="timeZone">{this.getCurrentTime(office)}</div>
+						<div className="timeZone">{office.address}</div>
 						<p>{office.description}</p>
 						<br />
 						<a onClick={() => this.showEvents()}>See events</a>

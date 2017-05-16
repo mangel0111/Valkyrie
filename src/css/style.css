@@ -757,6 +757,7 @@ ul.poll-results-list {
 }
 
 .results,
+.flexContainer,
 .locationIcon {
     display: flex;
 }
@@ -936,4 +937,12 @@ ul.poll-results-list {
 
 .headerProfile span {
     margin-bottom: 10px;
+}
+
+.blueBadge {
+    background: midnightblue;
+    color: white;
+    margin: 0 5px;
+    padding: 5px;
+    border-radius: 10%;
 }

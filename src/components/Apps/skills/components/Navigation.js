@@ -105,7 +105,7 @@ const style = {
   'table': {
     'marginTop': '0',
     'width': '100%',
-    'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
+    'font': "'Roboto script=all rev=2', 'Adobe Blank'",
   },
 
   'profileImgResults': {
@@ -115,7 +115,9 @@ const style = {
 
   'rows': {
     'boxShadow': "0 0px 10px rgba(0,0,0,.4) inset",
-    'borderRadius': "10px"
+    'borderRadius': "10px",
+    background: 'white',
+    marginBottom: '10px'
   },
 
   'detailsCell': {
@@ -202,8 +204,8 @@ class Navigation extends React.Component {
           <a href={`Profile/${user.emailAddress}`}>{`${user.firstName}  ${user.lastName}`}</a>
           <span> Jefe de fiestas y convidios </span>
           <span>Team:</span>
-          <ul>
-            {user.team.map((t) => (<li key={t.id}>{t.name}</li>))}
+          <ul className="flexContainer">
+            {user.team.map((t) => (<li className="blueBadge" key={t.id}>{t.name}</li>))}
           </ul>
           <div className="locationIcon">
             <img style={style.locationIcon}
