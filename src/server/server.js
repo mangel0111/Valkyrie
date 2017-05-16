@@ -182,7 +182,7 @@ function initUsersCollection() {
                 { id: 8, code: 'PSFE', name: 'PSFE', rating: 4 }
             ]
         }, {
-            id: 7,
+            id: 8,
             avatar: '/images/perry.jpe',
             firstName: 'Perry',
             lastName: 'Wong',
@@ -212,7 +212,7 @@ function initUsersCollection() {
                 { id: 8, code: 'PSFE', name: 'PSFE', rating: 4 }
             ]
         }, {
-            id: 7,
+            id: 9,
             avatar: '/images/profilegoogle.jpg',
             firstName: 'Huabin',
             lastName: 'Kuan',

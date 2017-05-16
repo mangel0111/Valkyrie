@@ -26,7 +26,6 @@ const style = {
     'height': "1em",
     'padding': "10px 5px",
     'float': "left",
-    'font': "bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'border': 0,
     'background': '#eee',
     'bordeRadius': '3px 0 0 3px'
@@ -40,7 +39,6 @@ const style = {
     'cursor': 'pointer',
     'height': '2.3em',
     'width': '110px',
-    'font': "bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'color': '#fff',
     'textTransform': 'uppercase',
     'background': '#d83c3c',
@@ -62,7 +60,6 @@ const style = {
     'flexDirection': 'column',
     'marginLeft': '270px',
     'marginTop': '10px',
-    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'color': "white"
   },
 
@@ -87,7 +84,6 @@ const style = {
 
   'people': {
     'display': 'block',
-    'font': "bold 14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'color': "white",
     'textAlign': 'center',
     'marginLeft': '50px'
@@ -105,7 +101,7 @@ const style = {
   'table': {
     'marginTop': '0',
     'width': '100%',
-    'font': "'Roboto script=all rev=2', 'Adobe Blank'",
+    fonSize: '14px'
   },
 
   'profileImgResults': {
@@ -123,7 +119,6 @@ const style = {
   'detailsCell': {
     'display': 'flex',
     'flexDirection': 'column',
-    'font': "14px 'lucida sans', 'trebuchet MS', 'Tahoma'",
     'paddingLeft': '1%',
     'paddingTop': '3%',
     'lineHeight': '20px'
@@ -134,6 +129,9 @@ const style = {
     'paddingTop': '0.8%',
     'paddingBottom': '0.8%',
     'width': '15%'
+  },
+  peoples: {
+    cursor: 'pointer'
   },
 
   'locationIcon': {
@@ -226,7 +224,6 @@ class Navigation extends React.Component {
   }
 
   render() {
-
     return (
       <div>
         <div style={style.bodyContainer}>
@@ -244,7 +241,7 @@ class Navigation extends React.Component {
               <a style={style.profileLink} href="Profile">View My Profile</a>
             </li>
             <li style={style.li}>
-              <a onClick={() => this.getAllUsers()}>
+              <a style={style.peoples} onClick={() => this.getAllUsers()}>
                 <img style={style.viewPeopleIcon}
                   role="presentation"
                   src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PGc+PHBhdGggZD0iTTksOWMwLTEuNywxLjMtMywzLTNzMywxLjMsMywzYzAsMS43LTEuMywzLTMsM1M5LDEwLjcsOSw5eiBNMTIsMTRjLTQuNiwwLTYsMy4zLTYsMy4zVjE5aDEydi0xLjdDMTgsMTcuMywxNi42LDE0LDEyLDE0eiAgICIvPjwvZz48Zz48Zz48Y2lyY2xlIGN4PSIxOC41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTE4LjUsMTNjLTEuMiwwLTIuMSwwLjMtMi44LDAuOGMyLjMsMS4xLDMuMiwzLDMuMiwzLjJsMCwwLjFIMjN2LTEuM0MyMywxNS43LDIxLjksMTMsMTguNSwxM3oiLz48L2c+PC9nPjxnPjxnPjxjaXJjbGUgY3g9IjE4LjUiIGN5PSI4LjUiIHI9IjIuNSIvPjwvZz48Zz48cGF0aCBkPSJNMTguNSwxM2MtMS4yLDAtMi4xLDAuMy0yLjgsMC44YzIuMywxLjEsMy4yLDMsMy4yLDMuMmwwLDAuMUgyM3YtMS4zQzIzLDE1LjcsMjEuOSwxMywxOC41LDEzeiIvPjwvZz48L2c+PGc+PGc+PGNpcmNsZSBjeD0iNS41IiBjeT0iOC41IiByPSIyLjUiLz48L2c+PGc+PHBhdGggZD0iTTUuNSwxM2MxLjIsMCwyLjEsMC4zLDIuOCwwLjhjLTIuMywxLjEtMy4yLDMtMy4yLDMuMmwwLDAuMUgxdi0xLjNDMSwxNS43LDIuMSwxMyw1LjUsMTN6Ii8+PC9nPjwvZz48L3N2Zz4=" />
@@ -253,7 +250,9 @@ class Navigation extends React.Component {
           </ul>
         </div>
         <table style={style.table}>
-          {this.state.users.map((user) => this.showUsers(user))}
+          <tbody>
+            {this.state.users.map((user) => this.showUsers(user))}
+          </tbody>
         </table>
       </div>
     );

@@ -41,8 +41,15 @@ class HeaderProfile extends React.Component {
 								style={style.imgAvatar} src={userProfile ? userProfile.avatar : '/images/profileGoogle.png'}></img>
 						</span><br />
 						<span><strong>Name:</strong> {userProfile ? userProfile.firstName + ' ' + userProfile.lastName : null}</span><br />
-						<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress : null}</span><br />
-						<span><strong>Team:</strong> {userProfile ? (userProfile.team ? userProfile.team.map((team => team.name)) : null) : null}</span><br />
+						<span><strong>Email:</strong> {userProfile ? userProfile.emailAddress : null}</span><br /><br />
+						<span><strong>Team:</strong>
+							{userProfile ?
+								(userProfile.team ?
+									userProfile.team
+										.map(team => { return (<span key={team.id} className="blueBadge">{team.name}</span>); })
+									: null)
+								: null
+							}</span><br /><br />
 						<span><strong>Slack User:</strong> {userProfile ? userProfile.slackUser : null}</span><br />
 						<span><strong>Region:</strong> {userProfile ? userProfile.region : null}</span><br />
 					</div>
