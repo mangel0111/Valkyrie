@@ -108,17 +108,22 @@ class Skills extends React.Component {
 		return (
 			<div>
 				<HeaderProfile userProfile={this.state.user} />
-				{this.state.user ? this.state.user.skills.map((skill) => this.showSkill(skill)) : null}
-				{this.state.addSkill ? (
-					<div className="addSkill">
-						<input
-							type="text"
-							value={this.state.nextSkill}
-							onChange={(e) => this.handleChange(e)} />
-						<a onClick={() => this.addSkill()} className="btn btn-custom">+</a>
-					</div>) : null}
-				{userEmail === undefined ? (<button className="btn btn-custom" onClick={() => this.requestSkill()}>Add Skill</button>) : null}
-
+				<div className="containerItem">
+					{this.state.user ? (
+						<div className="rowContainerProfile">
+							<h1>Skills:</h1>
+							{this.state.user.skills.map((skill) => this.showSkill(skill))}
+						</div>) : null}
+					{this.state.addSkill ? (
+						<div className="addSkill">
+							<input
+								type="text"
+								value={this.state.nextSkill}
+								onChange={(e) => this.handleChange(e)} />
+							<a onClick={() => this.addSkill()} className="btn btn-custom">+</a>
+						</div>) : null}
+					{userEmail === undefined ? (<button className="btn btn-custom" onClick={() => this.requestSkill()}>Add Skill</button>) : null}
+				</div>
 			</div>
 		);
 	}
